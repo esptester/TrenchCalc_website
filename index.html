@@ -9,6 +9,128 @@
   <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
   <link rel="shortcut icon" href="ennsgitetoolslogoicon.ico" type="image/x-icon">
   <style>
+    /* --- News Section --- */
+.news {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 24px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+.news h2 {
+  margin: 0 0 12px 0;
+}
+.news-sub {
+  color: var(--muted);
+  margin: 0 0 18px 0;
+  font-size: 14px;
+}
+
+/* Carousel container */
+.news-carousel {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Track uses native scroll + snap for touch devices */
+.news-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.news-track::-webkit-scrollbar { display: none; }
+
+/* Each slide */
+.news-slide {
+  min-width: 100%;
+  scroll-snap-align: start;
+  padding: 20px;
+  background: var(--card-bg);
+  display: grid;
+  gap: 10px;
+}
+
+/* Slide content */
+.news-tag {
+  display: inline-block;
+  font-size: 12px;
+  color: #fff;
+  background: var(--brand);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.news-title {
+  margin: 6px 0 2px;
+  font-size: 18px;
+}
+.news-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+.news-excerpt {
+  margin: 6px 0 12px;
+  color: var(--text);
+  opacity: 0.9;
+}
+.news-cta {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--brand);
+  color: #fff;
+  border-radius: var(--radius);
+  text-decoration: none;
+  font-size: 14px;
+}
+.news-cta:hover { background: #3367d6; }
+
+/* Dots */
+.news-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.news-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c7c7c7;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+.news-dot[aria-current="true"] {
+  background: var(--brand);
+}
+
+/* Prev/Next (optional; hidden on small screens) */
+@media (min-width: 800px) {
+  .news-nav {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  .news-btn {
+    pointer-events: auto;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+    margin: 0 6px;
+    cursor: pointer;
+  }
+}
+
     :root {
       --bg: #121212;
       --card-bg: #ffffff;
@@ -149,6 +271,88 @@
   </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+  <script>
+(function() {
+  const carousel = document.querySelector('.news-carousel');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.news-track');
+  const slides = Array.from(track.children);
+  const dots = Array.from(document.querySelectorAll('.news-dots .news-dot'));
+  const prevBtn = carousel.querySelector('[data-dir="-1"]');
+  const nextBtn = carousel.querySelector('[data-dir="1"]');
+
+  let index = 0;
+  let timer = null;
+  const interval = parseInt(carousel.dataset.interval || '5000', 10);
+
+  function goTo(i, smooth = true) {
+    index = (i + slides.length) % slides.length;
+    const x = slides[index].offsetLeft;
+    track.scrollTo({ left: x, behavior: smooth ? 'smooth' : 'auto' });
+    dots.forEach((d, di) => {
+      const active = di === index;
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+      d.toggleAttribute('aria-current', active);
+    });
+  }
+
+  function start() {
+    stop();
+    timer = setInterval(() => goTo(index + 1), interval);
+  }
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  // Sync on user scroll (snap end)
+  let scrollTimeout;
+  track.addEventListener('scroll', () => {
+    stop();
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // find closest slide by scrollLeft
+      const pos = track.scrollLeft;
+      let nearest = 0, best = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.offsetLeft - pos);
+        if (dist < best) { best = dist; nearest = i; }
+      });
+      goTo(nearest, false);
+      start();
+    }, 120);
+  });
+
+  // Dots click
+  dots.forEach((dot, di) => {
+    dot.addEventListener('click', () => goTo(di));
+  });
+
+  // Prev/Next
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+
+  // Pause on hover / window hidden
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  // Keyboard (left/right)
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+    if (e.key === 'ArrowRight') goTo(index + 1);
+  });
+  carousel.tabIndex = 0; // focusable
+
+  // Init
+  goTo(0, false);
+  if (carousel.dataset.autoplay === 'true') start();
+})();
+</script>
+
 <body>
 
 <header>
@@ -191,6 +395,84 @@
   </div>
 </div>
 
+<!-- News -->
+<section class="news section" id="news" aria-label="EngSiteTools News">
+  <h2>News & Updates</h2>
+  <p class="news-sub">Product updates, tips, and what’s coming next.</p>
+
+  <div class="news-carousel" data-autoplay="true" data-interval="5000">
+    <div class="news-track" id="newsTrack">
+      <!-- Slide 1 -->
+      <article class="news-slide" aria-roledescription="slide" aria-label="1 of 5">
+        <span class="news-tag">Product</span>
+        <h3 class="news-title">TrenchCalc™ v1.0 Launch</h3>
+        <div class="news-date">Aug 2025</div>
+        <p class="news-excerpt">
+          Our fast trench volume & cement calculator is live. Stepped benches, culvert spacing, and field-first UX.
+        </p>
+        <a class="news-cta" href="#" aria-disabled="true">Read more</a>
+      </article>
+
+      <!-- Slide 2 -->
+      <article class="news-slide" aria-roledescription="slide" aria-label="2 of 5">
+        <span class="news-tag">Roadmap</span>
+        <h3 class="news-title">Upcoming: Testing Plan Generator</h3>
+        <div class="news-date">Aug 2025</div>
+        <p class="news-excerpt">
+          Auto-build compaction & PSD testing plans from zones and lifts. CSV export and field-ready summaries.
+        </p>
+        <a class="news-cta" href="#" aria-disabled="true">Read more</a>
+      </article>
+
+      <!-- Slide 3 -->
+      <article class="news-slide" aria-roledescription="slide" aria-label="3 of 5">
+        <span class="news-tag">Tips</span>
+        <h3 class="news-title">Faster Planning in the Field</h3>
+        <div class="news-date">Aug 2025</div>
+        <p class="news-excerpt">
+          Three quick tricks in TrenchCalc to reduce rework and get volumes right the first time.
+        </p>
+        <a class="news-cta" href="#" aria-disabled="true">Read more</a>
+      </article>
+
+      <!-- Slide 4 -->
+      <article class="news-slide" aria-roledescription="slide" aria-label="4 of 5">
+        <span class="news-tag">Release</span>
+        <h3 class="news-title">Performance & UI Polish</h3>
+        <div class="news-date">Aug 2025</div>
+        <p class="news-excerpt">
+          Smoother input handling, better dark mode contrast, and cleaner cards aligned with site design.
+        </p>
+        <a class="news-cta" href="#" aria-disabled="true">Read more</a>
+      </article>
+
+      <!-- Slide 5 -->
+      <article class="news-slide" aria-roledescription="slide" aria-label="5 of 5">
+        <span class="news-tag">Community</span>
+        <h3 class="news-title">Beta Invites</h3>
+        <div class="news-date">Aug 2025</div>
+        <p class="news-excerpt">
+          Want early access to new tools? We’ll open a small beta soon—watch this space.
+        </p>
+        <a class="news-cta" href="#" aria-disabled="true">Read more</a>
+      </article>
+    </div>
+
+    <!-- Optional prev/next on desktop -->
+    <div class="news-nav" aria-hidden="true">
+      <button class="news-btn" data-dir="-1" aria-label="Previous slide">‹</button>
+      <button class="news-btn" data-dir="1" aria-label="Next slide">›</button>
+    </div>
+  </div>
+
+  <div class="news-dots" role="tablist" aria-label="News slides">
+    <button class="news-dot" role="tab" aria-selected="true" aria-current="true" aria-label="Slide 1"></button>
+    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
+    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
+    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
+    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 5"></button>
+  </div>
+</section>
 
   <!-- About -->
   <div class="section" id="about">
