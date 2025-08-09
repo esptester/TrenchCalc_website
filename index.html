@@ -87,24 +87,25 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
-    .product-card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 20px;
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .product-card img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      border-radius: var(--radius);
-      margin-bottom: 15px;
-      background: #ddd;
-    }
+.product-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;   /* left-align like Autodesk cards */
+  text-align: left;
+}
+.product-card img {
+  width: auto;               /* small logo badge */
+  max-width: 60px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #ddd;
+}
+
     .product-card h3 {
       margin: 10px 0 5px;
     }
@@ -169,23 +170,30 @@
     </p>
   </div>
 
-  <!-- Products -->
-  <div class="section" id="products">
-    <h2>Our Products</h2>
-    <div class="products">
-      <div class="product-card">
-        <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
-        <h3>TrenchCalc</h3>
-        <p>Trench volume and cement calculator for site crews and engineers, with stepped benches and culvert spacing options.</p>
-        <a href="/trenchcalc.html">View Product</a>
-      </div>
-      <div class="product-card">
-        <img src="earthbyte.png" alt="EarthByte Construction Planner logo">
-        <h3>Project Planner (Coming Soon)</h3>
-        <p>Plan and manage engineering projects with an intuitive, streamlined tool built for small contractors and site teams.</p>
-      </div>
+<!-- Products -->
+<div class="section" id="products">
+  <h2>Our Products</h2>
+  <div class="products">
+
+    <!-- TrenchCalc Card -->
+    <div class="product-card">
+      <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
+      <h3>TrenchCalc</h3>
+      <p class="muted">Instant trench volume & cement calculator with stepped benches and culvert spacing.</p>
+      <a href="trenchcalc.html" aria-label="Open TrenchCalc product page">Open TrenchCalc</a>
     </div>
+
+    <!-- EarthByte Card -->
+    <div class="product-card">
+      <img src="earthbyte.png" alt="EarthByte Construction Planner logo">
+      <h3>EarthByte</h3>
+      <p class="muted">Civil earthwork project planner—without bloatware—for bulk earthworks.</p>
+      <a href="#" aria-label="Learn more about EarthByte">Coming Soon</a>
+    </div>
+
   </div>
+</div>
+
 
   <!-- About -->
   <div class="section" id="about">
@@ -214,8 +222,9 @@
 
 <footer>
   © 2025 EngSiteTools. All rights reserved.
-  <a href="/trenchcalc/trenchcalc-privacy.html">Privacy Policy</a> |
-  <a href="/trenchcalc/trenchcalc-terms.html">Terms of Use</a>
+<a href="trenchcalc-privacy.html">Privacy Policy</a> |
+<a href="trenchcalc-terms.html">Terms of Use</a>
+
 </footer>
 
 </body>
