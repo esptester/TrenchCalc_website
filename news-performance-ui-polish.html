@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Performance & UI Polish | EngSiteTools News</title>
+  <meta name="description" content="Recent improvements to speed, responsiveness, and dark mode design in EngSiteTools." />
+  <meta name="theme-color" content="#121212" />
+  <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
+  <link rel="shortcut icon" href="ennsgitetoolslogoicon.ico" type="image/x-icon">
+  <style>
+    :root { --bg:#121212; --card-bg:#fff; --text:#222; --muted:#555; --brand:#4285f4; --surface:#f5f5f5; --radius:8px; --shadow:0 2px 6px rgba(0,0,0,.1); }
+    @media (prefers-color-scheme: dark){ :root{ --card-bg:#1e1e1e; --text:#f5f5f5; --muted:#aaa; --surface:#121212; } }
+    body{ font-family:Arial, sans-serif; background:var(--surface); color:var(--text); margin:0; }
+    header{ background:var(--bg); color:#fff; padding:16px 12px; }
+    header a{ color:#fff; text-decoration:none; }
+    main{ max-width:900px; margin:0 auto; padding:30px 16px; }
+    .post{ background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; }
+    .post h1{ margin:0 0 8px; font-size:28px; }
+    .meta{ color:var(--muted); font-size:14px; margin-bottom:16px; }
+    .hero{ width:100%; border-radius:12px; margin:8px 0 16px; background:#eaeaea; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:#888; }
+    .post h2{ margin-top:24px; }
+    .cta{ margin-top:28px; display:inline-block; padding:12px 16px; background:var(--brand); color:#fff; border-radius:var(--radius); text-decoration:none; }
+    .foot-nav{ margin-top:24px; font-size:14px; color:var(--muted); }
+    .foot-nav a{ color:var(--brand); text-decoration:none; }
+  </style>
+</head>
+<body>
+<header>
+  <a href="index.html">← EngSiteTools</a>
+</header>
+<main>
+  <article class="post">
+    <h1>Performance & UI Polish</h1>
+    <div class="meta">Published Aug 9, 2025 · 3–5 min read · Category: Release</div>
+    <div class="hero">[Insert before/after UI screenshot or animation]</div>
+
+    <p>
+      Our latest update isn’t about new features — it’s about making everything you already use smoother, faster, and easier on the eyes.
+    </p>
+
+    <h2>1. Faster Input Handling</h2>
+    <p>
+      Input lag in older browsers and lower-powered devices has been reduced by optimising how calculations are triggered.  
+      This means fields respond instantly, even with complex trench configurations.
+    </p>
+
+    <h2>2. Improved Dark Mode Contrast</h2>
+    <p>
+      We’ve refined color variables for dark mode to improve readability in low-light conditions.  
+      This makes text, buttons, and diagrams pop without causing glare during night work.
+    </p>
+
+    <h2>3. Cleaner Card Layouts</h2>
+    <p>
+      Product and news cards now have better spacing, consistent icon sizes, and subtle hover effects to make scanning information quicker.
+    </p>
+
+    <h2>4. Under-the-Hood Optimisations</h2>
+    <p>
+      Smaller image file sizes, reduced DOM complexity, and more efficient CSS rules keep page loads under a second in most conditions.
+    </p>
+
+    <a class="cta" href="trenchcalc.html">Open TrenchCalc</a>
+
+    <div class="foot-nav">
+      <p>More: <a href="index.html#news">News & Updates</a> · <a href="trenchcalc.html">TrenchCalc</a></p>
+    </div>
+  </article>
+</main>
+</body>
+</html>
