@@ -9,127 +9,60 @@
   <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
   <link rel="shortcut icon" href="ennsgitetoolslogoicon.ico" type="image/x-icon">
   <style>
-    /* --- News Section --- */
-.news {
-  background: var(--card-bg);
-  border-radius: var(--radius);
-  padding: 24px;
-  margin-bottom: 30px;
-  box-shadow: var(--shadow);
+/* --- News Cards Rail --- */
+.news-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  margin-bottom: 12px;
 }
-.news h2 {
-  margin: 0 0 12px 0;
-}
-.news-sub {
-  color: var(--muted);
-  margin: 0 0 18px 0;
-  font-size: 14px;
-}
+.news-head h2 { margin: 0; }
+.news-more { font-size: 14px; text-decoration: none; color: var(--text); opacity: .8; }
+.news-more:hover { text-decoration: underline; }
 
-/* Carousel container */
-.news-carousel {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--radius);
+.news-rail-wrap { position: relative; }
+.news-rail {
+  display: grid; grid-auto-flow: column; grid-auto-columns: 85%;
+  gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch; padding-bottom: 6px;
 }
+.news-rail::-webkit-scrollbar { height: 8px; }
+@media (min-width: 900px){ .news-rail{ grid-auto-columns: calc((100% - 48px)/3); } }
 
-/* Track uses native scroll + snap for touch devices */
-.news-track {
-  display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+.news-card {
+  scroll-snap-align: start; background: var(--card-bg); border-radius: 16px;
+  box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
 }
-.news-track::-webkit-scrollbar { display: none; }
+.news-img {
+  position: relative; aspect-ratio: 16/9; width: 100%; overflow: hidden;
+  background: linear-gradient(135deg,#e8e8e8,#d5d5d5);
+}
+@media (prefers-color-scheme: dark){
+  .news-img{ background: linear-gradient(135deg,#2a2a2a,#1f1f1f); }
+}
+.news-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* Each slide */
-.news-slide {
-  min-width: 100%;
-  scroll-snap-align: start;
-  padding: 20px;
-  background: var(--card-bg);
-  display: grid;
-  gap: 10px;
+.news-body { padding: 14px 16px 18px; display: grid; gap: 8px; }
+.news-title { font-size: 20px; line-height: 1.2; margin: 0; }
+.news-date  { font-size: 12px; color: var(--muted); }
+.news-cta-row { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.news-arrow {
+  width: 28px; height: 28px; border-radius: 999px; border: 1px solid rgba(0,0,0,.1);
+  display: grid; place-items: center; text-decoration: none; color: var(--text);
 }
+@media (prefers-color-scheme: dark){ .news-arrow{ border-color: rgba(255,255,255,.15); } }
+.news-arrow:hover { background: rgba(0,0,0,.05); }
+@media (prefers-color-scheme: dark){ .news-arrow:hover{ background: rgba(255,255,255,.06); } }
 
-/* Slide content */
-.news-tag {
-  display: inline-block;
-  font-size: 12px;
-  color: #fff;
-  background: var(--brand);
-  padding: 4px 10px;
-  border-radius: 999px;
+/* Rail nav buttons */
+.news-rail-nav {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: space-between;
+  pointer-events: none;
 }
-.news-title {
-  margin: 6px 0 2px;
-  font-size: 18px;
+.news-rail-btn {
+  pointer-events: auto; width: 36px; height: 36px; border-radius: 999px; border: 0;
+  background: rgba(0,0,0,.5); color: #fff; display: grid; place-items: center; cursor: pointer;
+  margin: 0 6px; backdrop-filter: blur(4px);
 }
-.news-date {
-  font-size: 12px;
-  color: var(--muted);
-}
-.news-excerpt {
-  margin: 6px 0 12px;
-  color: var(--text);
-  opacity: 0.9;
-}
-.news-cta {
-  display: inline-block;
-  padding: 10px 14px;
-  background: var(--brand);
-  color: #fff;
-  border-radius: var(--radius);
-  text-decoration: none;
-  font-size: 14px;
-}
-.news-cta:hover { background: #3367d6; }
-
-/* Dots */
-.news-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 12px;
-}
-.news-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #c7c7c7;
-  border: 0;
-  padding: 0;
-  cursor: pointer;
-}
-.news-dot[aria-current="true"] {
-  background: var(--brand);
-}
-
-/* Prev/Next (optional; hidden on small screens) */
-@media (min-width: 800px) {
-  .news-nav {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    pointer-events: none;
-  }
-  .news-btn {
-    pointer-events: auto;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: 0;
-    width: 36px;
-    height: 36px;
-    border-radius: 999px;
-    display: grid;
-    place-items: center;
-    margin: 0 6px;
-    cursor: pointer;
-  }
-}
+@media (max-width: 899px){ .news-rail-nav{ display:none; } }
 
     :root {
       --bg: #121212;
@@ -320,85 +253,116 @@
 
   </div>
 </div>
-
 <!-- News -->
 <section class="news section" id="news" aria-label="EngSiteTools News">
-  <h2>News & Updates</h2>
-  <p class="news-sub">Product updates, tips, and what’s coming next.</p>
-
-  <div class="news-carousel" data-autoplay="true" data-interval="5000">
-    <div class="news-track" id="newsTrack">
-      <!-- Slide 1 -->
-      <article class="news-slide" aria-roledescription="slide" aria-label="1 of 5">
-        <span class="news-tag">Tips</span>
-        <h3 class="news-title">Trench Volumes in Minutes: A Field Guide</h3>
-        <div class="news-date">Aug 2025</div>
-        <p class="news-excerpt">
-          A fast method to estimate trench volumes—base width, depth, batters, benches—without spreadsheets.
-        </p>
-        <a class="news-cta" href="news-trench-volume-field-guide.html">Read more</a>
-      </article>
-
-      <!-- Slide 2 -->
-      <article class="news-slide" aria-roledescription="slide" aria-label="2 of 5">
-        <span class="news-tag">Tips</span>
-        <h3 class="news-title">Culvert Spacing Checks: 3 Fast Sanity Tests</h3>
-        <div class="news-date">Aug 2025</div>
-        <p class="news-excerpt">
-          Three quick field checks for wall clearance, between-culvert spacing, and bedding/cover depth.
-        </p>
-        <a class="news-cta" href="news-culvert-spacing-checks.html">Read more</a>
-      </article>
-
-      <!-- Slide 3 (placeholder) -->
-      <article class="news-slide" aria-roledescription="slide" aria-label="3 of 5">
-        <span class="news-tag">Tips</span>
-        <h3 class="news-title">Faster Planning in the Field</h3>
-        <div class="news-date">Aug 2025</div>
-        <p class="news-excerpt">
-          Three simple workflow tweaks in TrenchCalc to reduce rework and speed up estimating.
-        </p>
-        <a class="news-cta" href="news-faster-planning-in-the-field.html">Read more</a>
-
-      </article>
-
-      <!-- Slide 4 (placeholder) -->
-      <article class="news-slide" aria-roledescription="slide" aria-label="4 of 5">
-        <span class="news-tag">Release</span>
-        <h3 class="news-title">Performance & UI Polish</h3>
-        <div class="news-date">Aug 2025</div>
-        <p class="news-excerpt">
-          Smoother input handling, improved dark mode contrast, and cleaner cards.
-        </p>
-      <a class="news-cta" href="news-performance-ui-polish.html">Read more</a>
-
-      </article>
-
-      <!-- Slide 5 (placeholder) -->
-      <article class="news-slide" aria-roledescription="slide" aria-label="5 of 5">
-        <span class="news-tag">Community</span>
-        <h3 class="news-title">Beta Invites</h3>
-        <div class="news-date">Aug 2025</div>
-        <p class="news-excerpt">
-          Want early access to new tools? We’ll open a small beta soon—watch this space.
-        </p>
-       <a class="news-cta" href="news-beta-invites.html">Read more</a>
-
-      </article>
-    </div>
-
-    <div class="news-nav" aria-hidden="true">
-      <button class="news-btn" data-dir="-1" aria-label="Previous slide">‹</button>
-      <button class="news-btn" data-dir="1" aria-label="Next slide">›</button>
-    </div>
+  <div class="news-head">
+    <h2>Latest news</h2>
+    <a class="news-more" href="index.html#news">More news →</a>
   </div>
 
-  <div class="news-dots" role="tablist" aria-label="News slides">
-    <button class="news-dot" role="tab" aria-selected="true" aria-current="true" aria-label="Slide 1"></button>
-    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 2"></button>
-    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 3"></button>
-    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 4"></button>
-    <button class="news-dot" role="tab" aria-selected="false" aria-label="Slide 5"></button>
+  <div class="news-rail-wrap">
+    <div class="news-rail" id="newsRail" aria-label="News cards">
+      <!-- Card 1 -->
+      <article class="news-card">
+        <div class="news-img">
+          <!-- placeholder image -->
+          <img alt="" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+            <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
+              <stop stop-color='%23dcdcdc'/><stop offset='1' stop-color='%23c9c9c9'/></linearGradient></defs>
+            <rect width='800' height='450' fill='url(%23g)'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              fill='%23888' font-size='28' font-family='Arial'>Placeholder</text>
+          </svg>">
+        </div>
+        <div class="news-body">
+          <h3 class="news-title">Trench Volumes in Minutes: A Field Guide</h3>
+          <div class="news-date">Aug 2025</div>
+          <div class="news-cta-row">
+            <span></span>
+            <a class="news-arrow" href="news-trench-volume-field-guide.html" aria-label="Read more">→</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="news-card">
+        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+            <rect width='800' height='450' fill='%23d7e3ff'/><rect x='0' y='0' width='800' height='450' fill='none'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
+          </svg>"></div>
+        <div class="news-body">
+          <h3 class="news-title">Culvert Spacing Checks: 3 Fast Sanity Tests</h3>
+          <div class="news-date">Aug 2025</div>
+          <div class="news-cta-row">
+            <span></span>
+            <a class="news-arrow" href="news-culvert-spacing-checks.html" aria-label="Read more">→</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="news-card">
+        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+            <rect width='800' height='450' fill='%23ffe8cf'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
+          </svg>"></div>
+        <div class="news-body">
+          <h3 class="news-title">Faster Planning in the Field</h3>
+          <div class="news-date">Aug 2025</div>
+          <div class="news-cta-row">
+            <span></span>
+            <a class="news-arrow" href="news-faster-planning-in-the-field.html" aria-label="Read more">→</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="news-card">
+        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+            <rect width='800' height='450' fill='%23e9e9ff'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
+          </svg>"></div>
+        <div class="news-body">
+          <h3 class="news-title">Performance & UI Polish</h3>
+          <div class="news-date">Aug 2025</div>
+          <div class="news-cta-row">
+            <span></span>
+            <a class="news-arrow" href="news-performance-ui-polish.html" aria-label="Read more">→</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="news-card">
+        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
+            <rect width='800' height='450' fill='%23e4f7f0'/>
+            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
+              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
+          </svg>"></div>
+        <div class="news-body">
+          <h3 class="news-title">Beta Invites</h3>
+          <div class="news-date">Aug 2025</div>
+          <div class="news-cta-row">
+            <span></span>
+            <a class="news-arrow" href="news-beta-invites.html" aria-label="Read more">→</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Desktop rail arrows -->
+    <div class="news-rail-nav" aria-hidden="true">
+      <button class="news-rail-btn" data-shift="-1" aria-label="Scroll left">‹</button>
+      <button class="news-rail-btn" data-shift="1" aria-label="Scroll right">›</button>
+    </div>
   </div>
 </section>
 
@@ -434,86 +398,23 @@
 <a href="trenchcalc-terms.html">Terms of Use</a>
 
 </footer>
-  <script>
-(function() {
-  const carousel = document.querySelector('.news-carousel');
-  if (!carousel) return;
-
-  const track = carousel.querySelector('.news-track');
-  const slides = Array.from(track.children);
-  const dots = Array.from(document.querySelectorAll('.news-dots .news-dot'));
-  const prevBtn = carousel.querySelector('[data-dir="-1"]');
-  const nextBtn = carousel.querySelector('[data-dir="1"]');
-
-  let index = 0;
-  let timer = null;
-  const interval = parseInt(carousel.dataset.interval || '5000', 10);
-
-  function goTo(i, smooth = true) {
-    index = (i + slides.length) % slides.length;
-    const x = slides[index].offsetLeft;
-    track.scrollTo({ left: x, behavior: smooth ? 'smooth' : 'auto' });
-    dots.forEach((d, di) => {
-      const active = di === index;
-      d.setAttribute('aria-selected', active ? 'true' : 'false');
-      d.toggleAttribute('aria-current', active);
-    });
-  }
-
-  function start() {
-    stop();
-    timer = setInterval(() => goTo(index + 1), interval);
-  }
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
-
-  // Sync on user scroll (snap end)
-  let scrollTimeout;
-  track.addEventListener('scroll', () => {
-    stop();
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      // find closest slide by scrollLeft
-      const pos = track.scrollLeft;
-      let nearest = 0, best = Infinity;
-      slides.forEach((s, i) => {
-        const dist = Math.abs(s.offsetLeft - pos);
-        if (dist < best) { best = dist; nearest = i; }
+<script>
+  (function(){
+    const rail = document.getElementById('newsRail');
+    if(!rail) return;
+    const btns = document.querySelectorAll('.news-rail-btn');
+    const shift = () => {
+      const card = rail.querySelector('.news-card');
+      const w = card ? card.getBoundingClientRect().width + 16 : rail.clientWidth * 0.9;
+      return Math.max(240, w); // scroll roughly one card at a time
+    };
+    btns.forEach(b=>{
+      b.addEventListener('click', ()=>{
+        const dir = Number(b.dataset.shift||1);
+        rail.scrollBy({left: dir*shift(), behavior:'smooth'});
       });
-      goTo(nearest, false);
-      start();
-    }, 120);
-  });
-
-  // Dots click
-  dots.forEach((dot, di) => {
-    dot.addEventListener('click', () => goTo(di));
-  });
-
-  // Prev/Next
-  if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
-
-  // Pause on hover / window hidden
-  carousel.addEventListener('mouseenter', stop);
-  carousel.addEventListener('mouseleave', start);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop(); else start();
-  });
-
-  // Keyboard (left/right)
-  carousel.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goTo(index - 1);
-    if (e.key === 'ArrowRight') goTo(index + 1);
-  });
-  carousel.tabIndex = 0; // focusable
-
-  // Init
-  goTo(0, false);
-  if (carousel.dataset.autoplay === 'true') start();
-})();
+    });
+  })();
 </script>
 
 </body>
