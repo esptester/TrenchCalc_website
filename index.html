@@ -2,95 +2,227 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TrenchCalc - Trench Volume + Cement Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TrenchCalc by EngSiteTools — Trench Volume & Cement Calculator</title>
+
+  <!-- SEO -->
+  <meta name="description" content="TrenchCalc by EngSiteTools is a fast, field-ready trench volume & cement calculator for site engineers, civil crews, and contractors. Mobile-friendly, privacy-first.">
+  <meta name="theme-color" content="#0F172A">
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrenchCalc — Trench Volume & Cement Calculator">
+  <meta property="og:description" content="Instant trench volume & cement estimates with stepped benches and culvert spacing. Built by EngSiteTools.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://engsitetools.com/">
+  <!-- Favicons (optional: add your files)
+  <link rel="icon" href="/favicon.ico">
+  -->
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f5f5;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg:#0b0f1a;      /* header */
+      --ink:#0f172a;     /* body text */
+      --muted:#5b6473;
+      --card:#ffffff;
+      --brand:#2563eb;   /* button */
+      --accent:#f59e0b;  /* small accents */
+      --surface:#f6f7fb; /* page bg */
+      --radius:14px;
+      --shadow:0 8px 24px rgba(16,24,40,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b0f1a;
+        --ink:#e6e8ee;
+        --muted:#9aa3b2;
+        --card:#121826;
+        --surface:#0d1320;
+        --brand:#3b82f6;
+        --shadow:0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+      color:var(--ink);
+      background:var(--surface);
+      line-height:1.55;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{
+      background:var(--bg);
+      color:#fff;
+    }
+    .nav{
+      max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+      padding:18px 20px;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#60a5fa);
+      display:grid;place-items:center;font-weight:700;color:white;box-shadow:var(--shadow)
+    }
+    .brand h1{font-size:18px;margin:0}
+    .nav a.small{color:#cbd5e1;margin-left:18px}
+    .nav a.small:hover{color:#fff}
+
+    /* Hero */
+    .hero{
+      max-width:1040px;margin:0 auto;padding:30px 20px 18px 20px;color:#fff;
+    }
+    .hero h2{font-size:36px;line-height:1.2;margin:10px 0 10px}
+    .hero p{max-width:800px;color:#cbd5e1;margin:0 0 18px}
+    .cta{
+      display:inline-block;background:var(--brand);color:#fff;padding:12px 18px;border-radius:10px;
+      font-weight:600;box-shadow:var(--shadow)
+    }
+    .cta:hover{text-decoration:none;filter:brightness(1.05)}
+
+    /* Sections */
+    main{max-width:1040px;margin:0 auto;padding:32px 20px 60px}
+    .grid{display:grid;gap:14px}
+    @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    .card{
+      background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px
+    }
+    .card h3{margin:6px 0 8px}
+    .muted{color:var(--muted)}
+    .step{display:flex;align-items:flex-start;gap:12px}
+    .step .num{
+      min-width:30px;height:30px;border-radius:10px;background:var(--surface);display:grid;place-items:center;
+      font-weight:700;color:var(--brand);box-shadow:inset 0 0 0 1px rgba(37,99,235,.18)
+    }
+    .pill{
+      display:inline-block;font-size:12px;background:rgba(245,158,11,.14);color:#a16207;
+      padding:4px 8px;border-radius:999px;margin-bottom:4px
+    }
+    @media (prefers-color-scheme: dark){
+      .pill{background:rgba(245,158,11,.18);color:#fbbf24}
     }
 
-    header {
-      background-color: #121212;
-      color: white;
-      padding: 20px 0;
-      text-align: center;
+    /* Footer */
+    footer{
+      border-top:1px solid rgba(0,0,0,.06);
+      color:var(--muted);
+      padding:24px 20px;text-align:center
     }
-
-    main {
-      padding: 40px 20px;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .section {
-      background-color: white;
-      padding: 30px;
-      border-radius: 8px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
-
-    button, .google-play {
-      background-color: #4285f4;
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 16px;
-      border-radius: 6px;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    footer a {
-      color: #4285f4;
-      text-decoration: none;
-      margin-left: 10px;
-    }
+    .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+    .links a{color:inherit}
+    .links a:hover{color:var(--brand)}
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>TrenchCalc</h1>
-    <p>Built by EngSiteTools</p>
-  </header>
+  <!-- Header / Nav -->
+  <header role="banner">
+    <div class="nav" aria-label="Primary">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">ET</div>
+        <div>
+          <h1 style="margin:0;">EngSiteTools</h1>
+          <div class="muted" style="font-size:13px;margin-top:2px">Practical tools for field engineers</div>
+        </div>
+      </div>
+      <nav>
+        <a class="small" href="#features">Features</a>
+        <a class="small" href="#how">How it works</a>
+        <a class="small" href="#contact">Contact</a>
+      </nav>
+    </div>
 
-  <main>
-    <div class="section">
-      <h2>Calculate Trench Volume + Cement Instantly</h2>
+    <!-- Hero -->
+    <div class="hero">
+      <span class="pill">Flagship</span>
+      <h2>TrenchCalc — instant trench volume & cement estimates</h2>
       <p>
-        TrenchCalc helps civil crews & site engineers quickly compute trench fill volumes<br />
-        and cement requirements with advanced options for stepped benches and culvert spacing.
+        Built for the underserved field-engineering community. TrenchCalc helps site crews and
+        engineers compute fill volumes and cement requirements fast — including stepped benches
+        and culvert spacing — right from the phone.
       </p>
-      <a class="google-play" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank">
+      <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">
         Download on Google Play
       </a>
     </div>
+  </header>
 
-    <div class="section">
+  <main id="content">
+    <!-- Features -->
+    <section id="features" class="grid cols-3" aria-label="Key features">
+      <article class="card">
+        <h3>Mobile-first</h3>
+        <p class="muted">Lightweight, fast, and reliable on-site. No login required.</p>
+      </article>
+      <article class="card">
+        <h3>Advanced configs</h3>
+        <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
+      </article>
+      <article class="card">
+        <h3>Accurate outputs</h3>
+        <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
+      </article>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="card" style="margin-top:14px" aria-label="How it works">
+      <h3>How it works</h3>
+      <div class="step" style="margin-top:6px">
+        <div class="num" aria-hidden="true">1</div>
+        <div><strong>Enter trench dimensions</strong><div class="muted">Depth, length, base/trapezoid widths, benching, culverts.</div></div>
+      </div>
+      <div class="step" style="margin-top:8px">
+        <div class="num" aria-hidden="true">2</div>
+        <div><strong>Select configuration</strong><div class="muted">Choose options for benches and spacing as needed.</div></div>
+      </div>
+      <div class="step" style="margin-top:8px">
+        <div class="num" aria-hidden="true">3</div>
+        <div><strong>Get results instantly</strong><div class="muted">Volume + cement estimates with clear units.</div></div>
+      </div>
+    </section>
+
+    <!-- Social proof / testimonial placeholder -->
+    <section class="card" style="margin-top:14px" aria-label="Social proof">
+      <h3>Built with crews in mind</h3>
+      <p class="muted">“We needed a quick, no-nonsense calculator on the job. TrenchCalc saves time every pour.” — <em>Site Engineer</em></p>
+    </section>
+
+    <!-- Company framing -->
+    <section class="card" style="margin-top:14px" aria-label="About EngSiteTools">
+      <h3>About EngSiteTools</h3>
+      <p class="muted">
+        We create simple, accurate, and affordable tools for field engineers, site crews, and small contractors —
+        an underserved community often ignored by enterprise software. TrenchCalc is our flagship; more field-ready
+        utilities are on the way.
+      </p>
+    </section>
+
+    <!-- Support -->
+    <section id="contact" class="card" style="margin-top:14px" aria-label="Support">
       <h3>Need help?</h3>
       <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
-    </div>
+    </section>
   </main>
 
-  <footer>
-    © 2025 EngSiteTools. All rights reserved.
-    <a href="trenchcalc-privacy.html">Privacy Policy</a>
-    <a href="trenchcalc-terms.html">Terms of Use</a>
+  <footer role="contentinfo">
+    <div>© 2025 EngSiteTools. All rights reserved.</div>
+    <div class="links">
+      <a href="trenchcalc-privacy.html">Privacy Policy</a>
+      <a href="trenchcalc-terms.html">Terms of Use</a>
+    </div>
   </footer>
 
+  <!-- Minimal structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"EngSiteTools",
+    "url":"https://engsitetools.com/",
+    "email":"engsitetools@gmail.com",
+    "sameAs":[]
+  }
+  </script>
 </body>
 </html>
