@@ -271,87 +271,6 @@
   </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-  <script>
-(function() {
-  const carousel = document.querySelector('.news-carousel');
-  if (!carousel) return;
-
-  const track = carousel.querySelector('.news-track');
-  const slides = Array.from(track.children);
-  const dots = Array.from(document.querySelectorAll('.news-dots .news-dot'));
-  const prevBtn = carousel.querySelector('[data-dir="-1"]');
-  const nextBtn = carousel.querySelector('[data-dir="1"]');
-
-  let index = 0;
-  let timer = null;
-  const interval = parseInt(carousel.dataset.interval || '5000', 10);
-
-  function goTo(i, smooth = true) {
-    index = (i + slides.length) % slides.length;
-    const x = slides[index].offsetLeft;
-    track.scrollTo({ left: x, behavior: smooth ? 'smooth' : 'auto' });
-    dots.forEach((d, di) => {
-      const active = di === index;
-      d.setAttribute('aria-selected', active ? 'true' : 'false');
-      d.toggleAttribute('aria-current', active);
-    });
-  }
-
-  function start() {
-    stop();
-    timer = setInterval(() => goTo(index + 1), interval);
-  }
-  function stop() {
-    if (timer) clearInterval(timer);
-    timer = null;
-  }
-
-  // Sync on user scroll (snap end)
-  let scrollTimeout;
-  track.addEventListener('scroll', () => {
-    stop();
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      // find closest slide by scrollLeft
-      const pos = track.scrollLeft;
-      let nearest = 0, best = Infinity;
-      slides.forEach((s, i) => {
-        const dist = Math.abs(s.offsetLeft - pos);
-        if (dist < best) { best = dist; nearest = i; }
-      });
-      goTo(nearest, false);
-      start();
-    }, 120);
-  });
-
-  // Dots click
-  dots.forEach((dot, di) => {
-    dot.addEventListener('click', () => goTo(di));
-  });
-
-  // Prev/Next
-  if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
-  if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
-
-  // Pause on hover / window hidden
-  carousel.addEventListener('mouseenter', stop);
-  carousel.addEventListener('mouseleave', start);
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stop(); else start();
-  });
-
-  // Keyboard (left/right)
-  carousel.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft') goTo(index - 1);
-    if (e.key === 'ArrowRight') goTo(index + 1);
-  });
-  carousel.tabIndex = 0; // focusable
-
-  // Init
-  goTo(0, false);
-  if (carousel.dataset.autoplay === 'true') start();
-})();
-</script>
 
 <body>
 
@@ -512,6 +431,87 @@
 <a href="trenchcalc-terms.html">Terms of Use</a>
 
 </footer>
+  <script>
+(function() {
+  const carousel = document.querySelector('.news-carousel');
+  if (!carousel) return;
+
+  const track = carousel.querySelector('.news-track');
+  const slides = Array.from(track.children);
+  const dots = Array.from(document.querySelectorAll('.news-dots .news-dot'));
+  const prevBtn = carousel.querySelector('[data-dir="-1"]');
+  const nextBtn = carousel.querySelector('[data-dir="1"]');
+
+  let index = 0;
+  let timer = null;
+  const interval = parseInt(carousel.dataset.interval || '5000', 10);
+
+  function goTo(i, smooth = true) {
+    index = (i + slides.length) % slides.length;
+    const x = slides[index].offsetLeft;
+    track.scrollTo({ left: x, behavior: smooth ? 'smooth' : 'auto' });
+    dots.forEach((d, di) => {
+      const active = di === index;
+      d.setAttribute('aria-selected', active ? 'true' : 'false');
+      d.toggleAttribute('aria-current', active);
+    });
+  }
+
+  function start() {
+    stop();
+    timer = setInterval(() => goTo(index + 1), interval);
+  }
+  function stop() {
+    if (timer) clearInterval(timer);
+    timer = null;
+  }
+
+  // Sync on user scroll (snap end)
+  let scrollTimeout;
+  track.addEventListener('scroll', () => {
+    stop();
+    clearTimeout(scrollTimeout);
+    scrollTimeout = setTimeout(() => {
+      // find closest slide by scrollLeft
+      const pos = track.scrollLeft;
+      let nearest = 0, best = Infinity;
+      slides.forEach((s, i) => {
+        const dist = Math.abs(s.offsetLeft - pos);
+        if (dist < best) { best = dist; nearest = i; }
+      });
+      goTo(nearest, false);
+      start();
+    }, 120);
+  });
+
+  // Dots click
+  dots.forEach((dot, di) => {
+    dot.addEventListener('click', () => goTo(di));
+  });
+
+  // Prev/Next
+  if (prevBtn) prevBtn.addEventListener('click', () => goTo(index - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => goTo(index + 1));
+
+  // Pause on hover / window hidden
+  carousel.addEventListener('mouseenter', stop);
+  carousel.addEventListener('mouseleave', start);
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stop(); else start();
+  });
+
+  // Keyboard (left/right)
+  carousel.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') goTo(index - 1);
+    if (e.key === 'ArrowRight') goTo(index + 1);
+  });
+  carousel.tabIndex = 0; // focusable
+
+  // Init
+  goTo(0, false);
+  if (carousel.dataset.autoplay === 'true') start();
+})();
+</script>
 
 </body>
-</html> ok what do you need from me
+</html> 
