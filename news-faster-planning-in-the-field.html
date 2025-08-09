@@ -18,7 +18,8 @@
     .post{ background:var(--card-bg); border-radius:var(--radius); box-shadow:var(--shadow); padding:28px; }
     .post h1{ margin:0 0 8px; font-size:28px; }
     .meta{ color:var(--muted); font-size:14px; margin-bottom:16px; }
-    .hero{ width:100%; border-radius:12px; margin:8px 0 16px; background:#eaeaea; aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; color:#888; }
+    .hero{ width:100%; border-radius:12px; margin:8px 0 16px; overflow:hidden; }
+    .hero img{ width:100%; height:auto; display:block; }
     .post h2{ margin-top:24px; }
     .cta{ margin-top:28px; display:inline-block; padding:12px 16px; background:var(--brand); color:#fff; border-radius:var(--radius); text-decoration:none; }
     .foot-nav{ margin-top:24px; font-size:14px; color:var(--muted); }
@@ -33,7 +34,9 @@
   <article class="post">
     <h1>Faster Planning in the Field</h1>
     <div class="meta">Published Aug 9, 2025 · 4–6 min read · Category: Tips</div>
-    <div class="hero">[Insert screenshot of TrenchCalc in use on-site]</div>
+    <div class="hero">
+      <img src="planning.png" alt="TrenchCalc planning in the field">
+    </div>
 
     <p>
       In the field, speed matters. Waiting until you’re back at the office to finalise trench plans can lead to 
