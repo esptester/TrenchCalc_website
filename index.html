@@ -26,14 +26,13 @@
         --surface: #121212;
       }
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: Arial, sans-serif;
       background: var(--surface);
       color: var(--text);
       margin: 0;
+      line-height: 1.55;
     }
     header {
       background: var(--bg);
@@ -41,32 +40,15 @@
       padding: 20px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    header p {
-      margin: 6px 0 0;
-      font-size: 16px;
-      color: #ccc;
-    }
-    nav {
-      margin-top: 15px;
-    }
+    header h1 { margin: 0; font-size: 28px; }
+    header p { margin: 6px 0 0; font-size: 16px; color: #ccc; }
+    nav { margin-top: 15px; }
     nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 14px;
+      color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
+    nav a:hover { text-decoration: underline; }
+
+    main { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
     .section {
       background: var(--card-bg);
       border-radius: var(--radius);
@@ -74,18 +56,15 @@
       margin-bottom: 30px;
       box-shadow: var(--shadow);
     }
-    h2 {
-      margin-top: 0;
-    }
+    h2 { margin-top: 0; }
+
     .products {
       display: grid;
       grid-template-columns: 1fr;
       gap: 20px;
     }
     @media(min-width: 700px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .products { grid-template-columns: repeat(2, 1fr); }
     }
     .product-card {
       background: var(--card-bg);
@@ -105,13 +84,8 @@
       margin-bottom: 15px;
       background: #ddd;
     }
-    .product-card h3 {
-      margin: 10px 0 5px;
-    }
-    .product-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
+    .product-card h3 { margin: 10px 0 5px; }
+    .product-card p { color: var(--muted); font-size: 14px; }
     .product-card a {
       margin-top: auto;
       display: inline-block;
@@ -121,9 +95,26 @@
       border-radius: var(--radius);
       text-decoration: none;
     }
-    .product-card a:hover {
-      background: #3367d6;
+    .product-card a:hover { background: #3367d6; }
+
+    /* Value band grid + feature bullets */
+    .why-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
     }
+    @media (min-width: 900px) {
+      .why-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .features {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      text-align: left;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .features li { margin: 4px 0; }
+
     footer {
       background: #f0f0f0;
       color: var(--muted);
@@ -131,19 +122,9 @@
       padding: 20px;
       font-size: 14px;
     }
-    footer a {
-      color: var(--brand);
-      margin: 0 5px;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    @media (prefers-color-scheme: dark) {
-      footer {
-        background: #1e1e1e;
-      }
-    }
+    footer a { color: var(--brand); margin: 0 5px; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    @media (prefers-color-scheme: dark) { footer { background: #1e1e1e; } }
   </style>
 </head>
 <body>
@@ -151,7 +132,7 @@
 <header>
   <h1>EngSiteTools</h1>
   <p>Practical tools for the field engineer</p>
-  <nav>
+  <nav aria-label="Primary">
     <a href="#about">About</a>
     <a href="#products">Products</a>
     <a href="#contact">Contact</a>
@@ -168,20 +149,37 @@
     </p>
   </div>
 
+  <!-- Value Band -->
+  <div class="section" id="why-us">
+    <h2 style="margin-bottom:6px">Why choose EngSiteTools</h2>
+    <div class="why-grid">
+      <div><strong>Affordable</strong><div class="muted">Built for everyday users, not enterprise price tags.</div></div>
+      <div><strong>Field-first</strong><div class="muted">Fast, mobile-friendly, no login required.</div></div>
+      <div><strong>Intuitive</strong><div class="muted">No spreadsheet overload—clear, digestible outputs.</div></div>
+      <div><strong>Focused</strong><div class="muted">Solves pricing & planning problems for small contractors.</div></div>
+    </div>
+  </div>
+
   <!-- Products -->
   <div class="section" id="products">
     <h2>Our Products</h2>
+    <p class="muted" style="margin-top:-6px">Practical, focused tools for the field. Explore what’s available now and what’s coming soon.</p>
     <div class="products">
       <div class="product-card">
-        <img src="placeholder-trenchcalc.png" alt="TrenchCalc Screenshot Placeholder">
+        <img src="placeholder-trenchcalc.png" alt="TrenchCalc app interface placeholder">
         <h3>TrenchCalc</h3>
-        <p>Trench volume and cement calculator for site crews and engineers, with stepped benches and culvert spacing options.</p>
-        <a href="/trenchcalc.html">View Product</a>
+        <p class="muted">Trench volume and cement calculator for site crews and engineers.</p>
+        <ul class="features">
+          <li>Instant trench volume & cement estimates</li>
+          <li>Handles stepped benches & culvert spacing</li>
+          <li>Mobile-first, privacy-first (no login)</li>
+        </ul>
+        <a href="trenchcalc.html" aria-label="Open TrenchCalc product page">Open TrenchCalc</a>
       </div>
       <div class="product-card">
-        <img src="placeholder-projectplanner.png" alt="Project Planner Screenshot Placeholder">
+        <img src="placeholder-projectplanner.png" alt="Project Planner interface placeholder">
         <h3>Project Planner (Coming Soon)</h3>
-        <p>Plan and manage engineering projects with an intuitive, streamlined tool built for small contractors and site teams.</p>
+        <p class="muted">A civil earthwork project planner—without bloatware—for bulk earthworks.</p>
       </div>
     </div>
   </div>
@@ -200,9 +198,9 @@
   <div class="section" id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
-    <p>Follow us: 
-      <a href="#">YouTube</a> | 
-      <a href="#">LinkedIn</a> | 
+    <p>Follow us:
+      <a href="#">YouTube</a> |
+      <a href="#">LinkedIn</a> |
       <a href="#">Twitter</a>
     </p>
   </div>
@@ -210,8 +208,8 @@
 
 <footer>
   © 2025 EngSiteTools. All rights reserved.
-  <a href="/trenchcalc/trenchcalc-privacy.html">Privacy Policy</a> |
-  <a href="/trenchcalc/trenchcalc-terms.html">Terms of Use</a>
+  <a href="trenchcalc-privacy.html">Privacy Policy</a> |
+  <a href="trenchcalc-terms.html">Terms of Use</a>
 </footer>
 
 </body>
