@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#121212" />
   <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
   <link rel="shortcut icon" href="ennsgitetoolslogoicon.ico" type="image/x-icon">
-  <style>
+<style>
 /* --- News Cards Rail --- */
 .news-head {
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -27,10 +27,28 @@
 .news-rail::-webkit-scrollbar { height: 8px; }
 @media (min-width: 900px){ .news-rail{ grid-auto-columns: calc((100% - 48px)/3); } }
 
+/* Entire card is a link with hover/focus animations */
 .news-card {
-  scroll-snap-align: start; background: var(--card-bg); border-radius: 16px;
-  box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;   /* because it's an <a> */
+  color: inherit;          /* inherit text color */
+  transition: transform .2s ease, box-shadow .2s ease;
 }
+.news-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.news-card:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+}
+
 .news-img {
   position: relative; aspect-ratio: 16/9; width: 100%; overflow: hidden;
   background: linear-gradient(135deg,#e8e8e8,#d5d5d5);
@@ -38,7 +56,8 @@
 @media (prefers-color-scheme: dark){
   .news-img{ background: linear-gradient(135deg,#2a2a2a,#1f1f1f); }
 }
-.news-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.news-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
+.news-card:hover .news-img img { transform: scale(1.03); }
 
 .news-body { padding: 14px 16px 18px; display: grid; gap: 8px; }
 .news-title { font-size: 20px; line-height: 1.2; margin: 0; }
@@ -51,6 +70,8 @@
 @media (prefers-color-scheme: dark){ .news-arrow{ border-color: rgba(255,255,255,.15); } }
 .news-arrow:hover { background: rgba(0,0,0,.05); }
 @media (prefers-color-scheme: dark){ .news-arrow:hover{ background: rgba(255,255,255,.06); } }
+/* Arrow reacts when the whole card is hovered */
+.news-card:hover .news-arrow { background: var(--brand); color: #fff; border-color: var(--brand); }
 
 /* Rail nav buttons */
 .news-rail-nav {
@@ -64,85 +85,51 @@
 }
 @media (max-width: 899px){ .news-rail-nav{ display:none; } }
 
-    :root {
-      --bg: #121212;
-      --card-bg: #ffffff;
-      --text: #222;
-      --muted: #555;
-      --brand: #4285f4;
-      --surface: #f5f5f5;
-      --radius: 8px;
-      --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --card-bg: #1e1e1e;
-        --text: #f5f5f5;
-        --muted: #aaa;
-        --surface: #121212;
-      }
-    }
-    * {
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background: var(--surface);
-      color: var(--text);
-      margin: 0;
-    }
-    header {
-      background: var(--bg);
-      color: #fff;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 28px;
-    }
-    header p {
-      margin: 6px 0 0;
-      font-size: 16px;
-      color: #ccc;
-    }
-    nav {
-      margin-top: 15px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 14px;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 40px 20px;
-    }
-    .section {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 30px;
-      margin-bottom: 30px;
-      box-shadow: var(--shadow);
-    }
-    h2 {
-      margin-top: 0;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-    @media(min-width: 700px) {
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+/* --- Site variables & base styles (unchanged) --- */
+:root {
+  --bg: #121212;
+  --card-bg: #ffffff;
+  --text: #222;
+  --muted: #555;
+  --brand: #4285f4;
+  --surface: #f5f5f5;
+  --radius: 8px;
+  --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: #1e1e1e;
+    --text: #f5f5f5;
+    --muted: #aaa;
+    --surface: #121212;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: Arial, sans-serif;
+  background: var(--surface);
+  color: var(--text);
+  margin: 0;
+}
+header { background: var(--bg); color: #fff; padding: 20px; text-align: center; }
+header h1 { margin: 0; font-size: 28px; }
+header p { margin: 6px 0 0; font-size: 16px; color: #ccc; }
+nav { margin-top: 15px; }
+nav a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
+nav a:hover { text-decoration: underline; }
+main { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+.section {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow);
+}
+h2 { margin-top: 0; }
+
+.products { display: grid; grid-template-columns: 1fr; gap: 20px; }
+@media(min-width: 700px) { .products { grid-template-columns: repeat(2, 1fr); } }
+
 .product-card {
   background: var(--card-bg);
   border-radius: var(--radius);
@@ -150,58 +137,27 @@
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;   /* left-align like Autodesk cards */
+  align-items: flex-start;
   text-align: left;
 }
 .product-card img {
-  width: auto;               /* small logo badge */
-  max-width: 60px;
-  height: auto;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  background: #ddd;
+  width: auto; max-width: 60px; height: auto;
+  border-radius: 10px; margin-bottom: 10px; background: #ddd;
 }
+.product-card h3 { margin: 10px 0 5px; }
+.product-card p { color: var(--muted); font-size: 14px; }
+.product-card a {
+  margin-top: auto; display: inline-block; padding: 10px 18px;
+  background: var(--brand); color: #fff; border-radius: var(--radius); text-decoration: none;
+}
+.product-card a:hover { background: #3367d6; }
 
-    .product-card h3 {
-      margin: 10px 0 5px;
-    }
-    .product-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .product-card a {
-      margin-top: auto;
-      display: inline-block;
-      padding: 10px 18px;
-      background: var(--brand);
-      color: #fff;
-      border-radius: var(--radius);
-      text-decoration: none;
-    }
-    .product-card a:hover {
-      background: #3367d6;
-    }
-    footer {
-      background: #f0f0f0;
-      color: var(--muted);
-      text-align: center;
-      padding: 20px;
-      font-size: 14px;
-    }
-    footer a {
-      color: var(--brand);
-      margin: 0 5px;
-      text-decoration: none;
-    }
-    footer a:hover {
-      text-decoration: underline;
-    }
-    @media (prefers-color-scheme: dark) {
-      footer {
-        background: #1e1e1e;
-      }
-    }
-  </style>
+footer { background: #f0f0f0; color: var(--muted); text-align: center; padding: 20px; font-size: 14px; }
+footer a { color: var(--brand); margin: 0 5px; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+@media (prefers-color-scheme: dark) { footer { background: #1e1e1e; } }
+</style>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
@@ -257,105 +213,87 @@
 <section class="news section" id="news" aria-label="EngSiteTools News">
   <div class="news-head">
     <h2>Latest news</h2>
-    <a class="news-more" href="index.html#news">More news →</a>
+    <a class="news-more" href="#">More news →</a>
   </div>
 
   <div class="news-rail-wrap">
     <div class="news-rail" id="newsRail" aria-label="News cards">
+
       <!-- Card 1 -->
-      <article class="news-card">
+      <a class="news-card" href="news-trench-volume-field-guide.html">
         <div class="news-img">
-          <!-- placeholder image -->
-          <img alt="" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-            <defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-              <stop stop-color='%23dcdcdc'/><stop offset='1' stop-color='%23c9c9c9'/></linearGradient></defs>
-            <rect width='800' height='450' fill='url(%23g)'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              fill='%23888' font-size='28' font-family='Arial'>Placeholder</text>
-          </svg>">
+          <img src="https://via.placeholder.com/800x450?text=Trench+Volumes" alt="Trench Volumes placeholder">
         </div>
         <div class="news-body">
           <h3 class="news-title">Trench Volumes in Minutes: A Field Guide</h3>
           <div class="news-date">Aug 2025</div>
           <div class="news-cta-row">
             <span></span>
-            <a class="news-arrow" href="news-trench-volume-field-guide.html" aria-label="Read more">→</a>
+            <span class="news-arrow">→</span>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- Card 2 -->
-      <article class="news-card">
-        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-            <rect width='800' height='450' fill='%23d7e3ff'/><rect x='0' y='0' width='800' height='450' fill='none'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
-          </svg>"></div>
+      <a class="news-card" href="news-culvert-spacing-checks.html">
+        <div class="news-img">
+          <img src="https://via.placeholder.com/800x450?text=Culvert+Spacing" alt="Culvert Spacing placeholder">
+        </div>
         <div class="news-body">
           <h3 class="news-title">Culvert Spacing Checks: 3 Fast Sanity Tests</h3>
           <div class="news-date">Aug 2025</div>
           <div class="news-cta-row">
             <span></span>
-            <a class="news-arrow" href="news-culvert-spacing-checks.html" aria-label="Read more">→</a>
+            <span class="news-arrow">→</span>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- Card 3 -->
-      <article class="news-card">
-        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-            <rect width='800' height='450' fill='%23ffe8cf'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
-          </svg>"></div>
+      <a class="news-card" href="news-faster-planning-in-the-field.html">
+        <div class="news-img">
+          <img src="https://via.placeholder.com/800x450?text=Faster+Planning" alt="Faster Planning placeholder">
+        </div>
         <div class="news-body">
           <h3 class="news-title">Faster Planning in the Field</h3>
           <div class="news-date">Aug 2025</div>
           <div class="news-cta-row">
             <span></span>
-            <a class="news-arrow" href="news-faster-planning-in-the-field.html" aria-label="Read more">→</a>
+            <span class="news-arrow">→</span>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- Card 4 -->
-      <article class="news-card">
-        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-            <rect width='800' height='450' fill='%23e9e9ff'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
-          </svg>"></div>
+      <a class="news-card" href="news-performance-ui-polish.html">
+        <div class="news-img">
+          <img src="https://via.placeholder.com/800x450?text=UI+Polish" alt="UI Polish placeholder">
+        </div>
         <div class="news-body">
           <h3 class="news-title">Performance & UI Polish</h3>
           <div class="news-date">Aug 2025</div>
           <div class="news-cta-row">
             <span></span>
-            <a class="news-arrow" href="news-performance-ui-polish.html" aria-label="Read more">→</a>
+            <span class="news-arrow">→</span>
           </div>
         </div>
-      </article>
+      </a>
 
       <!-- Card 5 -->
-      <article class="news-card">
-        <div class="news-img"><img alt="" src="data:image/svg+xml;utf8,
-          <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'>
-            <rect width='800' height='450' fill='%23e4f7f0'/>
-            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-              fill='%23666' font-size='28' font-family='Arial'>Placeholder</text>
-          </svg>"></div>
+      <a class="news-card" href="news-beta-invites.html">
+        <div class="news-img">
+          <img src="https://via.placeholder.com/800x450?text=Beta+Invites" alt="Beta Invites placeholder">
+        </div>
         <div class="news-body">
           <h3 class="news-title">Beta Invites</h3>
           <div class="news-date">Aug 2025</div>
           <div class="news-cta-row">
             <span></span>
-            <a class="news-arrow" href="news-beta-invites.html" aria-label="Read more">→</a>
+            <span class="news-arrow">→</span>
           </div>
         </div>
-      </article>
+      </a>
+
     </div>
 
     <!-- Desktop rail arrows -->
@@ -399,22 +337,22 @@
 
 </footer>
 <script>
-  (function(){
-    const rail = document.getElementById('newsRail');
-    if(!rail) return;
-    const btns = document.querySelectorAll('.news-rail-btn');
-    const shift = () => {
-      const card = rail.querySelector('.news-card');
-      const w = card ? card.getBoundingClientRect().width + 16 : rail.clientWidth * 0.9;
-      return Math.max(240, w); // scroll roughly one card at a time
-    };
-    btns.forEach(b=>{
-      b.addEventListener('click', ()=>{
-        const dir = Number(b.dataset.shift||1);
-        rail.scrollBy({left: dir*shift(), behavior:'smooth'});
-      });
+(function(){
+  const rail = document.getElementById('newsRail');
+  if(!rail) return;
+  const btns = document.querySelectorAll('.news-rail-btn');
+  const shift = () => {
+    const card = rail.querySelector('.news-card');
+    const w = card ? card.getBoundingClientRect().width + 16 : rail.clientWidth * 0.9;
+    return Math.max(240, w);
+  };
+  btns.forEach(b=>{
+    b.addEventListener('click', ()=>{
+      const dir = Number(b.dataset.shift||1);
+      rail.scrollBy({left: dir*shift(), behavior:'smooth'});
     });
-  })();
+  });
+})();
 </script>
 
 </body>
