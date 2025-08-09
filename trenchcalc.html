@@ -61,10 +61,18 @@
       padding:18px 20px;
     }
     .brand{display:flex;gap:10px;align-items:center}
-    .logo{
-      width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#60a5fa);
-      display:grid;place-items:center;font-weight:700;color:white;box-shadow:var(--shadow)
-    }
+.logo {
+  height: 36px;
+  padding: 0 10px; /* extra space for 3 letters */
+  display: inline-grid;
+  place-items: center;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--brand), #60a5fa);
+  font-weight: 800;
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+
     .brand h1{font-size:18px;margin:0}
     .nav a.small{color:#cbd5e1;margin-left:18px}
     .nav a.small:hover{color:#fff}
@@ -120,7 +128,7 @@
   <header role="banner">
     <div class="nav" aria-label="Primary">
       <div class="brand">
-        <div class="logo" aria-hidden="true">ET</div>
+        <div class="logo" aria-hidden="true">EST</div>
         <div>
           <h1 style="margin:0;">EngSiteTools</h1>
           <div class="muted" style="font-size:13px;margin-top:2px">Practical tools for field engineers</div>
