@@ -24,6 +24,13 @@
   -->
 
   <style>
+    /* Feature card icons */
+.card .icon {
+  display:block;
+  width:64px; height:64px;
+  margin:0 auto 12px;   /* center + space below */
+}
+
     :root{
       --bg:#0b0f1a;      /* header */
       --ink:#0f172a;     /* body text */
@@ -190,25 +197,32 @@
 
   <main id="content">
     <!-- Features -->
-    <section id="features" class="grid cols-3" aria-label="Key features">
-      <article class="card">
-        <h3>Mobile-first</h3>
-        <p class="muted">Lightweight, fast, and reliable on-site.</p>
-      </article>
-      <article class="card">
-        <h3>Advanced configs</h3>
-        <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
-      </article>
-      <article class="card">
-        <h3>Accurate outputs</h3>
-        <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
-      </article>
-      <article class="card">
-  <h3>Culvert support</h3>
-  <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
-</article>
+<section id="features" class="grid cols-3" aria-label="Key features">
+  <article class="card">
+    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+    <h3>Mobile-first</h3>
+    <p class="muted">Lightweight, fast, and reliable on-site.</p>
+  </article>
 
-    </section>
+  <article class="card">
+    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+    <h3>Advanced configs</h3>
+    <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
+  </article>
+
+  <article class="card">
+    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+    <h3>Accurate outputs</h3>
+    <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
+  </article>
+
+  <article class="card">
+    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+    <h3>Culvert support</h3>
+    <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
+  </article>
+</section>
+
 
     <!-- How it works -->
     <section id="how" class="card" style="margin-top:14px" aria-label="How it works">
