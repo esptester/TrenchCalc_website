@@ -3,56 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ESTmate™ by EngSiteTools — Trench Volume & Cement Calculator</title>
+  <title>EST·mate™ — Mobile Construction Planner (Coming Soon)</title>
 
   <!-- SEO -->
-  <meta name="description" content="ESTmate™ by EngSiteTools is a fast, field-ready trench volume & cement calculator with stepped benches and culvert support. See screenshots and download now.">
-  <meta name="theme-color" content="#0F172A">
-  <!-- Open Graph -->
-  <meta property="og:title" content="ESTmate™ — Trench Volume & Cement Calculator">
-  <meta property="og:description" content="Instant trench volume & cement estimates with stepped benches and culvert spacing. Built by EngSiteTools.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://engsitetools.com/">
-  <meta property="og:image" content="https://engsitetools.com/screenshots/estmate-og-1200x630.jpg">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://engsitetools.com/screenshots/estmate-og-1200x630.jpg">
+  <meta name="description" content="EST·mate™ is a fast, mobile-only construction planner for earthworks. Build quick plans with Gantt, S-curves, production rates, calendars, dependencies, and offline support." />
+  <meta name="theme-color" content="#101418">
 
-  <!-- Favicons -->
-  <link rel="icon" href="estmate-logo-no-text.svg" type="image/svg+xml">
-  <link rel="icon" href="estmate-logo-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="estmate-logo-192.png" sizes="192x192" type="image/png">
-  <link rel="apple-touch-icon" href="estmate-logo-192.png">
-  <link rel="shortcut icon" href="estmate-logo-32.png">
+  <!-- Open Graph -->
+  <meta property="og:title" content="EST·mate™ — Mobile Construction Planner" />
+  <meta property="og:description" content="Quick, field-ready planning: Gantt, S-curves, quantities, production rates, calendars, lead/lag. Offline. Mobile only. Coming soon." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://engsitetools.com/estmate" />
+  <meta property="og:image" content="estmate.png" />
 
   <style>
-    /* Feature card icons */
-    .card .icon {
-      display:block;
-      width:64px; height:64px;
-      margin:0 auto 12px;
-    }
-
     :root{
-      --bg:#0b0f1a;      /* header */
+      --bg:#0f141b;      /* header bg */
       --ink:#0f172a;     /* body text */
       --muted:#5b6473;
       --card:#ffffff;
-      --brand:#2563eb;   /* button */
-      --accent:#f59e0b;  /* small accents */
+      --brand:#22c55e;   /* CTA */
+      --accent:#ca8a04;  /* small accents */
       --surface:#f6f7fb; /* page bg */
       --radius:14px;
       --shadow:0 8px 24px rgba(16,24,40,.08);
     }
     @media (prefers-color-scheme: dark){
       :root{
-        --bg:#0b0f1a;
+        --bg:#0b0f12;
         --ink:#e6e8ee;
         --muted:#9aa3b2;
         --card:#121826;
         --surface:#0d1320;
-        --brand:#3b82f6;
+        --brand:#4ade80;
         --shadow:0 8px 24px rgba(0,0,0,.35);
       }
     }
@@ -68,99 +51,86 @@
     a:hover{text-decoration:underline}
 
     /* Header */
-    header{
-      background:var(--bg);
-      color:#fff;
-    }
+    header{background:var(--bg);color:#fff}
     .nav{
       max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
       padding:18px 20px;
     }
-    .brand{display:flex;gap:10px;align-items:center}
+    .brand{display:flex;gap:12px;align-items:center}
     .logo{
-      width:44px;
-      height:44px;
-      border-radius:12px;
-      overflow:hidden;
-      background:#111;
-      display:grid;
-      place-items:center;
-      box-shadow:var(--shadow);
+      width:44px;height:44px;border-radius:12px;overflow:hidden;background:#111;
+      display:grid;place-items:center;box-shadow:var(--shadow)
     }
-    .logo img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
-
     .brand h1{font-size:18px;margin:0}
     .nav a.small{color:#cbd5e1;margin-left:18px}
     .nav a.small:hover{color:#fff}
 
     /* Hero */
-    .hero{
-      max-width:1040px;margin:0 auto;padding:30px 20px 18px 20px;color:#fff;
-    }
-    .hero h2{font-size:36px;line-height:1.2;margin:10px 0 10px}
-    .hero p{max-width:800px;color:#cbd5e1;margin:0 0 18px}
+    .hero{max-width:1040px;margin:0 auto;padding:30px 20px 18px 20px;color:#fff}
+    .hero h2{font-size:34px;line-height:1.2;margin:10px 0 10px}
+    .hero p{max-width:820px;color:#cbd5e1;margin:0 0 18px}
     .cta{
-      display:inline-block;background:var(--brand);color:#fff;padding:12px 18px;border-radius:10px;
-      font-weight:600;box-shadow:var(--shadow)
+      display:inline-block;background:var(--brand);color:#0a0f14;padding:12px 18px;border-radius:12px;
+      font-weight:700;box-shadow:var(--shadow)
     }
     .cta:hover{text-decoration:none;filter:brightness(1.05)}
+    .pill{
+      display:inline-block;font-size:12px;background:rgba(34,197,94,.18);color:#86efac;
+      padding:4px 8px;border-radius:999px;margin-bottom:6px
+    }
 
-    /* Sections */
+    /* Layout */
     main{max-width:1040px;margin:0 auto;padding:32px 20px 60px}
     .grid{display:grid;gap:14px}
     @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
-    .card{
-      background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px
-    }
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
     .card h3{margin:6px 0 8px}
     .muted{color:var(--muted)}
     .step{display:flex;align-items:flex-start;gap:12px}
     .step .num{
       min-width:30px;height:30px;border-radius:10px;background:var(--surface);display:grid;place-items:center;
-      font-weight:700;color:var(--brand);box-shadow:inset 0 0 0 1px rgba(37,99,235,.18)
+      font-weight:700;color:var(--brand);box-shadow:inset 0 0 0 1px rgba(16,185,129,.25)
     }
-    .pill{
-      display:inline-block;font-size:12px;background:rgba(245,158,11,.14);color:#a16207;
-      padding:4px 8px;border-radius:999px;margin-bottom:4px
-    }
-    @media (prefers-color-scheme: dark){
-      .pill{background:rgba(245,158,11,.18);color:#fbbf24}
+
+    /* Placeholder media */
+    .placeholder{
+      width:100%;height:180px;border-radius:12px;background:
+        linear-gradient(135deg, rgba(202,138,4,.25), rgba(34,197,94,.25));
+      display:grid;place-items:center;color:#2f3b4b;font-weight:600
     }
 
     /* Footer */
-    footer{
-      border-top:1px solid rgba(0,0,0,.06);
-      color:var(--muted);
-      padding:24px 20px;text-align:center
-    }
+    footer{border-top:1px solid rgba(0,0,0,.06);color:var(--muted);padding:24px 20px;text-align:center}
     .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
     .links a{color:inherit}
     .links a:hover{color:var(--brand)}
+
+    /* Waitlist form */
+    .waitlist{display:flex;gap:8px;flex-wrap:wrap}
+    .waitlist input{
+      flex:1;min-width:220px;border:1px solid rgba(0,0,0,.12);background:var(--card);
+      color:inherit;padding:12px 12px;border-radius:10px
+    }
+    .waitlist button{
+      background:var(--brand);color:#0a0f14;border:0;border-radius:10px;padding:12px 16px;font-weight:700
+    }
+    .waitlist button:hover{filter:brightness(1.05);cursor:pointer}
   </style>
 </head>
 <body>
-<header style="background:#0b0f1a; color:#fff; padding:12px 20px; font-size:14px;">
-  <a href="index.html" style="color:#fff; text-decoration:none;">← Back to EngSiteTools</a>
-</header>
 
   <!-- Header / Nav -->
   <header role="banner">
     <div class="nav" aria-label="Primary">
       <div class="brand">
         <div class="logo" aria-hidden="true">
-          <img src="estmate-logo.png" alt="ESTmate™ logo">
+          <img src="estmate.png" alt="EST·mate™ logo" width="44" height="44" style="width:100%;height:100%;object-fit:cover;border-radius:12px">
         </div>
         <div>
-          <h1 style="margin:0;">ESTmate™</h1>
-          <div class="muted" style="font-size:13px;margin-top:2px">Trench volume & cement calculator</div>
+          <h1 style="margin:0;">EST·mate™</h1>
+          <div class="muted" style="font-size:13px;margin-top:2px">Mobile construction planner</div>
         </div>
       </div>
-
       <nav>
         <a class="small" href="#features">Features</a>
         <a class="small" href="#how">How it works</a>
@@ -170,79 +140,85 @@
 
     <!-- Hero -->
     <div class="hero">
-      <span class="pill">Flagship</span>
-      <h2>ESTmate™ — calculate trench quantities, costs & culvert layouts instantly</h2>
-
+      <span class="pill">Coming soon</span>
+      <h2>Plan faster, on your phone</h2>
       <p>
-        Built for the underserved field-engineering community, ESTmate™ helps site crews and
-        engineers compute fill volumes, cement requirements, and project costs — with support for
-        stepped benches and precise culvert spacing — right from the phone.
+        EST·mate™ is a mobile-only construction planner built for quick, field-ready planning.
+        Create schedules, set production targets, and track quantities in minutes —
+        with Gantt, S-curves, dependencies (lead/lag), calendars, and full offline support.
       </p>
 
-      <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.estmate" target="_blank" rel="noopener">
-        Download on Google Play
-      </a>
+      <!-- Waitlist -->
+      <form class="waitlist" onsubmit="joinWaitlist(event)">
+        <input id="wlEmail" type="email" required placeholder="Enter your email for early access" aria-label="Email address" />
+        <button type="submit">Join the waitlist</button>
+      </form>
+      <div class="muted" style="font-size:12px;margin-top:6px">No spam. We’ll email when beta is ready.</div>
     </div>
   </header>
 
   <main id="content">
-    <!-- Features -->
-<section id="features" class="grid cols-3" aria-label="Key features">
-  <article class="card">
-    <img class="feature-img" src="mobile_first.jpg" alt="Mobile-first">
-    <h3>Mobile-first</h3>
-    <p class="muted">Lightweight, fast, and reliable on-site.</p>
-  </article>
-
-  <article class="card">
-    <img class="feature-img" src="advanced_configs.jpg" alt="Advanced configs">
-    <h3>Advanced configs</h3>
-    <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
-  </article>
-
-  <article class="card">
-    <img class="feature-img" src="accurate_outputs.jpg" alt="Accurate outputs">
-    <h3>Accurate outputs</h3>
-    <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
-  </article>
-
-  <article class="card">
-    <img class="feature-img" src="culvert_support.jpg" alt="Culvert support">
-    <h3>Culvert support</h3>
-    <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
-  </article>
-</section>
+    <!-- Feature highlights -->
+    <section id="features" class="grid cols-3" aria-label="Key features">
+      <article class="card">
+        <h3>Mobile-first</h3>
+        <p class="muted">Designed for speed on-site. Works offline; syncs when online.</p>
+      </article>
+      <article class="card">
+        <h3>Gantt & dependencies</h3>
+        <p class="muted">Tasks, lead/lag, calendars, and simple constraints.</p>
+      </article>
+      <article class="card">
+        <h3>S-curves & outputs</h3>
+        <p class="muted">Progress, quantities, and production-rate curves at a glance.</p>
+      </article>
+      <article class="card">
+        <h3>Production & quantities</h3>
+        <p class="muted">Targets per shift/crew/plant with automatic roll-ups.</p>
+      </article>
+      <article class="card">
+        <h3>Earthworks-ready</h3>
+        <p class="muted">Day plans, weather buffers, haul/crew placeholders.</p>
+      </article>
+      <article class="card">
+        <h3>Simple export</h3>
+        <p class="muted">CSV/XLSX data and PDF day sheets (placeholders while in beta).</p>
+      </article>
+    </section>
 
     <!-- How it works -->
     <section id="how" class="card" style="margin-top:14px" aria-label="How it works">
       <h3>How it works</h3>
       <div class="step" style="margin-top:6px">
         <div class="num" aria-hidden="true">1</div>
-        <div><strong>Enter trench dimensions</strong><div class="muted">Depth, length, base/trapezoid widths, benching, culverts.</div></div>
+        <div><strong>Set your project</strong><div class="muted">Calendars, shifts, crews, plant, and weather buffers.</div></div>
       </div>
       <div class="step" style="margin-top:8px">
         <div class="num" aria-hidden="true">2</div>
-        <div><strong>Select configuration</strong><div class="muted">Choose options for benches and spacing as needed.</div></div>
+        <div><strong>Add tasks & links</strong><div class="muted">Durations, quantities, lead/lag, and dependencies.</div></div>
       </div>
       <div class="step" style="margin-top:8px">
         <div class="num" aria-hidden="true">3</div>
-        <div><strong>Get results instantly</strong><div class="muted">Volume + cement estimates with clear units.</div></div>
+        <div><strong>Track progress</strong><div class="muted">See Gantt + S-curves and export day sheets when needed.</div></div>
       </div>
     </section>
 
-    <!-- Social proof / testimonial placeholder -->
-    <section class="card" style="margin-top:14px" aria-label="Social proof">
-      <h3>Built with crews in mind</h3>
-      <p class="muted">“We needed a quick, no-nonsense calculator on the job. ESTmate™ saves time every pour.” — <em>Site Engineer</em></p>
+    <!-- Interface preview -->
+    <section class="card" style="margin-top:14px" aria-label="Preview">
+      <h3>Interface preview</h3>
+      <div class="grid" style="margin-top:8px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px">
+        <div class="placeholder">Gantt (placeholder)</div>
+        <div class="placeholder">S-curves (placeholder)</div>
+        <div class="placeholder">Task details (placeholder)</div>
+      </div>
     </section>
 
     <!-- Company framing -->
-    <section class="card" style="margin-top:14px" aria-label="About EngSiteTools">
-      <h3>About EngSiteTools</h3>
+    <section class="card" style="margin-top:14px" aria-label="About">
+      <h3>Built by EngSiteTools</h3>
       <p class="muted">
-        We create simple, accurate, and affordable tools for field engineers, site crews, and small contractors —
-        an underserved community often ignored by enterprise software. ESTmate™ is our flagship; more field-ready
-        utilities are on the way.
+        We make practical, affordable tools for field engineers, crews, and small contractors.
+        EST·mate™ brings fast planning to your phone with a focus on earthworks.
       </p>
     </section>
 
@@ -250,14 +226,21 @@
     <section id="contact" class="card" style="margin-top:14px" aria-label="Support">
       <h3>Need help?</h3>
       <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
+      <div class="links" style="justify-content:flex-start;margin-top:8px">
+        <a href="#" aria-label="X / Twitter">X</a>
+        <a href="#" aria-label="LinkedIn">LinkedIn</a>
+        <a href="#" aria-label="YouTube">YouTube</a>
+        <a href="#" aria-label="Instagram">Instagram</a>
+        <a href="#" aria-label="Facebook">Facebook</a>
+      </div>
     </section>
   </main>
 
   <footer role="contentinfo">
     <div>© 2025 EngSiteTools. All rights reserved.</div>
     <div class="links">
-      <a href="estmate-privacy.html">Privacy Policy</a>
-      <a href="estmate-terms.html">Terms of Use</a>
+      <a href="/trenchcalc-privacy.html">Privacy Policy</a>
+      <a href="/trenchcalc-terms.html">Terms of Use</a>
     </div>
   </footer>
 
@@ -265,12 +248,27 @@
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"EngSiteTools",
-    "url":"https://engsitetools.com/",
-    "email":"engsitetools@gmail.com",
-    "sameAs":[]
+    "@type":"SoftwareApplication",
+    "name":"EST·mate™",
+    "operatingSystem":"Android,iOS",
+    "applicationCategory":"BusinessApplication",
+    "offers":{"@type":"Offer","price":"0","priceCurrency":"AUD"},
+    "creator":{"@type":"Organization","name":"EngSiteTools"},
+    "url":"https://engsitetools.com/estmate",
+    "image":"estmate.png"
   }
+  </script>
+
+  <!-- Simple mailto-based waitlist -->
+  <script>
+    function joinWaitlist(e){
+      e.preventDefault();
+      const email = document.getElementById('wlEmail').value.trim();
+      if(!email) return;
+      const subject = encodeURIComponent('EST·mate™ waitlist');
+      const body = encodeURIComponent('Please add me to the EST·mate™ beta waitlist.\n\nEmail: ' + email);
+      window.location.href = 'mailto:engsitetools@gmail.com?subject=' + subject + '&body=' + body;
+    }
   </script>
 </body>
 </html>
