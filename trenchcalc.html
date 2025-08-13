@@ -6,34 +6,33 @@
   <title>TrenchCalc by EngSiteTools — Trench Volume & Cement Calculator</title>
 
   <!-- SEO -->
-<meta name="description" content="TrenchCalc™ by EngSiteTools is a fast, field-ready trench volume & cement calculator with stepped benches and culvert support. See screenshots and download now.">
+  <meta name="description" content="TrenchCalc™ by EngSiteTools is a fast, field-ready trench volume & cement calculator with stepped benches and culvert support. See screenshots and download now.">
   <meta name="theme-color" content="#0F172A">
   <!-- Open Graph -->
-<meta property="og:title" content="TrenchCalc™ — Trench Volume & Cement Calculator">
-<meta property="og:description" content="Instant trench volume & cement estimates with stepped benches and culvert spacing. Built by EngSiteTools.">
+  <meta property="og:title" content="TrenchCalc™ — Trench Volume & Cement Calculator">
+  <meta property="og:description" content="Instant trench volume & cement estimates with stepped benches and culvert spacing. Built by EngSiteTools.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://engsitetools.com/">
   <meta property="og:image" content="https://engsitetools.com/screenshots/trenchcalc-og-1200x630.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://engsitetools.com/screenshots/trenchcalc-og-1200x630.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://engsitetools.com/screenshots/trenchcalc-og-1200x630.jpg">
 
-<!-- Favicons -->
-<link rel="icon" href="trenchcalc-logo-no-text.svg" type="image/svg+xml">
-<link rel="icon" href="trenchcalc-logo-32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="trenchcalc-logo-192.png" sizes="192x192" type="image/png">
-<link rel="apple-touch-icon" href="trenchcalc-logo-192.png">
-<link rel="shortcut icon" href="trenchcalc-logo-32.png">
-
+  <!-- Favicons -->
+  <link rel="icon" href="trenchcalc-logo-no-text.svg" type="image/svg+xml">
+  <link rel="icon" href="trenchcalc-logo-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="trenchcalc-logo-192.png" sizes="192x192" type="image/png">
+  <link rel="apple-touch-icon" href="trenchcalc-logo-192.png">
+  <link rel="shortcut icon" href="trenchcalc-logo-32.png">
 
   <style>
     /* Feature card icons */
-.card .icon {
-  display:block;
-  width:64px; height:64px;
-  margin:0 auto 12px;   /* center + space below */
-}
+    .card .icon {
+      display:block;
+      width:64px; height:64px;
+      margin:0 auto 12px;
+    }
 
     :root{
       --bg:#0b0f1a;      /* header */
@@ -78,23 +77,22 @@
       padding:18px 20px;
     }
     .brand{display:flex;gap:10px;align-items:center}
-.logo{
-  width:44px;
-  height:44px;
-  border-radius:12px;
-  overflow:hidden;
-  background:#111;           /* fallback if image fails */
-  display:grid;
-  place-items:center;
-  box-shadow:var(--shadow);
-}
-.logo img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-}
-
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      overflow:hidden;
+      background:#111;
+      display:grid;
+      place-items:center;
+      box-shadow:var(--shadow);
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
 
     .brand h1{font-size:18px;margin:0}
     .nav a.small{color:#cbd5e1;margin-left:18px}
@@ -143,21 +141,6 @@
     .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
     .links a{color:inherit}
     .links a:hover{color:var(--brand)}
-
-    /* Screenshot carousel */
-.carousel { position: relative; background: var(--card); border-radius: var(--radius); box-shadow: var(--shadow); padding: 16px; overflow: hidden; }
-.carousel-track { display: flex; gap: 10px; scroll-snap-type: x mandatory; overflow-x: auto; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-.carousel-track::-webkit-scrollbar { display: none; }
-.carousel-slide { flex: 0 0 80%; max-width: 80%; scroll-snap-align: start; }
-@media (min-width: 720px){ .carousel-slide { flex-basis: 48%; max-width: 48%; } }
-.carousel-slide img { width: 100%; border-radius: 10px; display:block }
-.carousel-nav { display:flex; justify-content:center; gap:8px; margin-top:10px }
-.carousel-dot { width:10px; height:10px; border-radius:50%; background:rgba(0,0,0,.2) }
-.carousel-dot.active { background: var(--brand); }
-.carousel-btn { position:absolute; top:50%; transform:translateY(-50%); border:none; background:rgba(0,0,0,.45); color:#fff; width:36px; height:36px; border-radius:50%; cursor:pointer }
-.carousel-btn:hover { background:rgba(0,0,0,.6) }
-.carousel-btn.prev { left:10px } .carousel-btn.next { right:10px }
-
   </style>
 </head>
 <body>
@@ -168,15 +151,15 @@
   <!-- Header / Nav -->
   <header role="banner">
     <div class="nav" aria-label="Primary">
-<div class="brand">
-  <div class="logo" aria-hidden="true">
-    <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
-  </div>
-  <div>
-    <h1 style="margin:0;">TrenchCalc™</h1>
-    <div class="muted" style="font-size:13px;margin-top:2px">Trench volume & cement calculator</div>
-  </div>
-</div>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
+        </div>
+        <div>
+          <h1 style="margin:0;">TrenchCalc™</h1>
+          <div class="muted" style="font-size:13px;margin-top:2px">Trench volume & cement calculator</div>
+        </div>
+      </div>
 
       <nav>
         <a class="small" href="#features">Features</a>
@@ -188,13 +171,13 @@
     <!-- Hero -->
     <div class="hero">
       <span class="pill">Flagship</span>
-<h2>TrenchCalc™ — calculate trench quantities, costs & culvert layouts instantly</h2>
+      <h2>TrenchCalc™ — calculate trench quantities, costs & culvert layouts instantly</h2>
 
-<p>
-  Built for the underserved field-engineering community, TrenchCalc™ helps site crews and
-  engineers compute fill volumes, cement requirements, and project costs — with support for
-  stepped benches and precise culvert spacing — right from the phone.
-</p>
+      <p>
+        Built for the underserved field-engineering community, TrenchCalc™ helps site crews and
+        engineers compute fill volumes, cement requirements, and project costs — with support for
+        stepped benches and precise culvert spacing — right from the phone.
+      </p>
 
       <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">
         Download on Google Play
@@ -204,32 +187,31 @@
 
   <main id="content">
     <!-- Features -->
-<section id="features" class="grid cols-3" aria-label="Key features">
-  <article class="card">
-    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
-    <h3>Mobile-first</h3>
-    <p class="muted">Lightweight, fast, and reliable on-site.</p>
-  </article>
+    <section id="features" class="grid cols-3" aria-label="Key features">
+      <article class="card">
+        <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+        <h3>Mobile-first</h3>
+        <p class="muted">Lightweight, fast, and reliable on-site.</p>
+      </article>
 
-  <article class="card">
-    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
-    <h3>Advanced configs</h3>
-    <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
-  </article>
+      <article class="card">
+        <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+        <h3>Advanced configs</h3>
+        <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
+      </article>
 
-  <article class="card">
-    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
-    <h3>Accurate outputs</h3>
-    <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
-  </article>
+      <article class="card">
+        <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+        <h3>Accurate outputs</h3>
+        <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
+      </article>
 
-  <article class="card">
-    <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
-    <h3>Culvert support</h3>
-    <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
-  </article>
-</section>
-
+      <article class="card">
+        <img class="icon" src="trenchcalc-logo-no-text.svg" alt="">
+        <h3>Culvert support</h3>
+        <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
+      </article>
+    </section>
 
     <!-- How it works -->
     <section id="how" class="card" style="margin-top:14px" aria-label="How it works">
@@ -247,42 +229,6 @@
         <div><strong>Get results instantly</strong><div class="muted">Volume + cement estimates with clear units.</div></div>
       </div>
     </section>
-<section id="screenshots" class="card" style="margin-top:14px" aria-label="App screenshots">
-  <h3>See TrenchCalc in action</h3>
-
-  <div class="carousel" aria-roledescription="carousel">
-    <button class="carousel-btn prev" aria-label="Previous">&#8249;</button>
-    <div class="carousel-track" id="shotTrack">
-      <!-- Use your filenames; these match the images you shared -->
-      <figure class="carousel-slide">
-        <img src="screenshots/a.jpg" loading="lazy" alt="Select a Section: modify trench, add culverts, plan & manage">
-        <figcaption class="muted" style="margin-top:6px">Quick actions: size, fill, benches, culverts.</figcaption>
-      </figure>
-      <figure class="carousel-slide">
-        <img src="screenshots/b.jpg" loading="lazy" alt="Soil testing regimen by lift with volumes and tests">
-        <figcaption class="muted" style="margin-top:6px">Testing regimen auto‑planned by lift.</figcaption>
-      </figure>
-      <figure class="carousel-slide">
-        <img src="screenshots/c.jpg" loading="lazy" alt="Safety Breaches panel with configurable alerts">
-        <figcaption class="muted" style="margin-top:6px">Safety alerts with acknowledge & limits.</figcaption>
-      </figure>
-      <figure class="carousel-slide">
-        <img src="screenshots/d.jpg" loading="lazy" alt="Cement stabilisation screen with weather risk banner and totals">
-        <figcaption class="muted" style="margin-top:6px">Cement stabilisation with weather checks.</figcaption>
-      </figure>
-      <figure class="carousel-slide">
-        <img src="screenshots/e.jpg" loading="lazy" alt="Trench diagram with zones and culverts">
-        <figcaption class="muted" style="margin-top:6px">Trench diagram, zones, and culvert layout.</figcaption>
-      </figure>
-      <figure class="carousel-slide">
-        <img src="screenshots/f.jpg" loading="lazy" alt="Fill properties for haunch with density and compaction factor">
-        <figcaption class="muted" style="margin-top:6px">Per‑zone materials & compaction factors.</figcaption>
-      </figure>
-    </div>
-    <button class="carousel-btn next" aria-label="Next">&#8250;</button>
-    <div class="carousel-nav" id="shotDots" aria-label="Slide indicators"></div>
-  </div>
-</section>
 
     <!-- Social proof / testimonial placeholder -->
     <section class="card" style="margin-top:14px" aria-label="Social proof">
@@ -326,33 +272,5 @@
     "sameAs":[]
   }
   </script>
-  <script>
-(function(){
-  const track = document.getElementById('shotTrack');
-  const dotsWrap = document.getElementById('shotDots');
-  const slides = Array.from(track.querySelectorAll('.carousel-slide'));
-  const prev = document.querySelector('.carousel-btn.prev');
-  const next = document.querySelector('.carousel-btn.next');
-
-  // Build dots
-  slides.forEach((_, i) => {
-    const d = document.createElement('span');
-    d.className = 'carousel-dot' + (i===0 ? ' active':'');
-    d.role = 'button'; d.tabIndex = 0; d.ariaLabel = 'Go to slide ' + (i+1);
-    d.addEventListener('click', () => scrollToIndex(i));
-    dotsWrap.appendChild(d);
-  });
-
-  function slideWidth(){ return slides[0].getBoundingClientRect().width + 10; } // +gap
-  function currentIndex(){ return Math.round(track.scrollLeft / slideWidth()); }
-  function scrollToIndex(i){ track.scrollTo({ left: i * slideWidth(), behavior: 'smooth' }); updateDots(i); }
-  function updateDots(i){ dotsWrap.querySelectorAll('.carousel-dot').forEach((el, idx)=>{ el.classList.toggle('active', idx===i); }); }
-
-  prev.addEventListener('click', () => scrollToIndex(Math.max(0, currentIndex()-1)));
-  next.addEventListener('click', () => scrollToIndex(Math.min(slides.length-1, currentIndex()+1)));
-  track.addEventListener('scroll', () => { window.requestAnimationFrame(()=> updateDots(currentIndex())); }, { passive:true });
-})();
-</script>
-
 </body>
 </html>
