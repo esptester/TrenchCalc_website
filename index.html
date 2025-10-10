@@ -358,6 +358,135 @@ footer {
   color: #fff;
   text-decoration: underline;
 }
+
+/* Accessibility Controls */
+:root {
+  --font-size-base: 16px;
+}
+html {
+  font-size: var(--font-size-base);
+}
+html.text-larger {
+  --font-size-base: 18px;
+}
+html.text-largest {
+  --font-size-base: 20px;
+}
+html.theme-light {
+  --card-bg: #ffffff !important;
+  --text: #222 !important;
+  --muted: #555 !important;
+  --surface: #f5f5f5 !important;
+}
+html.theme-dark {
+  --card-bg: #1e1e1e !important;
+  --text: #f5f5f5 !important;
+  --muted: #aaa !important;
+  --surface: #121212 !important;
+}
+
+.accessibility-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--brand);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  transition: all 0.3s;
+}
+.accessibility-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+}
+
+.accessibility-panel {
+  position: fixed;
+  bottom: 90px;
+  right: 24px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  padding: 20px;
+  width: 280px;
+  z-index: 1000;
+  display: none;
+}
+.accessibility-panel.open {
+  display: block;
+  animation: slideUp 0.3s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.accessibility-panel h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+.control-group:last-child {
+  margin-bottom: 0;
+}
+.control-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+.control-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid var(--brand);
+  background: transparent;
+  color: var(--text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.control-btn:hover {
+  background: var(--brand);
+  color: white;
+}
+.control-btn.active {
+  background: var(--brand);
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .accessibility-panel {
+    right: 12px;
+    bottom: 80px;
+    width: calc(100vw - 24px);
+    max-width: 320px;
+  }
+  .accessibility-btn {
+    right: 12px;
+    bottom: 12px;
+  }
+}
 </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -575,6 +704,37 @@ footer {
     <p>© 2025 EngSiteTools. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- Accessibility Controls -->
+<button class="accessibility-btn" id="accessibilityBtn" aria-label="Accessibility options">
+  <i class="fas fa-universal-access"></i>
+</button>
+
+<div class="accessibility-panel" id="accessibilityPanel">
+  <h3>Accessibility</h3>
+
+  <div class="control-group">
+    <span class="control-label">Text Size</span>
+    <div class="button-group">
+      <button class="control-btn active" data-size="normal">A</button>
+      <button class="control-btn" data-size="larger">A+</button>
+      <button class="control-btn" data-size="largest">A++</button>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <span class="control-label">Theme</span>
+    <div class="button-group">
+      <button class="control-btn" data-theme="light">
+        <i class="fas fa-sun"></i> Light
+      </button>
+      <button class="control-btn active" data-theme="dark">
+        <i class="fas fa-moon"></i> Dark
+      </button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   const rail = document.getElementById('newsRail');
@@ -608,6 +768,89 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Accessibility Controls
+(function() {
+  const btn = document.getElementById('accessibilityBtn');
+  const panel = document.getElementById('accessibilityPanel');
+  const html = document.documentElement;
+
+  // Toggle panel
+  btn.addEventListener('click', () => {
+    panel.classList.toggle('open');
+  });
+
+  // Close panel when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !panel.contains(e.target)) {
+      panel.classList.remove('open');
+    }
+  });
+
+  // Load saved preferences
+  const savedSize = localStorage.getItem('textSize') || 'normal';
+  const savedTheme = localStorage.getItem('theme') || 'auto';
+
+  // Apply saved text size
+  if (savedSize === 'larger') html.classList.add('text-larger');
+  if (savedSize === 'largest') html.classList.add('text-largest');
+
+  // Apply saved theme
+  if (savedTheme === 'light') html.classList.add('theme-light');
+  if (savedTheme === 'dark') html.classList.add('theme-dark');
+
+  // Update active buttons
+  document.querySelectorAll('[data-size]').forEach(btn => {
+    if (btn.dataset.size === savedSize) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+  document.querySelectorAll('[data-theme]').forEach(btn => {
+    if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+
+  // Text size controls
+  document.querySelectorAll('[data-size]').forEach(button => {
+    button.addEventListener('click', () => {
+      const size = button.dataset.size;
+
+      // Remove all size classes
+      html.classList.remove('text-larger', 'text-largest');
+
+      // Add new size class
+      if (size === 'larger') html.classList.add('text-larger');
+      if (size === 'largest') html.classList.add('text-largest');
+
+      // Save preference
+      localStorage.setItem('textSize', size);
+
+      // Update active state
+      document.querySelectorAll('[data-size]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+
+  // Theme controls
+  document.querySelectorAll('[data-theme]').forEach(button => {
+    button.addEventListener('click', () => {
+      const theme = button.dataset.theme;
+
+      // Remove all theme classes
+      html.classList.remove('theme-light', 'theme-dark');
+
+      // Add new theme class
+      if (theme === 'light') html.classList.add('theme-light');
+      if (theme === 'dark') html.classList.add('theme-dark');
+
+      // Save preference
+      localStorage.setItem('theme', theme);
+
+      // Update active state
+      document.querySelectorAll('[data-theme]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+})();
 </script>
 
 </body>
