@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TrenchCalc Features & Pricing — Choose Your Plan</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Compare TrenchCalc plans: Free, Basic, and Premium. Get cement stabilisation, culvert support, spoil management, and more. Choose the right plan for your project.">
+  <meta name="theme-color" content="#0F172A">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrenchCalc Features & Pricing">
+  <meta property="og:description" content="Compare Free, Basic, and Premium plans. Find the right TrenchCalc subscription for your construction projects.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://engsitetools.com/trenchcalc-features.html">
+  <meta property="og:image" content="https://engsitetools.com/trenchcalc-logo.png">
+
+  <!-- Favicons -->
+  <link rel="icon" href="trenchcalc-logo-no-text.svg" type="image/svg+xml">
+  <link rel="icon" href="trenchcalc-logo-32.png" sizes="32x32" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --ink:#0f172a;
+      --muted:#5b6473;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --accent:#10b981;
+      --surface:#f6f7fb;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(16,24,40,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --ink:#e6e8ee;
+        --muted:#9aa3b2;
+        --card:#121826;
+        --surface:#0d1320;
+        --brand:#3b82f6;
+        --shadow:0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color:var(--ink);
+      background:var(--surface);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color:#fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav{
+      max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+      padding:16px 20px;flex-wrap: wrap;gap: 16px;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:44px;height:44px;border-radius:12px;overflow:hidden;background:#111;
+      display:grid;place-items:center;box-shadow:var(--shadow);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+    .brand h1{font-size:18px;margin:0;font-weight:600}
+    .nav a.small{
+      color:#cbd5e1;margin-left:18px;font-weight:500;font-size:15px;transition: opacity 0.2s;
+    }
+    .nav a.small:hover{color:#fff;opacity:0.8;text-decoration:none}
+    .nav-cta {
+      background: var(--brand);padding: 8px 20px;border-radius: 6px;
+      color: white !important;font-weight: 600;margin-left: 12px;
+    }
+    .nav-cta:hover {background: #3367d6;opacity: 1 !important;text-decoration: none;}
+
+    /* Hero */
+    .hero{
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 20px;text-align: center;position: relative;overflow: hidden;
+    }
+    .hero::before {
+      content: '';position: absolute;top: 0;left: 0;right: 0;bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    .hero-content {max-width: 900px;margin: 0 auto;position: relative;z-index: 1;}
+    .hero h1{font-size:42px;line-height:1.2;margin:0 0 16px;font-weight:700;color:#fff;}
+    .hero p{max-width:700px;color:rgba(255,255,255,0.95);margin:0 auto;font-size:18px;}
+    @media (max-width: 768px) {
+      .hero { padding: 40px 20px; }
+      .hero h1 { font-size: 32px; }
+      .hero p { font-size: 16px; }
+    }
+
+    /* Main */
+    main{max-width:1200px;margin:0 auto;padding:60px 20px;}
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .pricing-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(16,24,40,.15);
+    }
+    .pricing-card.featured {
+      border: 2px solid var(--brand);
+    }
+    .pricing-card.featured::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--brand);
+      color: white;
+      padding: 4px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .tier-name {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 8px;
+    }
+    .tier-price {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      color: var(--brand);
+    }
+    .tier-price.free {
+      color: var(--accent);
+    }
+    .tier-period {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+    .tier-description {
+      color: var(--muted);
+      margin-bottom: 24px;
+      min-height: 48px;
+    }
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      flex-grow: 1;
+    }
+    .feature-list li {
+      padding: 10px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .feature-list li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .cta-btn {
+      display: block;
+      text-align: center;
+      padding: 14px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: 2px solid var(--brand);
+    }
+    .cta-btn.primary {
+      background: var(--brand);
+      color: white;
+    }
+    .cta-btn.primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(37,99,235,0.3);
+    }
+    .cta-btn.secondary {
+      background: transparent;
+      color: var(--brand);
+    }
+    .cta-btn.secondary:hover {
+      background: var(--surface);
+    }
+
+    /* Feature Comparison Table */
+    .comparison-section {
+      margin-top: 60px;
+    }
+    .comparison-section h2 {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 40px;
+      font-weight: 700;
+    }
+    .comparison-table {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    thead {
+      background: var(--surface);
+    }
+    th {
+      padding: 20px;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--surface);
+    }
+    th:first-child {
+      width: 40%;
+    }
+    td {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--surface);
+    }
+    tbody tr:last-child td {
+      border-bottom: none;
+    }
+    .check {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .cross {
+      color: var(--muted);
+      opacity: 0.4;
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+    .footer-content {
+      max-width: 1040px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-content p {
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+    .footer-links {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header style="background:#0b0f1a; color:#fff; padding:12px 20px; font-size:14px;">
+  <a href="trenchcalc.html" style="color:#fff; text-decoration:none;">← Back to TrenchCalc</a>
+</header>
+
+<header role="banner">
+  <div class="nav" aria-label="Primary">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
+      </div>
+      <div>
+        <h1>TrenchCalc™</h1>
+        <div style="font-size:13px;color:#cbd5e1;margin-top:2px">Features & Pricing</div>
+      </div>
+    </div>
+
+    <nav>
+      <a class="small" href="trenchcalc.html">Overview</a>
+      <a class="small" href="#comparison">Compare Plans</a>
+      <a class="small" href="trenchcalc.html#contact">Contact</a>
+      <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">Download</a>
+    </nav>
+  </div>
+
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Choose the Right Plan for Your Project</h1>
+      <p>From basic trench calculations to professional construction planning. Pick the features you need.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Pricing Cards -->
+  <div class="pricing-grid">
+    <!-- Free Plan -->
+    <div class="pricing-card fade-in">
+      <h2 class="tier-name">Free</h2>
+      <div class="tier-price free">$0</div>
+      <div class="tier-period">Forever free</div>
+      <p class="tier-description">Perfect for simple trench projects and getting started.</p>
+
+      <ul class="feature-list">
+        <li>Basic trench dimensions</li>
+        <li>Fill type selection</li>
+        <li>Benched & battered walls</li>
+        <li>Volume calculations</li>
+      </ul>
+
+      <a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener" class="cta-btn secondary">Download Free</a>
+    </div>
+
+    <!-- Basic Plan -->
+    <div class="pricing-card featured fade-in">
+      <h2 class="tier-name">Basic</h2>
+      <div class="tier-price">Pro</div>
+      <div class="tier-period">See pricing in app</div>
+      <p class="tier-description">Best for standard projects with cement and culvert requirements.</p>
+
+      <ul class="feature-list">
+        <li><strong>All Free features, plus:</strong></li>
+        <li>Cement stabilisation calculations</li>
+        <li>Culvert support & planning</li>
+        <li>Site diary (Beta)</li>
+        <li>Advanced project settings</li>
+      </ul>
+
+      <a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener" class="cta-btn primary">Upgrade to Basic</a>
+    </div>
+
+    <!-- Premium Plan -->
+    <div class="pricing-card fade-in">
+      <h2 class="tier-name">Premium</h2>
+      <div class="tier-price">Pro+</div>
+      <div class="tier-period">See pricing in app</div>
+      <p class="tier-description">For professional contractors managing complex construction projects.</p>
+
+      <ul class="feature-list">
+        <li><strong>All Basic features, plus:</strong></li>
+        <li>Spoil management</li>
+        <li>Soil testing requirements</li>
+        <li>Construction planner & scheduling</li>
+        <li>AI-powered site diary (Beta)</li>
+        <li>Priority support</li>
+      </ul>
+
+      <a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener" class="cta-btn primary">Upgrade to Premium</a>
+    </div>
+  </div>
+
+  <!-- Feature Comparison Table -->
+  <section id="comparison" class="comparison-section fade-in">
+    <h2>Detailed Feature Comparison</h2>
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Basic</th>
+            <th>Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Core Features</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Trench dimensions & calculations</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Fill type selection</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Benched & battered walls</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Advanced Calculations</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Cement stabilisation</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Culvert support & spacing</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Spoil management</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Soil testing requirements</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Project Management</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Site diary (Beta)</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Construction planner</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>AI-powered diary</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Support</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Email support</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Priority support</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="comparison-section fade-in" style="margin-top:60px">
+    <h2>Frequently Asked Questions</h2>
+    <div style="max-width:800px;margin:0 auto">
+      <div class="pricing-card" style="margin-bottom:20px">
+        <h3 style="margin-top:0">How do I see pricing?</h3>
+        <p class="tier-description">Pricing is shown in the app based on your region. Download TrenchCalc and tap on any premium feature to see subscription options in your local currency.</p>
+      </div>
+
+      <div class="pricing-card" style="margin-bottom:20px">
+        <h3 style="margin-top:0">Can I cancel anytime?</h3>
+        <p class="tier-description">Yes! All subscriptions can be canceled at any time through Google Play. You'll keep access until the end of your billing period.</p>
+      </div>
+
+      <div class="pricing-card" style="margin-bottom:20px">
+        <h3 style="margin-top:0">Is there a free trial?</h3>
+        <p class="tier-description">The Free plan is available forever with core features. You can upgrade to Basic or Premium anytime to unlock advanced features.</p>
+      </div>
+
+      <div class="pricing-card">
+        <h3 style="margin-top:0">What payment methods are accepted?</h3>
+        <p class="tier-description">All payments are processed securely through Google Play, which accepts credit cards, PayPal, and carrier billing depending on your region.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">EngSiteTools Home</a>
+      <a href="trenchcalc.html">TrenchCalc Overview</a>
+      <a href="trenchcalc-privacy.html">Privacy Policy</a>
+      <a href="trenchcalc-terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll Animations -->
+<script>
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
