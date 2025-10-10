@@ -385,6 +385,84 @@ html.theme-dark {
   --surface: #121212 !important;
 }
 
+/* High Contrast Mode */
+html.high-contrast {
+  --card-bg: #000000 !important;
+  --text: #ffffff !important;
+  --muted: #ffffff !important;
+  --surface: #000000 !important;
+  --brand: #00ff00 !important;
+  --shadow: 0 0 0 2px #ffffff !important;
+}
+html.high-contrast * {
+  border-color: #ffffff !important;
+}
+html.high-contrast .section,
+html.high-contrast .card,
+html.high-contrast .news-card,
+html.high-contrast .product-card {
+  border: 2px solid #ffffff !important;
+}
+html.high-contrast a {
+  color: #00ff00 !important;
+  text-decoration: underline !important;
+}
+
+/* Reduce Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+html.reduce-motion *,
+html.reduce-motion *::before,
+html.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+html.reduce-motion .fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Keyboard Navigation */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--brand);
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Enhanced Focus Indicators */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+}
+html.high-contrast a:focus,
+html.high-contrast button:focus {
+  outline: 3px solid #00ff00;
+  outline-offset: 3px;
+}
+
 .accessibility-btn {
   position: fixed;
   bottom: 24px;
@@ -494,6 +572,9 @@ html.theme-dark {
 
 <body>
 
+<!-- Skip to main content link for keyboard users -->
+<a href="#main" class="skip-link">Skip to main content</a>
+
 <header>
   <div class="header-content">
     <div class="logo-section">
@@ -521,7 +602,7 @@ html.theme-dark {
   </div>
 </section>
 
-<main>
+<main id="main">
   <!-- Mission -->
   <div class="section fade-in" id="mission">
     <h2>Our Mission</h2>
@@ -733,6 +814,30 @@ html.theme-dark {
       </button>
     </div>
   </div>
+
+  <div class="control-group">
+    <span class="control-label">Display</span>
+    <div class="button-group">
+      <button class="control-btn" data-contrast="normal">
+        Normal
+      </button>
+      <button class="control-btn" data-contrast="high">
+        <i class="fas fa-adjust"></i> High Contrast
+      </button>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <span class="control-label">Motion</span>
+    <div class="button-group">
+      <button class="control-btn active" data-motion="normal">
+        <i class="fas fa-play"></i> Animations
+      </button>
+      <button class="control-btn" data-motion="reduced">
+        <i class="fas fa-pause"></i> Reduce
+      </button>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -790,6 +895,8 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   // Load saved preferences
   const savedSize = localStorage.getItem('textSize') || 'normal';
   const savedTheme = localStorage.getItem('theme') || 'auto';
+  const savedContrast = localStorage.getItem('contrast') || 'normal';
+  const savedMotion = localStorage.getItem('motion') || 'normal';
 
   // Apply saved text size
   if (savedSize === 'larger') html.classList.add('text-larger');
@@ -799,6 +906,12 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   if (savedTheme === 'light') html.classList.add('theme-light');
   if (savedTheme === 'dark') html.classList.add('theme-dark');
 
+  // Apply saved contrast
+  if (savedContrast === 'high') html.classList.add('high-contrast');
+
+  // Apply saved motion preference
+  if (savedMotion === 'reduced') html.classList.add('reduce-motion');
+
   // Update active buttons
   document.querySelectorAll('[data-size]').forEach(btn => {
     if (btn.dataset.size === savedSize) btn.classList.add('active');
@@ -806,6 +919,14 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   });
   document.querySelectorAll('[data-theme]').forEach(btn => {
     if (btn.dataset.theme === savedTheme) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+  document.querySelectorAll('[data-contrast]').forEach(btn => {
+    if (btn.dataset.contrast === savedContrast) btn.classList.add('active');
+    else btn.classList.remove('active');
+  });
+  document.querySelectorAll('[data-motion]').forEach(btn => {
+    if (btn.dataset.motion === savedMotion) btn.classList.add('active');
     else btn.classList.remove('active');
   });
 
@@ -850,6 +971,55 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
       button.classList.add('active');
     });
   });
+
+  // High contrast controls
+  document.querySelectorAll('[data-contrast]').forEach(button => {
+    button.addEventListener('click', () => {
+      const contrast = button.dataset.contrast;
+
+      // Remove high contrast class
+      html.classList.remove('high-contrast');
+
+      // Add high contrast if selected
+      if (contrast === 'high') html.classList.add('high-contrast');
+
+      // Save preference
+      localStorage.setItem('contrast', contrast);
+
+      // Update active state
+      document.querySelectorAll('[data-contrast]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+
+  // Reduce motion controls
+  document.querySelectorAll('[data-motion]').forEach(button => {
+    button.addEventListener('click', () => {
+      const motion = button.dataset.motion;
+
+      // Remove reduce motion class
+      html.classList.remove('reduce-motion');
+
+      // Add reduce motion if selected
+      if (motion === 'reduced') html.classList.add('reduce-motion');
+
+      // Save preference
+      localStorage.setItem('motion', motion);
+
+      // Update active state
+      document.querySelectorAll('[data-motion]').forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+
+  // Auto-detect prefers-reduced-motion on page load
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches && savedMotion === 'normal') {
+    html.classList.add('reduce-motion');
+    document.querySelectorAll('[data-motion]').forEach(btn => {
+      if (btn.dataset.motion === 'reduced') btn.classList.add('active');
+      else btn.classList.remove('active');
+    });
+  }
 })();
 </script>
 
