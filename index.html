@@ -6,8 +6,28 @@
   <title>EngSiteTools — Practical Tools for the Field Engineer</title>
   <meta name="description" content="EngSiteTools creates practical, affordable engineering tools for field engineers, site crews, and small contractors. Products include TrenchCalc and more to come." />
   <meta name="theme-color" content="#121212" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://engsitetools.com/" />
+  <meta property="og:title" content="EngSiteTools — Practical Tools for the Field Engineer" />
+  <meta property="og:description" content="EngSiteTools creates practical, affordable engineering tools for field engineers, site crews, and small contractors. Products include TrenchCalc and more to come." />
+  <meta property="og:image" content="https://engsitetools.com/engsitetoolslogo.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://engsitetools.com/" />
+  <meta property="twitter:title" content="EngSiteTools — Practical Tools for the Field Engineer" />
+  <meta property="twitter:description" content="EngSiteTools creates practical, affordable engineering tools for field engineers, site crews, and small contractors. Products include TrenchCalc and more to come." />
+  <meta property="twitter:image" content="https://engsitetools.com/engsitetoolslogo.png" />
+
   <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
   <link rel="shortcut icon" href="ennsgitetoolslogoicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* --- News Cards Rail --- */
 .news-head {
@@ -106,17 +126,132 @@
 }
 * { box-sizing: border-box; }
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background: var(--surface);
   color: var(--text);
   margin: 0;
+  line-height: 1.6;
 }
-header { background: var(--bg); color: #fff; padding: 20px; text-align: center; }
-header h1 { margin: 0; font-size: 28px; }
-header p { margin: 6px 0 0; font-size: 16px; color: #ccc; }
-nav { margin-top: 15px; }
-nav a { color: #fff; text-decoration: none; margin: 0 10px; font-size: 14px; }
-nav a:hover { text-decoration: underline; }
+/* Header & Hero */
+header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 16px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.logo-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.logo-section h1 { margin: 0; font-size: 24px; font-weight: 600; }
+nav { margin: 0; display: flex; align-items: center; gap: 24px; }
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+nav a:hover { opacity: 0.8; }
+.nav-cta {
+  background: var(--brand);
+  padding: 8px 20px;
+  border-radius: 6px;
+  color: white !important;
+}
+.nav-cta:hover {
+  background: #3367d6;
+  opacity: 1 !important;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+}
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+.hero h1 {
+  font-size: 48px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  line-height: 1.2;
+}
+.hero p {
+  font-size: 20px;
+  margin: 0 0 32px;
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero-cta {
+  display: inline-flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btn {
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-primary {
+  background: white;
+  color: #667eea;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 2px solid white;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.25);
+}
+@media (max-width: 768px) {
+  .hero h1 { font-size: 36px; }
+  .hero p { font-size: 18px; }
+  .header-content { justify-content: center; }
+}
 main { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 .section {
   background: var(--card-bg);
@@ -125,7 +260,21 @@ main { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
   margin-bottom: 30px;
   box-shadow: var(--shadow);
 }
-h2 { margin-top: 0; }
+h2 { margin-top: 0; font-weight: 600; }
+
+/* Scroll Animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-in-delay-1 { transition-delay: 0.1s; }
+.fade-in-delay-2 { transition-delay: 0.2s; }
+.fade-in-delay-3 { transition-delay: 0.3s; }
 
 .products { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media(min-width: 700px) { .products { grid-template-columns: repeat(2, 1fr); } }
@@ -152,10 +301,63 @@ h2 { margin-top: 0; }
 }
 .product-card a:hover { background: #3367d6; }
 
-footer { background: #f0f0f0; color: var(--muted); text-align: center; padding: 20px; font-size: 14px; }
-footer a { color: var(--brand); margin: 0 5px; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-@media (prefers-color-scheme: dark) { footer { background: #1e1e1e; } }
+/* Enhanced Footer */
+footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  padding: 60px 20px 30px;
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-section li {
+  margin-bottom: 10px;
+}
+.footer-section a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-section a:hover {
+  color: #fff;
+}
+.footer-brand p {
+  color: rgba(255,255,255,0.7);
+  line-height: 1.6;
+}
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  text-align: center;
+  color: rgba(255,255,255,0.6);
+  font-size: 14px;
+}
+.footer-bottom a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  margin: 0 8px;
+}
+.footer-bottom a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
 </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -164,18 +366,35 @@ footer a:hover { text-decoration: underline; }
 <body>
 
 <header>
-  <h1>EngSiteTools</h1>
-  <p>Practical tools for the field engineer</p>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <div class="header-content">
+    <div class="logo-section">
+      <h1>EngSiteTools</h1>
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+      <a href="trenchcalc.html" class="nav-cta">Try TrenchCalc</a>
+    </nav>
+  </div>
 </header>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Engineering Tools Built for the Field</h1>
+    <p>Practical, affordable, and intuitive tools that deliver the right information without spreadsheet complexity.</p>
+    <div class="hero-cta">
+      <a href="trenchcalc.html" class="btn btn-primary">Get Started Free</a>
+      <a href="#products" class="btn btn-secondary">Explore Products</a>
+    </div>
+  </div>
+</section>
 
 <main>
   <!-- Mission -->
-  <div class="section" id="mission">
+  <div class="section fade-in" id="mission">
     <h2>Our Mission</h2>
     <p>
       Founded in 2025, EngSiteTools creates practical, affordable, and intuitive engineering tools for everyday users in the field.
@@ -184,12 +403,12 @@ footer a:hover { text-decoration: underline; }
   </div>
 
 <!-- Products -->
-<div class="section" id="products">
+<div class="section fade-in" id="products">
   <h2>Our Products</h2>
   <div class="products">
 
 <!-- TrenchCalc Card -->
-<div class="product-card">
+<div class="product-card fade-in-delay-1">
   <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
   <h3>TrenchCalc™</h3>
   <p class="muted">Instant trench volume & cement calculator with stepped benches and culvert spacing.</p>
@@ -199,10 +418,9 @@ footer a:hover { text-decoration: underline; }
   </div>
 </div>
 <!-- News -->
-<section class="news section" id="news" aria-label="EngSiteTools News">
+<section class="news section fade-in" id="news" aria-label="EngSiteTools News">
   <div class="news-head">
-    <h2>Latest news</h2>
-    <a class="news-more" href="#">More news →</a>
+    <h2>Latest News</h2>
   </div>
 
   <div class="news-rail-wrap">
@@ -215,7 +433,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-body">
           <h3 class="news-title">Trench Volumes in Minutes: A Field Guide</h3>
-          <div class="news-date">Aug 2025</div>
+          <div class="news-date">Aug 2024</div>
           <div class="news-cta-row">
             <span></span>
             <span class="news-arrow">→</span>
@@ -230,7 +448,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-body">
           <h3 class="news-title">Culvert Spacing Checks: 3 Fast Sanity Tests</h3>
-          <div class="news-date">Aug 2025</div>
+          <div class="news-date">Aug 2024</div>
           <div class="news-cta-row">
             <span></span>
             <span class="news-arrow">→</span>
@@ -245,7 +463,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-body">
           <h3 class="news-title">Faster Planning in the Field</h3>
-          <div class="news-date">Aug 2025</div>
+          <div class="news-date">Aug 2024</div>
           <div class="news-cta-row">
             <span></span>
             <span class="news-arrow">→</span>
@@ -260,7 +478,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-body">
           <h3 class="news-title">Performance & UI Polish</h3>
-          <div class="news-date">Aug 2025</div>
+          <div class="news-date">Aug 2024</div>
           <div class="news-cta-row">
             <span></span>
             <span class="news-arrow">→</span>
@@ -275,7 +493,7 @@ footer a:hover { text-decoration: underline; }
         </div>
         <div class="news-body">
           <h3 class="news-title">Beta Invites</h3>
-          <div class="news-date">Aug 2025</div>
+          <div class="news-date">Aug 2024</div>
           <div class="news-cta-row">
             <span></span>
             <span class="news-arrow">→</span>
@@ -295,7 +513,7 @@ footer a:hover { text-decoration: underline; }
 
 
   <!-- About -->
-  <div class="section" id="about">
+  <div class="section fade-in" id="about">
     <h2>About EngSiteTools</h2>
     <p>
       EngSiteTools started after noticing a lack of accessible, affordable resources for small contractors.
@@ -305,7 +523,7 @@ footer a:hover { text-decoration: underline; }
   </div>
 
   <!-- Contact -->
-  <div class="section" id="contact">
+  <div class="section fade-in" id="contact">
     <h2>Contact</h2>
     <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
 <p>Follow us:
@@ -320,10 +538,42 @@ footer a:hover { text-decoration: underline; }
 </main>
 
 <footer>
-  © 2025 EngSiteTools. All rights reserved.
-<a href="trenchcalc-privacy.html">Privacy Policy</a> |
-<a href="trenchcalc-terms.html">Terms of Use</a>
+  <div class="footer-content">
+    <div class="footer-section footer-brand">
+      <h3>EngSiteTools</h3>
+      <p>Practical, affordable engineering tools for field engineers, site crews, and small contractors.</p>
+    </div>
 
+    <div class="footer-section">
+      <h3>Products</h3>
+      <ul>
+        <li><a href="trenchcalc.html">TrenchCalc™</a></li>
+        <li><a href="#products">All Products</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#mission">Our Mission</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="trenchcalc-privacy.html">Privacy Policy</a></li>
+        <li><a href="trenchcalc-terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+  </div>
 </footer>
 <script>
 (function(){
@@ -342,6 +592,22 @@ footer a:hover { text-decoration: underline; }
     });
   });
 })();
+
+// Scroll Animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 </script>
 
 </body>
