@@ -135,15 +135,6 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
-      max-height: 500px;
-    }
-    .hero.hidden {
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      opacity: 0;
-      overflow: hidden;
     }
     .hero::before {
       content: '';
@@ -506,24 +497,6 @@
   }, observerOptions);
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-  // Hide hero on scroll down
-  let lastScroll = 0;
-  const hero = document.querySelector('.hero');
-
-  window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset;
-
-    // If scrolled down more than 150px, hide hero
-    if (currentScroll > 150 && currentScroll > lastScroll) {
-      hero.classList.add('hidden');
-    } else if (currentScroll < 100) {
-      // Show hero when scrolling back to top
-      hero.classList.remove('hidden');
-    }
-
-    lastScroll = currentScroll;
-  });
   </script>
 </body>
 </html>
