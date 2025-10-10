@@ -26,6 +26,11 @@
   <link rel="apple-touch-icon" href="trenchcalc-logo-192.png">
   <link rel="shortcut icon" href="trenchcalc-logo-32.png">
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     /* Feature card icons */
     .card .icon {
@@ -59,22 +64,28 @@
     *{box-sizing:border-box}
     html,body{margin:0}
     body{
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       color:var(--ink);
       background:var(--surface);
-      line-height:1.55;
+      line-height:1.6;
     }
     a{color:var(--brand);text-decoration:none}
     a:hover{text-decoration:underline}
 
     /* Header */
     header{
-      background:var(--bg);
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
       color:#fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
     .nav{
       max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
-      padding:18px 20px;
+      padding:16px 20px;
+      flex-wrap: wrap;
+      gap: 16px;
     }
     .brand{display:flex;gap:10px;align-items:center}
     .logo{
@@ -94,30 +105,131 @@
       display:block;
     }
 
-    .brand h1{font-size:18px;margin:0}
-    .nav a.small{color:#cbd5e1;margin-left:18px}
-    .nav a.small:hover{color:#fff}
+    .brand h1{font-size:18px;margin:0;font-weight:600}
+    .nav a.small{
+      color:#cbd5e1;
+      margin-left:18px;
+      font-weight:500;
+      font-size:15px;
+      transition: opacity 0.2s;
+    }
+    .nav a.small:hover{color:#fff;opacity:0.8;text-decoration:none}
+    .nav-cta {
+      background: var(--brand);
+      padding: 8px 20px;
+      border-radius: 6px;
+      color: white !important;
+      font-weight: 600;
+      margin-left: 12px;
+    }
+    .nav-cta:hover {
+      background: #3367d6;
+      opacity: 1 !important;
+      text-decoration: none;
+    }
 
     /* Hero */
     .hero{
-      max-width:1040px;margin:0 auto;padding:30px 20px 18px 20px;color:#fff;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 80px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
     }
-    .hero h2{font-size:36px;line-height:1.2;margin:10px 0 10px}
-    .hero p{max-width:800px;color:#cbd5e1;margin:0 0 18px}
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero h2{
+      font-size:48px;
+      line-height:1.2;
+      margin:10px 0 20px;
+      font-weight:700;
+      color:#fff;
+    }
+    .hero p{
+      max-width:700px;
+      color:rgba(255,255,255,0.95);
+      margin:0 auto 32px;
+      font-size:20px;
+    }
     .cta{
-      display:inline-block;background:var(--brand);color:#fff;padding:12px 18px;border-radius:10px;
-      font-weight:600;box-shadow:var(--shadow)
+      display:inline-block;
+      background:#fff;
+      color:#667eea;
+      padding:14px 32px;
+      border-radius:8px;
+      font-weight:600;
+      box-shadow:0 8px 24px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+      font-size:16px;
     }
-    .cta:hover{text-decoration:none;filter:brightness(1.05)}
+    .cta:hover{
+      text-decoration:none;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+    }
+    @media (max-width: 768px) {
+      .hero h2 { font-size: 36px; }
+      .hero p { font-size: 18px; }
+    }
 
     /* Sections */
     main{max-width:1040px;margin:0 auto;padding:32px 20px 60px}
-    .grid{display:grid;gap:14px}
+    .grid{display:grid;gap:20px}
     @media(min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    @media(min-width:900px){.grid.cols-4{grid-template-columns:repeat(4,1fr)}}
     .card{
-      background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .card h3{margin:6px 0 8px}
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(16,24,40,.12);
+    }
+    .card h3{margin:6px 0 8px;font-weight:600}
+
+    /* Feature images */
+    .feature-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
+    }
+    @media (prefers-color-scheme: dark){
+      .feature-img { background: linear-gradient(135deg, #2a2a2a, #1f1f1f); }
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
     .muted{color:var(--muted)}
     .step{display:flex;align-items:flex-start;gap:12px}
     .step .num{
@@ -132,15 +244,64 @@
       .pill{background:rgba(245,158,11,.18);color:#fbbf24}
     }
 
-    /* Footer */
-    footer{
-      border-top:1px solid rgba(0,0,0,.06);
-      color:var(--muted);
-      padding:24px 20px;text-align:center
+    /* Enhanced Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 60px 20px 30px;
     }
-    .links{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-    .links a{color:inherit}
-    .links a:hover{color:var(--brand)}
+    .footer-content {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-section li {
+      margin-bottom: 10px;
+    }
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .footer-bottom {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      margin: 0 8px;
+    }
+    .footer-bottom a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -165,48 +326,51 @@
         <a class="small" href="#features">Features</a>
         <a class="small" href="#how">How it works</a>
         <a class="small" href="#contact">Contact</a>
+        <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">Download</a>
       </nav>
     </div>
 
     <!-- Hero -->
     <div class="hero">
-      <span class="pill">Flagship</span>
-      <h2>TrenchCalc™ — calculate trench quantities, costs & culvert layouts instantly</h2>
+      <div class="hero-content">
+        <span class="pill">Flagship Product</span>
+        <h2>Calculate trench quantities, costs & culvert layouts instantly</h2>
 
-      <p>
-        Built for the underserved field-engineering community, TrenchCalc™ helps site crews and
-        engineers compute fill volumes, cement requirements, and project costs — with support for
-        stepped benches and precise culvert spacing — right from the phone.
-      </p>
+        <p>
+          Built for the underserved field-engineering community, TrenchCalc™ helps site crews and
+          engineers compute fill volumes, cement requirements, and project costs — with support for
+          stepped benches and precise culvert spacing — right from your phone.
+        </p>
 
-      <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">
-        Download on Google Play
-      </a>
+        <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">
+          Download on Google Play
+        </a>
+      </div>
     </div>
   </header>
 
   <main id="content">
     <!-- Features -->
-<section id="features" class="grid cols-3" aria-label="Key features">
-  <article class="card">
+<section id="features" class="grid cols-4" aria-label="Key features">
+  <article class="card fade-in">
     <img class="feature-img" src="mobile_first.jpg" alt="Mobile-first">
     <h3>Mobile-first</h3>
     <p class="muted">Lightweight, fast, and reliable on-site.</p>
   </article>
 
-  <article class="card">
+  <article class="card fade-in fade-in-delay-1">
     <img class="feature-img" src="advanced_configs.jpg" alt="Advanced configs">
     <h3>Advanced configs</h3>
     <p class="muted">Stepped benches, culvert spacing, and field-ready options.</p>
   </article>
 
-  <article class="card">
+  <article class="card fade-in fade-in-delay-2">
     <img class="feature-img" src="accurate_outputs.jpg" alt="Accurate outputs">
     <h3>Accurate outputs</h3>
     <p class="muted">Professional-grade calculations for volume and cement requirements.</p>
   </article>
 
-  <article class="card">
+  <article class="card fade-in fade-in-delay-3">
     <img class="feature-img" src="culvert_support.jpg" alt="Culvert support">
     <h3>Culvert support</h3>
     <p class="muted">Calculate volumes and cement with culverts of various shapes and spacing options.</p>
@@ -215,7 +379,7 @@
 
 
     <!-- How it works -->
-    <section id="how" class="card" style="margin-top:14px" aria-label="How it works">
+    <section id="how" class="card fade-in" style="margin-top:20px" aria-label="How it works">
       <h3>How it works</h3>
       <div class="step" style="margin-top:6px">
         <div class="num" aria-hidden="true">1</div>
@@ -232,13 +396,13 @@
     </section>
 
     <!-- Social proof / testimonial placeholder -->
-    <section class="card" style="margin-top:14px" aria-label="Social proof">
+    <section class="card fade-in" style="margin-top:20px" aria-label="Social proof">
       <h3>Built with crews in mind</h3>
-      <p class="muted">“We needed a quick, no-nonsense calculator on the job. TrenchCalc saves time every pour.” — <em>Site Engineer</em></p>
+      <p class="muted">"We needed a quick, no-nonsense calculator on the job. TrenchCalc saves time every pour." — <em>Site Engineer</em></p>
     </section>
 
     <!-- Company framing -->
-    <section class="card" style="margin-top:14px" aria-label="About EngSiteTools">
+    <section class="card fade-in" style="margin-top:20px" aria-label="About EngSiteTools">
       <h3>About EngSiteTools</h3>
       <p class="muted">
         We create simple, accurate, and affordable tools for field engineers, site crews, and small contractors —
@@ -248,17 +412,57 @@
     </section>
 
     <!-- Support -->
-    <section id="contact" class="card" style="margin-top:14px" aria-label="Support">
+    <section id="contact" class="card fade-in" style="margin-top:20px" aria-label="Support">
       <h3>Need help?</h3>
       <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="card fade-in" style="margin-top:20px;text-align:center;padding:40px 24px;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%);color:#fff" aria-label="Download CTA">
+      <h3 style="color:#fff;font-size:28px;margin-bottom:16px">Ready to streamline your trench calculations?</h3>
+      <p style="color:rgba(255,255,255,0.95);margin-bottom:24px;font-size:18px">Download TrenchCalc today and start saving time on every project.</p>
+      <a class="cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">
+        Download on Google Play
+      </a>
     </section>
   </main>
 
   <footer role="contentinfo">
-    <div>© 2025 EngSiteTools. All rights reserved.</div>
-    <div class="links">
-      <a href="trenchcalc-privacy.html">Privacy Policy</a>
-      <a href="trenchcalc-terms.html">Terms of Use</a>
+    <div class="footer-content">
+      <div class="footer-section footer-brand">
+        <h3>TrenchCalc™</h3>
+        <p>Professional trench volume and cement calculator built for field engineers, site crews, and contractors.</p>
+      </div>
+
+      <div class="footer-section">
+        <h3>Product</h3>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#how">How it Works</a></li>
+          <li><a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">Download App</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li><a href="index.html">EngSiteTools</a></li>
+          <li><a href="index.html#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="trenchcalc-privacy.html">Privacy Policy</a></li>
+          <li><a href="trenchcalc-terms.html">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 EngSiteTools. All rights reserved.</p>
     </div>
   </footer>
 
@@ -272,6 +476,24 @@
     "email":"engsitetools@gmail.com",
     "sameAs":[]
   }
+  </script>
+
+  <!-- Scroll Animations -->
+  <script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
