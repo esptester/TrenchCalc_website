@@ -292,6 +292,109 @@
       font-weight:700;color:var(--brand);box-shadow:inset 0 0 0 1px rgba(37,99,235,.18)
     }
 
+    /* Contact Form Styles */
+    .contact-form {
+      max-width: 600px;
+      margin: 24px auto 0;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--ink);
+      font-size: 14px;
+    }
+    .form-group label .required {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      background: var(--card);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    @media (prefers-color-scheme: dark) {
+      .form-group input,
+      .form-group textarea {
+        border-color: #444;
+      }
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 150px;
+    }
+    .form-submit {
+      background: var(--brand);
+      color: white;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    .form-submit:hover {
+      background: #3367d6;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+    }
+    .form-submit:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .form-message {
+      margin-top: 16px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+    }
+    .form-message.success {
+      background: #d1fae5;
+      color: #065f46;
+      border: 1px solid #10b981;
+      display: block;
+    }
+    .form-message.error {
+      background: #fee2e2;
+      color: #991b1b;
+      border: 1px solid #ef4444;
+      display: block;
+    }
+    .contact-info {
+      text-align: center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid #ddd;
+    }
+    @media (prefers-color-scheme: dark) {
+      .contact-info {
+        border-top-color: #444;
+      }
+    }
+    .contact-info p {
+      margin: 8px 0;
+      color: var(--muted);
+    }
+
     /* Enhanced Footer */
     footer {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -466,8 +569,52 @@
 
     <!-- Support -->
     <section id="contact" class="card fade-in" style="margin-top:20px" aria-label="Support">
-      <h3>Need help?</h3>
-      <p>Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
+      <h3>Contact Us</h3>
+      <p style="text-align: center; color: var(--muted); margin-bottom: 24px;">Have a question about TrenchCalc? Send us a message and we'll get back to you as soon as possible.</p>
+
+      <form class="contact-form" id="contactForm" action="https://formsubmit.co/support@engsitetools.com" method="POST">
+        <!-- FormSubmit Configuration -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://engsitetools.com/trenchcalc.html#contact">
+        <input type="hidden" name="_template" value="box">
+        <input type="hidden" name="_subject" value="New contact form submission from TrenchCalc page">
+
+        <!-- Required Fields -->
+        <div class="form-group">
+          <label for="name">Name <span class="required">*</span></label>
+          <input type="text" id="name" name="name" required placeholder="Your full name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span class="required">*</span></label>
+          <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
+        </div>
+
+        <!-- Optional Fields -->
+        <div class="form-group">
+          <label for="phone">Phone (optional)</label>
+          <input type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567">
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company (optional)</label>
+          <input type="text" id="company" name="company" placeholder="Your company name">
+        </div>
+
+        <button type="submit" class="form-submit">Send Message</button>
+
+        <div id="formMessage" class="form-message"></div>
+      </form>
+
+      <div class="contact-info">
+        <p><strong>Or email us directly:</strong></p>
+        <p><a href="mailto:support@engsitetools.com">support@engsitetools.com</a></p>
+      </div>
     </section>
 
     <!-- Final CTA -->
