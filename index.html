@@ -301,6 +301,69 @@ h2 { margin-top: 0; font-weight: 600; }
 }
 .product-card a:hover { background: #3367d6; }
 
+/* Why EngSiteTools Section */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+.benefit-card {
+  text-align: center;
+  padding: 24px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.benefit-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: var(--brand);
+}
+.benefit-card h3 {
+  font-size: 18px;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.benefit-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Statistics Section */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+  margin-top: 24px;
+  text-align: center;
+}
+.stat-item {
+  padding: 20px;
+}
+.stat-number {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 16px;
+  color: var(--muted);
+  font-weight: 500;
+}
+@media (max-width: 768px) {
+  .stat-number { font-size: 36px; }
+}
+
 /* Enhanced Footer */
 footer {
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -670,6 +733,70 @@ body {
       Founded in 2025, EngSiteTools creates practical, affordable, and intuitive engineering tools for everyday users in the field.
       We focus on delivering the right information in a clear, digestible format — without the overload of spreadsheets or unnecessary complexity.
     </p>
+  </div>
+
+  <!-- Why EngSiteTools -->
+  <div class="section fade-in">
+    <h2>Why EngSiteTools?</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card fade-in-delay-1">
+        <div class="benefit-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Built for the Field</h3>
+        <p>Mobile-first tools designed for on-site use, not desk work. Access calculations anywhere, even offline.</p>
+      </div>
+
+      <div class="benefit-card fade-in-delay-2">
+        <div class="benefit-icon">
+          <i class="fas fa-dollar-sign"></i>
+        </div>
+        <h3>Affordable Pricing</h3>
+        <p>Fair pricing for small teams and independent contractors. No enterprise bloat or hidden fees.</p>
+      </div>
+
+      <div class="benefit-card fade-in-delay-3">
+        <div class="benefit-icon">
+          <i class="fas fa-tachometer-alt"></i>
+        </div>
+        <h3>Fast & Simple</h3>
+        <p>No complex training required. Get instant results without spreadsheet headaches.</p>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Professional Accuracy</h3>
+        <p>Industry-grade calculations you can trust for estimates, planning, and project execution.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- By the Numbers -->
+  <div class="section fade-in">
+    <h2>By the Numbers</h2>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">2025</div>
+        <div class="stat-label">Founded</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">1+</div>
+        <div class="stat-label">Products Launched</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Field-Focused</div>
+      </div>
+
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Support Available</div>
+      </div>
+    </div>
   </div>
 
 <!-- Products -->
