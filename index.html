@@ -337,6 +337,91 @@ h2 { margin-top: 0; font-weight: 600; }
   line-height: 1.5;
 }
 
+/* TrenchCalc Features Section */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+.feature-card {
+  padding: 24px;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 4px solid var(--brand);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateX(4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  border-color: #667eea;
+}
+.feature-icon {
+  font-size: 36px;
+  margin-bottom: 16px;
+  color: var(--brand);
+  display: inline-block;
+}
+.feature-card h3 {
+  font-size: 18px;
+  margin: 0 0 12px;
+  font-weight: 600;
+  color: var(--text);
+}
+.feature-card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Differentiators */
+.differentiators {
+  margin-top: 48px;
+  padding: 32px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+  border-radius: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  .differentiators {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  }
+}
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.diff-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.diff-item i {
+  color: var(--brand);
+  font-size: 20px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.diff-item span {
+  color: var(--text);
+}
+.diff-item strong {
+  color: var(--text);
+  font-weight: 600;
+}
+@media (max-width: 768px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+  .diff-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Statistics Section */
 .stats-grid {
   display: grid;
@@ -925,10 +1010,119 @@ body {
 <div class="product-card fade-in-delay-1">
   <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
   <h3>TrenchCalc™</h3>
-  <p class="muted">Instant trench volume & cement calculator with stepped benches and culvert spacing.</p>
+  <p class="muted">Professional trench engineering calculator with cement stabilization, volume calculations, cost estimation, and quality testing schedules—all in one mobile app.</p>
   <a href="trenchcalc.html" aria-label="Open TrenchCalc product page">Open TrenchCalc</a>
 </div>
 
+  </div>
+</div>
+
+<!-- TrenchCalc Features Section -->
+<div class="section fade-in" id="trenchcalc-features">
+  <h2>Why TrenchCalc?</h2>
+  <p style="color: var(--muted); margin-bottom: 32px;">
+    TrenchCalc goes far beyond basic volume calculations. It's a complete project planning tool designed for civil engineers, site supervisors, and contractors who need professional-grade calculations in the field.
+  </p>
+
+  <div class="features-grid">
+    <!-- Feature 1 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-calculator"></i>
+      </div>
+      <h3>Advanced Volume Calculations</h3>
+      <p>Multi-zone trenching with support for vertical, battered, benched, and stepped walls. Calculate separate volumes for foundation, bed, haunch, side fill, and overlay zones with culvert integration.</p>
+    </div>
+
+    <!-- Feature 2 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-flask"></i>
+      </div>
+      <h3>Cement Stabilization Intelligence</h3>
+      <p>Predict UCS (Unconfined Compressive Strength) for cement-stabilized materials. Get 7-day and 28-day strength projections with material-specific coefficients based on ASTM standards.</p>
+    </div>
+
+    <!-- Feature 3 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-clipboard-check"></i>
+      </div>
+      <h3>Quality Control Testing Planner</h3>
+      <p>Generate automated field testing schedules based on volume and specifications. Plan compaction tests, PSD/Atterberg limits, and moisture content testing by lift and zone.</p>
+    </div>
+
+    <!-- Feature 4 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-dollar-sign"></i>
+      </div>
+      <h3>Professional Cost Estimation</h3>
+      <p>Complete project pricing with material, labor, equipment, mobilization, overhead, and profit calculations. Export-ready estimates for tender submissions.</p>
+    </div>
+
+    <!-- Feature 5 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-clock"></i>
+      </div>
+      <h3>Duration & Scheduling</h3>
+      <p>Calculate project timelines based on productivity rates. Get phase breakdowns for mobilization, construction, culvert installation, and crew planning with estimated finish dates.</p>
+    </div>
+
+    <!-- Feature 6 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-truck"></i>
+      </div>
+      <h3>Truckload & Logistics Planning</h3>
+      <p>Plan material deliveries with truckload calculations based on capacity. Optimize delivery schedules for fill, cement, and stabilized mix materials.</p>
+    </div>
+
+    <!-- Feature 7 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-save"></i>
+      </div>
+      <h3>Save & Load Projects</h3>
+      <p>Store unlimited project configurations with named saves. Instantly recall complete trench setups and manage multiple projects simultaneously—no spreadsheet juggling.</p>
+    </div>
+
+    <!-- Feature 8 -->
+    <div class="feature-card">
+      <div class="feature-icon">
+        <i class="fas fa-file-pdf"></i>
+      </div>
+      <h3>Professional Export</h3>
+      <p>Generate PDF and CSV reports with comprehensive material breakdowns, cost estimates, and testing schedules. Share directly from the app for project documentation.</p>
+    </div>
+  </div>
+
+  <!-- Key Differentiators -->
+  <div class="differentiators">
+    <h3 style="text-align: center; margin-top: 48px; margin-bottom: 24px;">What Sets TrenchCalc Apart</h3>
+    <div class="diff-grid">
+      <div class="diff-item">
+        <i class="fas fa-check-circle"></i>
+        <span><strong>Engineering Intelligence:</strong> Not just formulas—understands civil engineering workflows and industry standards (ASTM, ACI, Austroads)</span>
+      </div>
+      <div class="diff-item">
+        <i class="fas fa-check-circle"></i>
+        <span><strong>Complete Planning:</strong> Volume + Time + Cost + Quality + Logistics in one app</span>
+      </div>
+      <div class="diff-item">
+        <i class="fas fa-check-circle"></i>
+        <span><strong>Multi-Zone Sophistication:</strong> 7 distinct zones with different materials, geometries, and cement stabilization per zone</span>
+      </div>
+      <div class="diff-item">
+        <i class="fas fa-check-circle"></i>
+        <span><strong>Field-Ready:</strong> Works offline, fast input, visual aids, and safety warnings built-in</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px;">
+    <a href="trenchcalc.html" class="btn btn-primary" style="display: inline-block;">Explore TrenchCalc Features</a>
   </div>
 </div>
 <!-- News -->
