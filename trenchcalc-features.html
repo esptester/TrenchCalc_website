@@ -108,14 +108,19 @@
     }
 
     /* Main */
-    main{max-width:1200px;margin:0 auto;padding:60px 20px;}
+    main{max-width:1400px;margin:0 auto;padding:60px 20px;}
 
     /* Pricing Grid */
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
       margin-bottom: 60px;
+    }
+    @media (min-width: 1200px) {
+      .pricing-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
     }
     .pricing-card {
       background: var(--card);
@@ -146,6 +151,10 @@
       border-radius: 999px;
       font-size: 12px;
       font-weight: 600;
+    }
+    .pricing-card.featured[style*="border-color: #f59e0b"]::before {
+      content: 'BEST VALUE';
+      background: #f59e0b;
     }
     .tier-name {
       font-size: 24px;
@@ -411,6 +420,30 @@
 
       <a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener" class="cta-btn primary">Upgrade to Premium</a>
     </div>
+
+    <!-- MAX Plan -->
+    <div class="pricing-card featured fade-in" style="border-color: #f59e0b;">
+      <h2 class="tier-name">MAX</h2>
+      <div class="tier-price">Pro MAX</div>
+      <div class="tier-period">See pricing in app</div>
+      <p class="tier-description">Complete professional-grade suite with advanced AI features and team collaboration.</p>
+
+      <ul class="feature-list">
+        <li><strong>All Premium features, plus:</strong></li>
+        <li>Unlimited AI Diary Polish</li>
+        <li>100 AI Photo Deblurs/month</li>
+        <li>50 People Removal ops/month</li>
+        <li>5 Photogrammetry jobs/month</li>
+        <li>OSHA Safety Reports</li>
+        <li>Before/After Photo Comparison</li>
+        <li>Batch Photo Enhancement</li>
+        <li>Team Sharing Features</li>
+        <li>Photo Annotations</li>
+        <li>Priority Support</li>
+      </ul>
+
+      <a href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener" class="cta-btn primary">Upgrade to MAX</a>
+    </div>
   </div>
 
   <!-- Feature Comparison Table -->
@@ -424,11 +457,13 @@
             <th>Free</th>
             <th>Basic</th>
             <th>Premium</th>
+            <th>MAX</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td><strong>Core Features</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -438,9 +473,11 @@
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
           <tr>
             <td>Fill type selection</td>
+            <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
@@ -450,9 +487,11 @@
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
           <tr>
             <td><strong>Advanced Calculations</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -462,10 +501,12 @@
             <td><span class="cross">✗</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
           <tr>
             <td>Culvert support & spacing</td>
             <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
@@ -474,15 +515,18 @@
             <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
           <tr>
             <td>Soil testing requirements</td>
             <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
           </tr>
           <tr>
             <td><strong>Project Management</strong></td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -492,9 +536,95 @@
             <td><span class="cross">✗</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>AI Diary Polish</td>
+            <td><span class="cross">✗</span></td>
+            <td>1/day</td>
+            <td>5/day</td>
+            <td><strong>Unlimited</strong></td>
           </tr>
           <tr>
             <td>Construction planner</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Photo & Documentation</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Photo documentation & capture</td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>AI Photo Deblur</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td>30/month</td>
+            <td><strong>100/month</strong></td>
+          </tr>
+          <tr>
+            <td>People Removal from Photos</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><strong>50/month</strong></td>
+          </tr>
+          <tr>
+            <td>Photogrammetry</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><strong>5/month</strong></td>
+          </tr>
+          <tr>
+            <td>OSHA Safety Reports</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Before/After Photo Comparison</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Batch Photo Enhancement</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td>Photo Annotations</td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
+          </tr>
+          <tr>
+            <td><strong>Team & Collaboration</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Team Sharing Features</td>
+            <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
             <td><span class="check">✓</span></td>
@@ -504,9 +634,11 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
           </tr>
           <tr>
             <td>Email support</td>
+            <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
@@ -515,6 +647,7 @@
             <td>Priority support</td>
             <td><span class="cross">✗</span></td>
             <td><span class="cross">✗</span></td>
+            <td><span class="check">✓</span></td>
             <td><span class="check">✓</span></td>
           </tr>
         </tbody>
