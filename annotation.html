@@ -125,6 +125,13 @@
         </div>
 
         <div class="row">
+          <label for="urlInput">Or load by URL</label>
+          <input id="urlInput" type="url" placeholder="https://.../image.jpg">
+          <button id="loadUrlBtn" class="btn">Load URL</button>
+          <div class="muted">Tip: use short‑lived pre‑signed URLs for protected images.</div>
+        </div>
+
+        <div class="row">
           <label for="labelSelect">Label for new boxes</label>
           <select id="labelSelect"></select>
         </div>
@@ -214,6 +221,8 @@
 
     const els = {
       fileInput: document.getElementById('fileInput'),
+      urlInput: document.getElementById('urlInput'),
+      loadUrlBtn: document.getElementById('loadUrlBtn'),
       labelSelect: document.getElementById('labelSelect'),
       imageEl: document.getElementById('imageEl'),
       drawCanvas: document.getElementById('drawCanvas'),
@@ -440,6 +449,24 @@
         img.src = String(url);
       };
       reader.readAsDataURL(file);
+    });
+
+    // Load remote image by URL (supports S3 pre-signed URLs)
+    els.loadUrlBtn.addEventListener('click', () => {
+      const url = (els.urlInput.value || '').trim();
+      if (!url) { alert('Enter an image URL'); return; }
+      const img = new Image();
+      img.onload = () => {
+        naturalWidth = img.naturalWidth;
+        naturalHeight = img.naturalHeight;
+        imageFileName = (new URL(url)).pathname.split('/').pop() || 'image';
+        els.imageEl.src = url;
+        els.imageMeta.textContent = `${imageFileName} — ${naturalWidth}×${naturalHeight}`;
+        boxes = []; selectedId = null;
+        setTimeout(setCanvasSize, 0);
+      };
+      img.onerror = () => alert('Failed to load image URL');
+      img.src = url;
     });
 
     window.addEventListener('resize', setCanvasSize);
