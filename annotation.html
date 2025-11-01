@@ -131,6 +131,29 @@
           <div class="muted">Tip: use short‑lived pre‑signed URLs for protected images.</div>
         </div>
 
+        <div class="row" style="border-top:1px solid #e5e7eb; padding-top:12px;">
+          <strong style="font-size:14px">Backend (optional)</strong>
+          <label for="apiBaseInput">API base URL</label>
+          <input id="apiBaseInput" type="url" placeholder="https://api.engsitetools.com">
+
+          <label for="apiTokenInput">Bearer token (optional)</label>
+          <input id="apiTokenInput" type="text" placeholder="ey... or any token">
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+            <button id="saveApiBtn" class="btn">Save API</button>
+            <button id="clearApiBtn" class="btn">Clear</button>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:8px;">
+            <button id="nextTaskBtn" class="btn">Next Task</button>
+            <button id="submitLabelsBtn" class="btn btn-primary">Submit Labels</button>
+          </div>
+          <div class="muted">Defaults assume endpoints:
+            <div style="font-size:12px; margin-top:4px">GET {base}/annotation/tasks/next → { taskId, imageUrl }</div>
+            <div style="font-size:12px">POST {base}/annotation/tasks/{taskId}/labels</div>
+          </div>
+        </div>
+
         <div class="row">
           <label for="labelSelect">Label for new boxes</label>
           <select id="labelSelect"></select>
@@ -220,6 +243,12 @@
       fileInput: document.getElementById('fileInput'),
       urlInput: document.getElementById('urlInput'),
       loadUrlBtn: document.getElementById('loadUrlBtn'),
+      apiBaseInput: document.getElementById('apiBaseInput'),
+      apiTokenInput: document.getElementById('apiTokenInput'),
+      saveApiBtn: document.getElementById('saveApiBtn'),
+      clearApiBtn: document.getElementById('clearApiBtn'),
+      nextTaskBtn: document.getElementById('nextTaskBtn'),
+      submitLabelsBtn: document.getElementById('submitLabelsBtn'),
       labelSelect: document.getElementById('labelSelect'),
       imageEl: document.getElementById('imageEl'),
       drawCanvas: document.getElementById('drawCanvas'),
@@ -247,6 +276,31 @@
     let isDrawing = false;
     let boxes = []; // { id, rect:{left,top,width,height} normalized, label, createdAt }
     let selectedId = null;
+    let currentTaskId = null; // from backend "next task"
+
+    // API config
+    const cfg = {
+      base: '',
+      token: ''
+    };
+    function loadApiCfg(){
+      try {
+        cfg.base = localStorage.getItem('anno_api_base') || '';
+        cfg.token = localStorage.getItem('anno_api_token') || '';
+      } catch(e){}
+      els.apiBaseInput.value = cfg.base;
+      els.apiTokenInput.value = cfg.token;
+    }
+    function saveApiCfg(){
+      cfg.base = (els.apiBaseInput.value||'').replace(/\/$/,'');
+      cfg.token = els.apiTokenInput.value||'';
+      try {
+        localStorage.setItem('anno_api_base', cfg.base);
+        localStorage.setItem('anno_api_token', cfg.token);
+      } catch(e){}
+      status('API settings saved');
+    }
+    loadApiCfg();
 
     // Utilities
     const uid = () => Date.now().toString() + Math.floor(Math.random()*1000);
@@ -529,6 +583,72 @@
     els.copyBtn.addEventListener('click', copyJson);
     els.clearBtn.addEventListener('click', () => { boxes = []; selectedId = null; redraw(); renderBoxesList(); status('Cleared'); });
     els.deleteSelectedBtn.addEventListener('click', () => { if (!selectedId) return; boxes = boxes.filter(b => b.id !== selectedId); selectedId = null; redraw(); renderBoxesList(); });
+
+    // API UI events
+    els.saveApiBtn.addEventListener('click', saveApiCfg);
+    els.clearApiBtn.addEventListener('click', () => {
+      els.apiBaseInput.value = '';
+      els.apiTokenInput.value = '';
+      saveApiCfg();
+    });
+
+    async function getJson(url, opts){
+      const headers = { 'Accept':'application/json' };
+      if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
+      const res = await fetch(url, { method:'GET', headers, ...opts });
+      if (!res.ok) throw new Error(`GET ${url} ${res.status}`);
+      return await res.json();
+    }
+    async function postJson(url, body){
+      const headers = { 'Content-Type':'application/json', 'Accept':'application/json' };
+      if (cfg.token) headers['Authorization'] = `Bearer ${cfg.token}`;
+      const res = await fetch(url, { method:'POST', headers, body: JSON.stringify(body) });
+      if (!res.ok) throw new Error(`POST ${url} ${res.status}`);
+      return await res.json().catch(()=>({ ok:true }));
+    }
+
+    async function loadNextTask(){
+      if (!cfg.base){ alert('Set API base URL first'); return; }
+      try {
+        status('Loading next task...');
+        const data = await getJson(`${cfg.base}/annotation/tasks/next`);
+        if (!data || !data.imageUrl){ status('No tasks available'); return; }
+        currentTaskId = data.taskId || null;
+        els.urlInput.value = data.imageUrl;
+        // Reuse URL loader to render
+        els.loadUrlBtn.click();
+        status(`Loaded task ${currentTaskId||''}`.trim());
+      } catch(err){
+        console.error(err); alert('Failed to load next task. Check CORS and URL.'); status('');
+      }
+    }
+
+    async function submitLabels(){
+      if (!cfg.base){ alert('Set API base URL first'); return; }
+      if (!currentTaskId){ alert('Load a task first'); return; }
+      if (!els.imageEl.src){ alert('No image loaded'); return; }
+      const payload = {
+        taskId: currentTaskId,
+        annotation: {
+          imageId: imageFileName || 'image',
+          imagePath: imageFileName || 'image',
+          imageSize: { width: naturalWidth, height: naturalHeight },
+          boundingBoxes: boxes,
+          createdAt: new Date().toISOString(),
+          lastModified: new Date().toISOString()
+        }
+      };
+      try {
+        status('Submitting labels...');
+        await postJson(`${cfg.base}/annotation/tasks/${encodeURIComponent(currentTaskId)}/labels`, payload);
+        status('Submitted.');
+        // Auto-next
+        setTimeout(loadNextTask, 300);
+      } catch(err){ console.error(err); alert('Submit failed. Check API and CORS.'); status(''); }
+    }
+
+    els.nextTaskBtn.addEventListener('click', loadNextTask);
+    els.submitLabelsBtn.addEventListener('click', submitLabels);
 
   })();
   </script>
