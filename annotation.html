@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Annotation Lab — TrenchCalc</title>
+  <meta name="robots" content="noindex, nofollow" />
 
   <meta name="description" content="Label bounding boxes on images and export annotations in TrenchCalc JSON format." />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -105,7 +106,13 @@
     </div>
   </header>
 
-  <main>
+  <div id="gate" class="panel" style="display:none; max-width:700px; margin: 20px auto;">
+    <h2 style="margin-top:0">Restricted</h2>
+    <p class="muted">Admin-only. Open this page via the signed admin link (with token) or from localhost for development.</p>
+    <p class="muted">For secure production access, use an access proxy (e.g., Cloudflare Access) or Cognito-protected admin portal.</p>
+  </div>
+
+  <main id="appMain">
     <h1 style="margin:0 0 6px">Annotation Lab</h1>
     <p class="muted" style="margin:0 0 12px">Draw bounding boxes on images and export annotations in TrenchCalc JSON format.</p>
 
@@ -167,6 +174,20 @@
 
   <script>
   (function(){
+    // Simple front-end gate (not real security). Allows access on localhost or with a token param 't'.
+    const isLocal = ['localhost','127.0.0.1'].includes(location.hostname);
+    const params = new URLSearchParams(location.search);
+    const hasToken = params.has('t');
+    if (hasToken) { try { sessionStorage.setItem('anno_auth','1'); } catch(e){} }
+    const sessionAllowed = (()=>{ try { return sessionStorage.getItem('anno_auth')==='1'; } catch(e){ return false; }})();
+    const authorized = isLocal || hasToken || sessionAllowed;
+    if (!authorized) {
+      const gate = document.getElementById('gate');
+      if (gate) gate.style.display = 'block';
+      const app = document.getElementById('appMain');
+      if (app) app.style.display = 'none';
+      return;
+    }
     // Label definitions mirrored from TrenchObjectLabels in app
     const LABELS = {
       infrastructure: ['pipe','headwall','manhole','valve','fitting'],
