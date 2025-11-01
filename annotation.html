@@ -188,13 +188,10 @@
     if (hasToken) { try { sessionStorage.setItem('anno_auth','1'); } catch(e){} }
     const sessionAllowed = (()=>{ try { return sessionStorage.getItem('anno_auth')==='1'; } catch(e){ return false; }})();
     const authorized = isLocal || hasToken || sessionAllowed;
-    if (!authorized) {
-      const gate = document.getElementById('gate');
-      if (gate) gate.style.display = 'block';
-      const app = document.getElementById('appMain');
-      if (app) app.style.display = 'none';
-      return;
-    }
+    if (!authorized) { location.href = 'login.html?next=' + encodeURIComponent('annotation.html'); return; }
+    // Logout helper
+    function logout(){ try { sessionStorage.removeItem('anno_auth'); } catch(e){} location.href = 'login.html'; }
+
     // Label definitions mirrored from TrenchObjectLabels in app
     const LABELS = {
       infrastructure: ['pipe','headwall','manhole','valve','fitting'],
