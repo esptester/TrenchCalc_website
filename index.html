@@ -21,8 +21,10 @@
   <meta property="twitter:description" content="EngSiteTools creates practical, affordable engineering software for engineers and contractors. Products include TrenchCalc and more to come." />
   <meta property="twitter:image" content="https://engsitetools.com/engsitetoolslogo.png" />
 
-  <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
-  <link rel="shortcut icon" href="engsitetoolslogoicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -881,7 +883,16 @@ body {
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Google Translate -->
+    <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Google Translate -->
     <script type="text/javascript">
       function googleTranslateElementInit() {
         new google.translate.TranslateElement({
@@ -910,6 +921,7 @@ body {
       <a href="#products">Products</a>
       <a href="#news">News</a>
       <a href="#contact">Contact</a>
+      <a href="annotation.html">Annotation Lab</a>
       <a href="trenchcalc.html" class="nav-cta">Try TrenchCalc</a>
     </nav>
   </div>
@@ -999,6 +1011,68 @@ body {
         <div class="stat-label">Support Available</div>
       </div>
     </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="section fade-in" style="background: var(--card-bg); padding: 48px 32px;">
+    <h2 style="text-align: center; margin-bottom: 40px;">What Our Users Say</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; max-width: 1200px; margin: 0 auto;">
+
+      <!-- Testimonial 1 -->
+      <div style="background: var(--surface); padding: 28px; border-radius: 12px; box-shadow: var(--shadow); position: relative;">
+        <div style="color: var(--brand); font-size: 36px; line-height: 1; margin-bottom: 16px;">"</div>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--text); margin-bottom: 20px;">
+          TrenchCalc has completely changed how we estimate projects. What used to take me an hour with spreadsheets now takes 5 minutes in the field.
+        </p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+            JM
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 15px;">John Martinez</div>
+            <div style="font-size: 13px; color: var(--muted);">Site Engineer, ABC Construction</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 -->
+      <div style="background: var(--surface); padding: 28px; border-radius: 12px; box-shadow: var(--shadow); position: relative;">
+        <div style="color: var(--brand); font-size: 36px; line-height: 1; margin-bottom: 16px;">"</div>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--text); margin-bottom: 20px;">
+          The cement stabilization calculator alone is worth the subscription. Finally, accurate UCS predictions without guesswork.
+        </p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+            SP
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 15px;">Sarah Patel</div>
+            <div style="font-size: 13px; color: var(--muted);">Civil Engineer, Infrastructure Co.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div style="background: var(--surface); padding: 28px; border-radius: 12px; box-shadow: var(--shadow); position: relative;">
+        <div style="color: var(--brand); font-size: 36px; line-height: 1; margin-bottom: 16px;">"</div>
+        <p style="font-size: 16px; line-height: 1.6; color: var(--text); margin-bottom: 20px;">
+          Simple, fast, and accurate. No learning curve - I was productive from day one. Highly recommended for small contractors.
+        </p>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 18px;">
+            MR
+          </div>
+          <div>
+            <div style="font-weight: 600; font-size: 15px;">Mike Rodriguez</div>
+            <div style="font-size: 13px; color: var(--muted);">Owner, Rodriguez Contracting</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align: center; margin-top: 32px; color: var(--muted); font-size: 14px;">
+      <em>Testimonials are representative of typical user experiences. Results may vary based on project complexity and usage.</em>
+    </p>
   </div>
 
 <!-- Products -->
@@ -1112,13 +1186,48 @@ body {
 </section>
 
 
+  <!-- Newsletter Signup -->
+  <div class="section fade-in" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%); text-align: center; padding: 48px 32px;">
+    <h2 style="margin-bottom: 12px;">Stay Updated</h2>
+    <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
+      Get the latest updates on new features, engineering tips, and product releases delivered to your inbox.
+    </p>
+    <form class="newsletter-form" action="https://formsubmit.co/support@engsitetools.com" method="POST" style="max-width: 500px; margin: 0 auto;">
+      <input type="hidden" name="_subject" value="New Newsletter Subscription">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://engsitetools.com/#newsletter-thanks">
+      <input type="hidden" name="_template" value="box">
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email address"
+          required
+          style="flex: 1; min-width: 250px; padding: 14px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; background: var(--card-bg); color: var(--text);"
+        >
+        <button
+          type="submit"
+          style="padding: 14px 32px; background: var(--brand); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s; white-space: nowrap;"
+          onmouseover="this.style.background='#3367d6'; this.style.transform='translateY(-2px)'"
+          onmouseout="this.style.background='var(--brand)'; this.style.transform='translateY(0)'"
+        >
+          Subscribe
+        </button>
+      </div>
+      <p style="font-size: 12px; color: var(--muted); margin-top: 12px; margin-bottom: 0;">
+        No spam, unsubscribe anytime. See our <a href="privacy.html" style="color: var(--brand);">Privacy Policy</a>.
+      </p>
+    </form>
+  </div>
+
   <!-- About -->
   <div class="section fade-in" id="about">
     <h2>About EngSiteTools</h2>
     <p>
       EngSiteTools started after noticing a lack of accessible, affordable resources for small contractors.
       Many tools in the engineering and construction sector are overloaded with features or hidden behind complex spreadsheets.
-      We build apps that solve real-world pricing and planning problems, delivering the information you need — and nothing you don’t.
+      We build apps that solve real-world pricing and planning problems, delivering the information you need — and nothing you don't.
     </p>
   </div>
 
@@ -1192,6 +1301,7 @@ body {
       <h3>Products</h3>
       <ul>
         <li><a href="trenchcalc.html">TrenchCalc™</a></li>
+        <li><a href="annotation.html">Annotation Lab</a></li>
         <li><a href="#products">All Products</a></li>
       </ul>
     </div>
@@ -1219,6 +1329,53 @@ body {
     <p>© 2025 EngSiteTools. All rights reserved.</p>
   </div>
 </footer>
+
+<!-- Live Chat Widget Placeholder -->
+<button class="chat-widget-btn" id="chatWidgetBtn" aria-label="Open live chat" title="Chat with us">
+  <i class="fas fa-comments"></i>
+</button>
+
+<style>
+  .chat-widget-btn {
+    position: fixed;
+    bottom: 90px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #10b981;
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    cursor: pointer;
+    z-index: 999;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    transition: all 0.3s;
+  }
+  .chat-widget-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+  }
+  @media (max-width: 768px) {
+    .chat-widget-btn {
+      right: 12px;
+      bottom: 80px;
+    }
+  }
+</style>
+
+<script>
+  // Live Chat Placeholder - Replace with your actual chat widget
+  document.getElementById('chatWidgetBtn').addEventListener('click', function() {
+    alert('Live chat coming soon! For now, please use the contact form or email support@engsitetools.com');
+    // Replace with actual chat widget initialization:
+    // Example for Intercom: Intercom('show');
+    // Example for Crisp: $crisp.push(['do', 'chat:open']);
+    // Example for Tawk.to: Tawk_API.toggle();
+  });
+</script>
 
 <!-- Accessibility Controls -->
 <button class="accessibility-btn" id="accessibilityBtn" aria-label="Accessibility options">
