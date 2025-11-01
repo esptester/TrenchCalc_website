@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Roadmap — EngSiteTools</title>
+  <meta name="description" content="See what's planned for TrenchCalc and other EngSiteTools products. Upcoming features, releases, and improvements." />
+  <meta name="theme-color" content="#121212" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
+  <link rel="shortcut icon" href="engsitetoolslogoicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card-bg: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --brand: #4285f4;
+      --surface: #f5f5f5;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --info: #667eea;
+      --radius: 8px;
+      --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --card-bg: #1e1e1e;
+        --text: #f5f5f5;
+        --muted: #aaa;
+        --surface: #121212;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-section h1 { margin: 0; font-size: 24px; font-weight: 600; }
+    nav { margin: 0; display: flex; align-items: center; gap: 24px; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 0.8; }
+    .nav-cta {
+      background: var(--brand);
+      padding: 8px 20px;
+      border-radius: 6px;
+      color: white !important;
+    }
+    .nav-cta:hover {
+      background: #3367d6;
+      opacity: 1 !important;
+    }
+
+    /* Main Content */
+    main { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+    .hero-section {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+    .hero-section h1 {
+      font-size: 42px;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    .hero-section p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Timeline */
+    .roadmap-timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+
+    /* Phase Section */
+    .phase-section {
+      margin-bottom: 60px;
+    }
+    .phase-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .phase-badge {
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .phase-badge.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+    }
+    .phase-badge.in-progress {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--warning);
+    }
+    .phase-badge.planned {
+      background: rgba(102, 126, 234, 0.15);
+      color: var(--info);
+    }
+    .phase-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border-left: 4px solid;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+    }
+    .feature-card.completed {
+      border-color: var(--success);
+    }
+    .feature-card.in-progress {
+      border-color: var(--warning);
+    }
+    .feature-card.planned {
+      border-color: var(--info);
+    }
+    .feature-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .feature-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+      flex: 1;
+    }
+    .feature-status {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+    .feature-status.completed {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--success);
+    }
+    .feature-status.in-progress {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--warning);
+    }
+    .feature-status.planned {
+      background: rgba(102, 126, 234, 0.15);
+      color: var(--info);
+    }
+    .feature-description {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 0 0 12px;
+    }
+    .feature-meta {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .feature-meta i {
+      margin-right: 4px;
+      color: var(--brand);
+    }
+
+    /* CTA Section */
+    .feedback-cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 48px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-top: 60px;
+    }
+    .feedback-cta h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+    }
+    .feedback-cta p {
+      margin: 0 0 24px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 60px 20px 30px;
+      margin-top: 60px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-section li {
+      margin-bottom: 10px;
+    }
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #fff;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 { font-size: 32px; }
+      .phase-header { flex-direction: column; align-items: flex-start; }
+      .feature-header { flex-direction: column; }
+      .feature-status { margin-left: 0; margin-top: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo-section">
+      <h1>EngSiteTools</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="trenchcalc.html" class="nav-cta">Try TrenchCalc</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Product Roadmap</h1>
+    <p>See what we're building next for TrenchCalc and the EngSiteTools ecosystem</p>
+  </div>
+
+  <div class="roadmap-timeline">
+
+    <!-- Q1 2025 - Completed -->
+    <div class="phase-section">
+      <div class="phase-header">
+        <span class="phase-badge completed"><i class="fas fa-check-circle"></i> Completed</span>
+        <h2 class="phase-title">Q1 2025 — Foundation & Launch</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card completed">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-rocket"></i> TrenchCalc Android Launch</h3>
+            <span class="feature-status completed">Completed</span>
+          </div>
+          <p class="feature-description">
+            Initial public release on Google Play with core volume calculations, benching, and culvert support
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Released Jan 2025</span>
+            <span><i class="fas fa-tag"></i> v1.0</span>
+          </div>
+        </div>
+
+        <div class="feature-card completed">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-flask"></i> Cement Stabilization Calculator</h3>
+            <span class="feature-status completed">Completed</span>
+          </div>
+          <p class="feature-description">
+            UCS prediction engine with 7-day and 28-day strength projections based on ASTM standards
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Released Feb 2025</span>
+          </div>
+        </div>
+
+        <div class="feature-card completed">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-file-pdf"></i> PDF/CSV Export</h3>
+            <span class="feature-status completed">Completed</span>
+          </div>
+          <p class="feature-description">
+            Professional report generation with material breakdowns, cost estimates, and project details
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Released Mar 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 2025 - In Progress -->
+    <div class="phase-section">
+      <div class="phase-header">
+        <span class="phase-badge in-progress"><i class="fas fa-spinner"></i> In Progress</span>
+        <h2 class="phase-title">Q2 2025 — AI & Collaboration</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card in-progress">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-robot"></i> AI Diary Polish (MAX Tier)</h3>
+            <span class="feature-status in-progress">In Development</span>
+          </div>
+          <p class="feature-description">
+            AI-powered site diary enhancement using OpenAI to improve grammar, clarity, and professional tone
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Apr 2025</span>
+            <span><i class="fas fa-users"></i> MAX subscribers</span>
+          </div>
+        </div>
+
+        <div class="feature-card in-progress">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-camera"></i> Photo Documentation Tools</h3>
+            <span class="feature-status in-progress">In Development</span>
+          </div>
+          <p class="feature-description">
+            In-app photo capture with annotations, measurements, and automatic organization by project
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected May 2025</span>
+          </div>
+        </div>
+
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-users-cog"></i> Team Collaboration Features</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Shared projects, role-based permissions, and real-time sync for teams working on the same site
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Jun 2025</span>
+            <span><i class="fas fa-users"></i> MAX subscribers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 2025 - Planned -->
+    <div class="phase-section">
+      <div class="phase-header">
+        <span class="phase-badge planned"><i class="fas fa-map"></i> Planned</span>
+        <h2 class="phase-title">Q3 2025 — iOS & Expansion</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fab fa-apple"></i> TrenchCalc iOS Launch</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Full-featured iOS version with feature parity to Android, available on the App Store
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Jul 2025</span>
+          </div>
+        </div>
+
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-chart-line"></i> Advanced Analytics Dashboard</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Project history analytics, cost trends, material usage insights, and productivity metrics
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Aug 2025</span>
+          </div>
+        </div>
+
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-plug"></i> Third-Party Integrations</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Connect with project management tools (Procore, Fieldwire), accounting software (QuickBooks), and more
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Sep 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 2025 - Planned -->
+    <div class="phase-section">
+      <div class="phase-header">
+        <span class="phase-badge planned"><i class="fas fa-lightbulb"></i> Planned</span>
+        <h2 class="phase-title">Q4 2025 — New Products</h2>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-cubes"></i> Material Takeoff Tool</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            New standalone app for construction material quantity takeoffs with blueprint markup and estimation
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Oct 2025</span>
+            <span><i class="fas fa-tag"></i> New Product</span>
+          </div>
+        </div>
+
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-clipboard-check"></i> Safety Inspection App</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Digital safety checklists, hazard reporting, and compliance documentation for site supervisors
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Nov 2025</span>
+            <span><i class="fas fa-tag"></i> New Product</span>
+          </div>
+        </div>
+
+        <div class="feature-card planned">
+          <div class="feature-header">
+            <h3 class="feature-title"><i class="fas fa-desktop"></i> Web Dashboard</h3>
+            <span class="feature-status planned">Planned</span>
+          </div>
+          <p class="feature-description">
+            Browser-based project management dashboard for office use with advanced reporting and team oversight
+          </p>
+          <div class="feature-meta">
+            <span><i class="fas fa-calendar"></i> Expected Dec 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Feedback CTA -->
+  <div class="feedback-cta">
+    <h2>Help Shape Our Roadmap</h2>
+    <p>Have a feature request or suggestion? We'd love to hear from you!</p>
+    <a href="index.html#contact" class="btn">Submit Feedback</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section footer-brand">
+      <h3>EngSiteTools</h3>
+      <p>Practical, affordable engineering software for professionals and small teams.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Products</h3>
+      <ul>
+        <li><a href="trenchcalc.html">TrenchCalc™</a></li>
+        <li><a href="index.html#products">All Products</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="roadmap.html">Roadmap</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="trenchcalc-privacy.html">Privacy Policy</a></li>
+        <li><a href="trenchcalc-terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

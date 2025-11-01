@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://engsitetools.com/</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- TrenchCalc Product Page -->
+  <url>
+    <loc>https://engsitetools.com/trenchcalc.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- TrenchCalc Features & Pricing -->
+  <url>
+    <loc>https://engsitetools.com/trenchcalc-features.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Help Center -->
+  <url>
+    <loc>https://engsitetools.com/help.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Product Roadmap -->
+  <url>
+    <loc>https://engsitetools.com/roadmap.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://engsitetools.com/trenchcalc-privacy.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/trenchcalc-terms.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/privacy.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- News/Blog Articles -->
+  <url>
+    <loc>https://engsitetools.com/news-beta-invites.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/news-performance-ui-polish.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/news-faster-planning-in-the-field.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/news-culvert-spacing-checks.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/news-trench-volume-field-guide.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+</urlset>
