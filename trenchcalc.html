@@ -20,16 +20,24 @@
   <meta name="twitter:image" content="https://engsitetools.com/screenshots/trenchcalc-og-1200x630.jpg">
 
   <!-- Favicons -->
-  <link rel="icon" href="trenchcalc-logo-no-text.svg" type="image/svg+xml">
-  <link rel="icon" href="trenchcalc-logo-32.png" sizes="32x32" type="image/png">
-  <link rel="icon" href="trenchcalc-logo-192.png" sizes="192x192" type="image/png">
-  <link rel="apple-touch-icon" href="trenchcalc-logo-192.png">
-  <link rel="shortcut icon" href="trenchcalc-logo-32.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
 
   <style>
     /* Feature card icons */
@@ -394,6 +402,171 @@
       color: var(--muted);
     }
 
+    /* ROI Calculator */
+    .roi-calculator {
+      margin-top: 40px;
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+      border-radius: var(--radius);
+      padding: 48px 32px;
+    }
+    .roi-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .roi-header h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .roi-header p {
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .roi-inputs {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 32px;
+    }
+    .roi-input-group {
+      margin-bottom: 20px;
+    }
+    .roi-input-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+    .roi-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .roi-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      background: var(--card);
+      color: var(--ink);
+    }
+    @media (prefers-color-scheme: dark) {
+      .roi-input { border-color: #444; }
+    }
+    .roi-input:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+    .roi-unit {
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .roi-results {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .roi-result-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .roi-result-value {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+    .roi-result-label {
+      font-size: 14px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .roi-disclaimer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Screenshots Gallery */
+    .screenshots-section {
+      margin-top: 40px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .screenshots-section h2 {
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+    .screenshots-section p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      font-size: 18px;
+    }
+    .screenshots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .screenshot-card {
+      background: var(--surface);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .screenshot-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+    }
+    .screenshot-img {
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: linear-gradient(135deg, #e8e8e8, #d5d5d5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 14px;
+      position: relative;
+    }
+    @media (prefers-color-scheme: dark){
+      .screenshot-img { background: linear-gradient(135deg, #2a2a2a, #1f1f1f); }
+    }
+    .screenshot-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .screenshot-caption {
+      padding: 16px;
+      text-align: center;
+    }
+    .screenshot-caption h4 {
+      margin: 0 0 4px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .screenshot-caption p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
     /* Enhanced Footer */
     footer {
       background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
@@ -677,10 +850,149 @@
       </div>
     </section>
 
+    <!-- ROI Calculator -->
+    <section class="roi-calculator fade-in" aria-label="ROI Calculator">
+      <div class="roi-header">
+        <h2>Calculate Your Savings with TrenchCalc</h2>
+        <p>See how much time and money you could save by switching from spreadsheets</p>
+      </div>
+
+      <div class="roi-inputs">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+
+          <div class="roi-input-group">
+            <label for="projectsPerMonth">Projects per Month</label>
+            <div class="roi-input-wrapper">
+              <input type="number" id="projectsPerMonth" class="roi-input" value="10" min="1" max="100">
+              <span class="roi-unit">projects</span>
+            </div>
+          </div>
+
+          <div class="roi-input-group">
+            <label for="timePerProject">Time per Calculation (old method)</label>
+            <div class="roi-input-wrapper">
+              <input type="number" id="timePerProject" class="roi-input" value="45" min="5" max="300">
+              <span class="roi-unit">minutes</span>
+            </div>
+          </div>
+
+          <div class="roi-input-group">
+            <label for="hourlyRate">Your Hourly Rate</label>
+            <div class="roi-input-wrapper">
+              <span class="roi-unit">$</span>
+              <input type="number" id="hourlyRate" class="roi-input" value="75" min="20" max="300" step="5">
+              <span class="roi-unit">/ hour</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="roi-results">
+        <div class="roi-result-card">
+          <div class="roi-result-value" id="timeSaved">75</div>
+          <div class="roi-result-label">Hours Saved / Month</div>
+        </div>
+
+        <div class="roi-result-card">
+          <div class="roi-result-value" id="moneySaved">$5,625</div>
+          <div class="roi-result-label">Money Saved / Month</div>
+        </div>
+
+        <div class="roi-result-card">
+          <div class="roi-result-value" id="yearlyROI">$67,500</div>
+          <div class="roi-result-label">Annual Savings</div>
+        </div>
+
+        <div class="roi-result-card">
+          <div class="roi-result-value" id="paybackTime">< 1</div>
+          <div class="roi-result-label">Days to Pay Back</div>
+        </div>
+      </div>
+
+      <p class="roi-disclaimer">
+        * Calculations assume TrenchCalc reduces calculation time to 5 minutes per project. Actual savings may vary based on project complexity and user experience. Annual subscription cost factored into payback calculation.
+      </p>
+    </section>
+
     <!-- Social proof / testimonial placeholder -->
     <section class="card fade-in" style="margin-top:20px" aria-label="Social proof">
       <h3>Built with crews in mind</h3>
       <p class="muted">"We needed a quick, no-nonsense calculator on the job. TrenchCalc saves time every pour." — <em>Site Engineer</em></p>
+    </section>
+
+    <!-- Screenshots Gallery -->
+    <section class="screenshots-section fade-in" aria-label="App Screenshots">
+      <h2>See TrenchCalc in Action</h2>
+      <p>Explore the interface and features that make trench calculations simple and accurate</p>
+
+      <div class="screenshots-grid">
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>Main Calculator</span>
+            <!-- Replace with: <img src="screenshots/main-calculator.png" alt="TrenchCalc main calculator interface"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>Main Calculator</h4>
+            <p>Intuitive input for all trench dimensions</p>
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>Volume Results</span>
+            <!-- Replace with: <img src="screenshots/volume-results.png" alt="Volume calculation results"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>Volume Results</h4>
+            <p>Instant calculations with clear breakdowns</p>
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>Cement Stabilization</span>
+            <!-- Replace with: <img src="screenshots/cement-stabilization.png" alt="Cement stabilization calculator"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>Cement Stabilization</h4>
+            <p>UCS predictions and mix design</p>
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>Cost Estimation</span>
+            <!-- Replace with: <img src="screenshots/cost-estimation.png" alt="Cost estimation feature"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>Cost Estimation</h4>
+            <p>Professional project pricing</p>
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>Project Manager</span>
+            <!-- Replace with: <img src="screenshots/project-manager.png" alt="Save and load projects"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>Project Manager</h4>
+            <p>Save and organize your calculations</p>
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <div class="screenshot-img">
+            <span>[Screenshot Placeholder]<br>PDF Export</span>
+            <!-- Replace with: <img src="screenshots/pdf-export.png" alt="Professional PDF reports"> -->
+          </div>
+          <div class="screenshot-caption">
+            <h4>PDF Export</h4>
+            <p>Generate professional reports</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Company framing -->
@@ -828,6 +1140,46 @@
   }, observerOptions);
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ROI Calculator
+  function calculateROI() {
+    const projectsPerMonth = parseFloat(document.getElementById('projectsPerMonth').value) || 0;
+    const timePerProject = parseFloat(document.getElementById('timePerProject').value) || 0;
+    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+
+    // Assumptions
+    const trenchCalcTimePerProject = 5; // minutes
+    const annualSubscriptionCost = 500; // estimated annual cost (Premium tier)
+
+    // Calculate time saved per project
+    const timeSavedPerProject = timePerProject - trenchCalcTimePerProject;
+
+    // Calculate monthly savings
+    const hoursPerMonth = (timeSavedPerProject * projectsPerMonth) / 60;
+    const moneySavedPerMonth = hoursPerMonth * hourlyRate;
+    const annualSavings = (moneySavedPerMonth * 12) - annualSubscriptionCost;
+
+    // Calculate payback time in days
+    const dailySavings = moneySavedPerMonth / 30;
+    const paybackDays = dailySavings > 0 ? Math.ceil(annualSubscriptionCost / dailySavings) : 999;
+
+    // Update UI
+    document.getElementById('timeSaved').textContent = Math.round(hoursPerMonth);
+    document.getElementById('moneySaved').textContent = '$' + Math.round(moneySavedPerMonth).toLocaleString();
+    document.getElementById('yearlyROI').textContent = '$' + Math.round(annualSavings).toLocaleString();
+    document.getElementById('paybackTime').textContent = paybackDays < 1 ? '< 1' : paybackDays;
+  }
+
+  // Attach event listeners
+  document.getElementById('projectsPerMonth').addEventListener('input', calculateROI);
+  document.getElementById('timePerProject').addEventListener('input', calculateROI);
+  document.getElementById('hourlyRate').addEventListener('input', calculateROI);
+
+  // Initial calculation
+  calculateROI();
   </script>
+
+  <script src="crisp-config.js"></script>
+  <script src="crisp-loader.js" async></script>
 </body>
 </html>

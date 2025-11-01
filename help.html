@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Help Center — EngSiteTools</title>
+  <meta name="description" content="Help Center and FAQ for EngSiteTools products including TrenchCalc. Find answers to common questions and troubleshooting guides." />
+  <meta name="theme-color" content="#121212" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="engsitetoolslogo.png" sizes="512x512">
+  <link rel="shortcut icon" href="engsitetoolslogoicon.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics - Replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg: #121212;
+      --card-bg: #ffffff;
+      --text: #222;
+      --muted: #555;
+      --brand: #4285f4;
+      --surface: #f5f5f5;
+      --radius: 8px;
+      --shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --card-bg: #1e1e1e;
+        --text: #f5f5f5;
+        --muted: #aaa;
+        --surface: #121212;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-section h1 { margin: 0; font-size: 24px; font-weight: 600; }
+    nav { margin: 0; display: flex; align-items: center; gap: 24px; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 0.8; }
+    .nav-cta {
+      background: var(--brand);
+      padding: 8px 20px;
+      border-radius: 6px;
+      color: white !important;
+    }
+    .nav-cta:hover {
+      background: #3367d6;
+      opacity: 1 !important;
+    }
+
+    /* Main Content */
+    main { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+
+    .hero-section {
+      text-align: center;
+      padding: 60px 20px 40px;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+    }
+    .hero-section h1 {
+      font-size: 42px;
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+    .hero-section p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Search Box */
+    .search-box {
+      max-width: 600px;
+      margin: 32px auto 0;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 16px 48px 16px 20px;
+      border: 2px solid #ddd;
+      border-radius: 12px;
+      font-size: 16px;
+      font-family: 'Inter', sans-serif;
+      background: var(--card-bg);
+      color: var(--text);
+      transition: border-color 0.2s;
+    }
+    @media (prefers-color-scheme: dark) {
+      .search-box input { border-color: #444; }
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+    .search-box i {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    /* Categories */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    .category-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+    }
+    .category-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    .category-icon {
+      font-size: 48px;
+      color: var(--brand);
+      margin-bottom: 16px;
+    }
+    .category-card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+    .category-card p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 32px;
+      margin-bottom: 30px;
+    }
+    .faq-section h2 {
+      margin: 0 0 24px;
+      font-size: 28px;
+    }
+
+    /* Accordion */
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+    }
+    @media (prefers-color-scheme: dark) {
+      .faq-item { border-bottom-color: #444; }
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      user-select: none;
+      padding: 8px 0;
+    }
+    .faq-question:hover {
+      color: var(--brand);
+    }
+    .faq-icon {
+      font-size: 20px;
+      color: var(--brand);
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      color: var(--muted);
+      padding-left: 0;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding-top: 12px;
+    }
+
+    /* Contact CTA */
+    .contact-cta {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-align: center;
+      padding: 48px 32px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .contact-cta h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+    }
+    .contact-cta p {
+      margin: 0 0 24px;
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    .btn {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 60px 20px 30px;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-section h3 {
+      font-size: 18px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .footer-section li {
+      margin-bottom: 10px;
+    }
+    .footer-section a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-section a:hover {
+      color: #fff;
+    }
+    .footer-brand p {
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section h1 { font-size: 32px; }
+      .categories { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="logo-section">
+      <h1>EngSiteTools</h1>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="help.html">Help Center</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="trenchcalc.html" class="nav-cta">Try TrenchCalc</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <div class="hero-section">
+    <h1>Help Center</h1>
+    <p>Find answers, guides, and support for EngSiteTools products</p>
+
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search for help articles...">
+      <i class="fas fa-search"></i>
+    </div>
+  </div>
+
+  <!-- Category Cards -->
+  <div class="categories">
+    <a href="#getting-started" class="category-card">
+      <div class="category-icon">
+        <i class="fas fa-rocket"></i>
+      </div>
+      <h3>Getting Started</h3>
+      <p>Learn the basics and setup</p>
+    </a>
+
+    <a href="#trenchcalc-faq" class="category-card">
+      <div class="category-icon">
+        <i class="fas fa-calculator"></i>
+      </div>
+      <h3>TrenchCalc</h3>
+      <p>Features and calculations</p>
+    </a>
+
+    <a href="#account-billing" class="category-card">
+      <div class="category-icon">
+        <i class="fas fa-credit-card"></i>
+      </div>
+      <h3>Account & Billing</h3>
+      <p>Subscriptions and payments</p>
+    </a>
+
+    <a href="#troubleshooting" class="category-card">
+      <div class="category-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <h3>Troubleshooting</h3>
+      <p>Fix common issues</p>
+    </a>
+  </div>
+
+  <!-- Getting Started FAQ -->
+  <div class="faq-section" id="getting-started">
+    <h2><i class="fas fa-rocket"></i> Getting Started</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How do I download TrenchCalc?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>TrenchCalc is available on the Google Play Store for Android devices. Search for "TrenchCalc" or visit our product page and click the download button. iOS version coming soon!</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is there a free version available?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Yes! TrenchCalc offers a free tier with basic trench volume calculations. You can upgrade to Pro tiers for advanced features like cement stabilization, testing schedules, and AI-powered tools.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What are the system requirements?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>TrenchCalc requires Android 7.0 or higher. The app works offline and requires minimal storage space (less than 50MB). An internet connection is needed for cloud sync and premium features.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TrenchCalc FAQ -->
+  <div class="faq-section" id="trenchcalc-faq">
+    <h2><i class="fas fa-calculator"></i> TrenchCalc</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How accurate are the volume calculations?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>TrenchCalc uses industry-standard formulas based on ASTM and ACI standards. Calculations account for trench geometry, compaction factors, and material properties. Results are suitable for professional estimates and project planning.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Can I use TrenchCalc for complex trench geometries?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Yes! TrenchCalc supports vertical walls, battered walls, benched configurations, and stepped geometries. You can define multiple zones (foundation, bed, haunch, side fill, overlay) with different materials and culvert installations.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How do I save and share my projects?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Use the Save feature to store projects with custom names. You can export reports as PDF or CSV files and share them via email or messaging apps. Cloud sync (Pro+) keeps projects accessible across devices.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What's the difference between Free, Basic, Premium, and MAX tiers?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Free includes basic calculations. Basic (Pro) adds cement stabilization, culverts, and site diary. Premium (Pro+) includes spoil management, testing, and construction planning. MAX (Pro MAX) adds AI features, photo tools, and team collaboration. See our pricing page for full details.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account & Billing FAQ -->
+  <div class="faq-section" id="account-billing">
+    <h2><i class="fas fa-credit-card"></i> Account & Billing</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How do I manage my subscription?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Subscriptions are managed through the Google Play Store. Open the Play Store app, go to Menu > Subscriptions, find TrenchCalc, and manage your plan. You can upgrade, downgrade, or cancel anytime.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>What payment methods do you accept?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>We accept all payment methods supported by the Google Play Store, including credit/debit cards, PayPal, carrier billing, and Google Play balance. Payment is processed securely by Google.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Can I get a refund?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Refunds are handled according to Google Play Store policies. You can request a refund within 48 hours of purchase through the Play Store. For issues beyond this window, contact our support team directly.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>Is there team or enterprise pricing?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>We're developing team pricing for organizations. Contact us at support@engsitetools.com to discuss your needs and be notified when team plans become available.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Troubleshooting FAQ -->
+  <div class="faq-section" id="troubleshooting">
+    <h2><i class="fas fa-tools"></i> Troubleshooting</h2>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>The app won't open or crashes on startup</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Try these steps: 1) Force close the app and restart it, 2) Clear app cache in Settings > Apps > TrenchCalc > Storage, 3) Ensure you have the latest version from Play Store, 4) Restart your device. If issues persist, contact support.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>My calculations seem incorrect</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Double-check your input values (dimensions, units, material properties). Ensure compaction factors and density values are appropriate for your materials. If you believe there's an error, export your project and send it to support@engsitetools.com for review.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>I can't sync my projects across devices</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>Cloud sync requires a Pro+ or MAX subscription and an active internet connection. Make sure you're signed in with the same account on all devices. Check Settings > Sync to verify sync status and manually trigger a sync if needed.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        <span>How do I report a bug or request a feature?</span>
+        <i class="fas fa-chevron-down faq-icon"></i>
+      </div>
+      <div class="faq-answer">
+        <p>We love feedback! Email us at support@engsitetools.com with details about bugs or feature requests. Include your device model, app version, and screenshots if possible. You can also use the in-app feedback form.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact CTA -->
+  <div class="contact-cta">
+    <h2>Still need help?</h2>
+    <p>Our support team is here to assist you with any questions or issues</p>
+    <a href="index.html#contact" class="btn">Contact Support</a>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-section footer-brand">
+      <h3>EngSiteTools</h3>
+      <p>Practical, affordable engineering software for professionals and small teams.</p>
+    </div>
+
+    <div class="footer-section">
+      <h3>Products</h3>
+      <ul>
+        <li><a href="trenchcalc.html">TrenchCalc™</a></li>
+        <li><a href="index.html#products">All Products</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Company</h3>
+      <ul>
+        <li><a href="index.html#about">About Us</a></li>
+        <li><a href="help.html">Help Center</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="trenchcalc-privacy.html">Privacy Policy</a></li>
+        <li><a href="trenchcalc-terms.html">Terms of Use</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // FAQ Accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('.faq-question');
+    question.addEventListener('click', () => {
+      // Close other open items (optional - remove if you want multiple open at once)
+      document.querySelectorAll('.faq-item').forEach(otherItem => {
+        if (otherItem !== item && otherItem.classList.contains('active')) {
+          otherItem.classList.remove('active');
+        }
+      });
+
+      // Toggle current item
+      item.classList.toggle('active');
+    });
+  });
+
+  // Search functionality (placeholder)
+  const searchInput = document.getElementById('searchInput');
+  searchInput.addEventListener('input', (e) => {
+    const query = e.target.value.toLowerCase();
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+      const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+
+      if (question.includes(query) || answer.includes(query)) {
+        item.style.display = 'block';
+        if (query.length > 0) {
+          item.classList.add('active');
+        }
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+<script src="crisp-config.js"></script>
+<script src="crisp-loader.js" async></script>
+
+</body>
+</html>
