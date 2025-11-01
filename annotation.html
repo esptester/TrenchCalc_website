@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Annotation Lab — TrenchCalc</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <meta name="description" content="Label bounding boxes on images and export annotations in TrenchCalc JSON format." />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #121212;
+      --card: #ffffff;
+      --ink: #222;
+      --muted: #555;
+      --brand: #4285f4;
+      --surface: #f5f5f5;
+      --radius: 10px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --card:#1e1e1e; --ink:#f5f5f5; --muted:#aaa; --surface:#121212; }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 12px 20px;
+      position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    header .nav { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    header a { color:#fff; text-decoration:none; }
+    .nav-right a { opacity: .9; }
+    .nav-right a:hover { opacity: 1; }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 40px; display: grid; gap: 20px; }
+
+    .panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 16px;
+    }
+
+    .layout { display: grid; grid-template-columns: 320px 1fr; gap: 20px; }
+    @media (max-width: 900px){ .layout { grid-template-columns: 1fr; } }
+
+    .controls .row { display: grid; gap: 10px; margin-bottom: 12px; }
+    .controls label { font-weight: 600; font-size: 14px; color: var(--ink); }
+    .controls input[type="file"], .controls select, .controls button {
+      width: 100%;
+      padding: 10px 12px; border-radius: 8px; border: 2px solid #ddd; background: var(--card); color: var(--ink);
+      font-family: inherit; font-size: 14px;
+    }
+    @media (prefers-color-scheme: dark){ .controls input, .controls select { border-color: #444; } }
+    .controls .btn-primary { background: var(--brand); color: #fff; border: none; cursor: pointer; }
+    .controls .btn-danger { background: #ef4444; color: #fff; border: none; cursor: pointer; }
+    .controls .btn { cursor: pointer; }
+    .muted { color: var(--muted); font-size: 13px; }
+
+    .stage.panel { padding: 0; display: grid; grid-template-rows: auto 1fr; }
+    .stage-header { padding: 12px 14px; border-bottom: 1px solid #e5e7eb; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    @media (prefers-color-scheme: dark){ .stage-header { border-bottom-color: #333; } }
+    .canvas-wrap { position: relative; display: grid; place-items: center; background: #0f0f0f; }
+    .canvas-inner { position: relative; max-width: 100%; }
+    #imageEl { max-width: 100%; height: auto; display: block; }
+    #drawCanvas { position: absolute; top: 0; left: 0; pointer-events: none; }
+    #hitCanvas { position: absolute; top: 0; left: 0; pointer-events: auto; background: transparent; }
+
+    .legend { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px; border-radius: 999px; background: #f3f4f6; font-size: 12px; }
+    .dot { width: 10px; height: 10px; border-radius: 999px; display: inline-block; }
+    @media (prefers-color-scheme: dark){ .chip { background: #1f2937; color: #e5e7eb; } }
+
+    .boxes-list { margin-top: 10px; max-height: 220px; overflow: auto; border-top: 1px solid #e5e7eb; padding-top: 8px; }
+    @media (prefers-color-scheme: dark){ .boxes-list { border-top-color: #333; } }
+    .box-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 6px 4px; border-radius: 6px; }
+    .box-row:hover { background: rgba(66,133,244,.06); }
+    .box-row .meta { font-size: 12px; color: var(--muted); }
+    .box-actions { display: inline-flex; gap: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <a href="index.html">← Back to EngSiteTools</a>
+      <div class="nav-right">
+        <a href="trenchcalc.html">TrenchCalc</a>
+      </div>
+    </div>
+  </header>
+
+  <div id="gate" class="panel" style="display:none; max-width:700px; margin: 20px auto;">
+    <h2 style="margin-top:0">Restricted</h2>
+    <p class="muted">Admin-only. Open this page via the signed admin link (with token) or from localhost for development.</p>
+    <p class="muted">For secure production access, use an access proxy (e.g., Cloudflare Access) or Cognito-protected admin portal.</p>
+  </div>
+
+  <main id="appMain">
+    <h1 style="margin:0 0 6px">Annotation Lab</h1>
+    <p class="muted" style="margin:0 0 12px">Draw bounding boxes on images and export annotations in TrenchCalc JSON format.</p>
+
+    <div class="layout">
+      <aside class="panel controls" aria-label="Controls">
+        <div class="row">
+          <label for="fileInput">Image file</label>
+          <input id="fileInput" type="file" accept="image/*">
+          <div class="muted" id="imageMeta"></div>
+        </div>
+
+        <div class="row">
+          <label for="urlInput">Or load by URL</label>
+          <input id="urlInput" type="url" placeholder="https://.../image.jpg">
+          <button id="loadUrlBtn" class="btn">Load URL</button>
+          <div class="muted">Tip: use short‑lived pre‑signed URLs for protected images.</div>
+        </div>
+
+        <div class="row">
+          <label for="labelSelect">Label for new boxes</label>
+          <select id="labelSelect"></select>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+          <button id="exportBtn" class="btn btn-primary">Download JSON</button>
+          <button id="copyBtn" class="btn">Copy JSON</button>
+        </div>
+
+        <div class="row" style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+          <button id="clearBtn" class="btn btn-danger">Clear Boxes</button>
+          <button id="deleteSelectedBtn" class="btn">Delete Selected</button>
+        </div>
+
+        <div class="row">
+          <div class="legend">
+            <span class="chip"><span class="dot" style="background:#ef4444"></span> Permanent</span>
+            <span class="chip"><span class="dot" style="background:#f97316"></span> Temporary</span>
+            <span class="chip"><span class="dot" style="background:#8b5e34"></span> Materials</span>
+            <span class="chip"><span class="dot" style="background:#3b82f6"></span> Other</span>
+          </div>
+        </div>
+
+        <div class="row">
+          <strong style="font-size:14px">Boxes</strong>
+          <div id="boxesList" class="boxes-list" aria-live="polite"></div>
+        </div>
+      </aside>
+
+      <section class="stage panel" aria-label="Canvas">
+        <div class="stage-header">
+          <div>
+            <strong>Draw boxes:</strong> click-drag on image. <span class="muted">Click a box to select.</span>
+          </div>
+          <div id="status" class="muted"></div>
+        </div>
+        <div class="canvas-wrap">
+          <div class="canvas-inner">
+            <img id="imageEl" alt="Loaded image for annotation" />
+            <canvas id="drawCanvas"></canvas>
+            <canvas id="hitCanvas"></canvas>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+  (function(){
+    // Simple front-end gate (not real security). Allows access on localhost or with a token param 't'.
+    const isLocal = ['localhost','127.0.0.1'].includes(location.hostname);
+    const params = new URLSearchParams(location.search);
+    const hasToken = params.has('t');
+    if (hasToken) { try { sessionStorage.setItem('anno_auth','1'); } catch(e){} }
+    const sessionAllowed = (()=>{ try { return sessionStorage.getItem('anno_auth')==='1'; } catch(e){ return false; }})();
+    const authorized = isLocal || hasToken || sessionAllowed;
+    if (!authorized) { location.href = 'login.html?next=' + encodeURIComponent('annotation.html'); return; }
+    // Logout helper
+    function logout(){ try { sessionStorage.removeItem('anno_auth'); } catch(e){} location.href = 'login.html'; }
+
+    // Label definitions mirrored from TrenchObjectLabels in app
+    const LABELS = {
+      infrastructure: ['pipe','headwall','manhole','valve','fitting'],
+      equipment: ['excavator','truck','compactor','loader','crane'],
+      safety: ['person','safety_helmet','safety_vest','safety_barrier','warning_sign'],
+      shoring: ['shoring','strut','shoring_plate','ladder'],
+      materials: ['aggregate','cement_bag','rebar','formwork']
+    };
+    const ALL_LABELS = [
+      ...LABELS.infrastructure,
+      ...LABELS.equipment,
+      ...LABELS.safety,
+      ...LABELS.shoring,
+      ...LABELS.materials
+    ];
+    const TEMPORARY = new Set([
+      'person','safety_helmet','safety_vest','safety_barrier','warning_sign',
+      'ladder','excavator','truck','compactor','loader','crane'
+    ]);
+    const PERMANENT = new Set([
+      'pipe','headwall','manhole','valve','fitting','shoring','strut','shoring_plate'
+    ]);
+    const MATERIALS = new Set(['aggregate','cement_bag','rebar','formwork']);
+
+    const els = {
+      fileInput: document.getElementById('fileInput'),
+      urlInput: document.getElementById('urlInput'),
+      loadUrlBtn: document.getElementById('loadUrlBtn'),
+      labelSelect: document.getElementById('labelSelect'),
+      imageEl: document.getElementById('imageEl'),
+      drawCanvas: document.getElementById('drawCanvas'),
+      hitCanvas: document.getElementById('hitCanvas'),
+      imageMeta: document.getElementById('imageMeta'),
+      boxesList: document.getElementById('boxesList'),
+      exportBtn: document.getElementById('exportBtn'),
+      copyBtn: document.getElementById('copyBtn'),
+      clearBtn: document.getElementById('clearBtn'),
+      deleteSelectedBtn: document.getElementById('deleteSelectedBtn'),
+      status: document.getElementById('status')
+    };
+
+    // Populate label select
+    ALL_LABELS.forEach(l => {
+      const opt = document.createElement('option');
+      opt.value = l; opt.textContent = l;
+      els.labelSelect.appendChild(opt);
+    });
+
+    // State
+    let imageFileName = '';
+    let naturalWidth = 0, naturalHeight = 0;
+    let startPoint = null; // {x,y}
+    let isDrawing = false;
+    let boxes = []; // { id, rect:{left,top,width,height} normalized, label, createdAt }
+    let selectedId = null;
+
+    // Utilities
+    const uid = () => Date.now().toString() + Math.floor(Math.random()*1000);
+    const formatNum = (n) => Number(n).toFixed(3);
+
+    function colorForLabel(label){
+      if (PERMANENT.has(label)) return '#ef4444';
+      if (TEMPORARY.has(label)) return '#f97316';
+      if (MATERIALS.has(label)) return '#8b5e34';
+      return '#3b82f6';
+    }
+
+    function setCanvasSize(){
+      const img = els.imageEl;
+      if (!img.src) return;
+      // Ensure canvases match displayed size
+      const rect = img.getBoundingClientRect();
+      [els.drawCanvas, els.hitCanvas].forEach(c => {
+        c.width = Math.round(rect.width);
+        c.height = Math.round(rect.height);
+        c.style.width = rect.width + 'px';
+        c.style.height = rect.height + 'px';
+      });
+      redraw();
+    }
+
+    function displayToNatural(pt){
+      // Map displayed coords to natural image coords
+      const imgRect = els.imageEl.getBoundingClientRect();
+      const scaleX = naturalWidth / imgRect.width;
+      const scaleY = naturalHeight / imgRect.height;
+      return { x: (pt.x) * scaleX, y: (pt.y) * scaleY };
+    }
+
+    function naturalToDisplay(pt){
+      const imgRect = els.imageEl.getBoundingClientRect();
+      const scaleX = imgRect.width / naturalWidth;
+      const scaleY = imgRect.height / naturalHeight;
+      return { x: pt.x * scaleX, y: pt.y * scaleY };
+    }
+
+    function addBox(absStart, absEnd){
+      const left = Math.min(absStart.x, absEnd.x);
+      const top = Math.min(absStart.y, absEnd.y);
+      const width = Math.abs(absEnd.x - absStart.x);
+      const height = Math.abs(absEnd.y - absStart.y);
+      if (width < 10 || height < 10) return; // minimum size in pixels
+      const normalized = {
+        left: left / naturalWidth,
+        top: top / naturalHeight,
+        width: width / naturalWidth,
+        height: height / naturalHeight
+      };
+      const box = {
+        id: uid(),
+        rect: normalized,
+        label: els.labelSelect.value,
+        confidence: 1.0,
+        metadata: {},
+        createdAt: new Date().toISOString()
+      };
+      boxes.push(box);
+      selectedId = box.id;
+      redraw();
+      renderBoxesList();
+      status(`Added ${box.label}`);
+    }
+
+    function status(text){ els.status.textContent = text || ''; }
+
+    function redraw(){
+      const ctx = els.drawCanvas.getContext('2d');
+      ctx.clearRect(0,0,els.drawCanvas.width, els.drawCanvas.height);
+
+      // Draw existing boxes
+      for (const box of boxes){
+        const abs = {
+          x: box.rect.left * naturalWidth,
+          y: box.rect.top * naturalHeight,
+          w: box.rect.width * naturalWidth,
+          h: box.rect.height * naturalHeight,
+        };
+        const dispLT = naturalToDisplay({x: abs.x, y: abs.y});
+        const dispWH = naturalToDisplay({x: abs.x + abs.w, y: abs.y + abs.h});
+        const x = dispLT.x, y = dispLT.y;
+        const w = dispWH.x - dispLT.x, h = dispWH.y - dispLT.y;
+        const color = colorForLabel(box.label);
+        ctx.lineWidth = (selectedId === box.id) ? 3 : 2;
+        ctx.strokeStyle = color;
+        ctx.strokeRect(x, y, w, h);
+        ctx.fillStyle = color + '22';
+        ctx.fillRect(x, y, w, h);
+
+        // Label badge
+        const pad = 4;
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y - 18, ctx.measureText(box.label).width + 12, 16);
+        ctx.fillStyle = '#fff';
+        ctx.font = '12px Inter, sans-serif';
+        ctx.fillText(box.label, x + 6, y - 6);
+      }
+
+      // Draw current drawing box (using hit canvas pointer for smoother UX)
+      // handled by pointer preview; no additional overlay here
+    }
+
+    function renderBoxesList(){
+      els.boxesList.innerHTML = '';
+      boxes.forEach((b, idx) => {
+        const row = document.createElement('div');
+        row.className = 'box-row';
+        if (selectedId === b.id) row.style.outline = '2px solid ' + colorForLabel(b.label);
+
+        const left = document.createElement('div');
+        left.innerHTML = `<div><strong>${idx+1}. ${b.label}</strong></div>` +
+                         `<div class="meta">x=${formatNum(b.rect.left)} y=${formatNum(b.rect.top)} w=${formatNum(b.rect.width)} h=${formatNum(b.rect.height)}</div>`;
+        left.style.cursor = 'pointer';
+        left.onclick = () => { selectedId = b.id; redraw(); renderBoxesList(); };
+
+        const right = document.createElement('div');
+        right.className = 'box-actions';
+        const del = document.createElement('button');
+        del.textContent = 'Delete';
+        del.className = 'btn';
+        del.onclick = () => { boxes = boxes.filter(x => x.id !== b.id); if (selectedId === b.id) selectedId = null; redraw(); renderBoxesList(); };
+        right.appendChild(del);
+
+        row.appendChild(left);
+        row.appendChild(right);
+        els.boxesList.appendChild(row);
+      });
+    }
+
+    function exportJson(){
+      if (!els.imageEl.src) { alert('Load an image first.'); return; }
+      const annotation = {
+        imageId: imageFileName || 'image',
+        imagePath: imageFileName || 'image',
+        imageSize: { width: naturalWidth, height: naturalHeight },
+        boundingBoxes: boxes.map(b => ({
+          id: b.id,
+          rect: b.rect,
+          label: b.label,
+          confidence: 1.0,
+          metadata: {},
+          createdAt: b.createdAt,
+          annotatorId: null
+        })),
+        createdAt: new Date().toISOString(),
+        lastModified: new Date().toISOString(),
+        annotatorId: null,
+        metadata: {}
+      };
+
+      const blob = new Blob([JSON.stringify(annotation, null, 2)], {type:'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = (imageFileName?.replace(/\.[^.]+$/, '') || 'annotation') + '_annotation.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function copyJson(){
+      if (!els.imageEl.src) { alert('Load an image first.'); return; }
+      const text = JSON.stringify({
+        imageId: imageFileName || 'image',
+        imagePath: imageFileName || 'image',
+        imageSize: { width: naturalWidth, height: naturalHeight },
+        boundingBoxes: boxes,
+        createdAt: new Date().toISOString(),
+        lastModified: new Date().toISOString(),
+        annotatorId: null,
+        metadata: {}
+      }, null, 2);
+      navigator.clipboard.writeText(text).then(() => status('Copied JSON to clipboard')).catch(() => alert('Copy failed'));
+    }
+
+    // Event handlers
+    els.fileInput.addEventListener('change', (e) => {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const url = reader.result;
+        const img = new Image();
+        img.onload = () => {
+          naturalWidth = img.naturalWidth;
+          naturalHeight = img.naturalHeight;
+          imageFileName = file.name;
+          els.imageEl.src = String(url);
+          els.imageMeta.textContent = `${file.name} — ${naturalWidth}×${naturalHeight}`;
+          boxes = [];
+          selectedId = null;
+          setTimeout(setCanvasSize, 0);
+        };
+        img.src = String(url);
+      };
+      reader.readAsDataURL(file);
+    });
+
+    // Load remote image by URL (supports S3 pre-signed URLs)
+    els.loadUrlBtn.addEventListener('click', () => {
+      const url = (els.urlInput.value || '').trim();
+      if (!url) { alert('Enter an image URL'); return; }
+      const img = new Image();
+      img.onload = () => {
+        naturalWidth = img.naturalWidth;
+        naturalHeight = img.naturalHeight;
+        imageFileName = (new URL(url)).pathname.split('/').pop() || 'image';
+        els.imageEl.src = url;
+        els.imageMeta.textContent = `${imageFileName} — ${naturalWidth}×${naturalHeight}`;
+        boxes = []; selectedId = null;
+        setTimeout(setCanvasSize, 0);
+      };
+      img.onerror = () => alert('Failed to load image URL');
+      img.src = url;
+    });
+
+    window.addEventListener('resize', setCanvasSize);
+    els.imageEl.addEventListener('load', setCanvasSize);
+
+    // Pointer interactions on hit canvas
+    els.hitCanvas.addEventListener('pointerdown', (ev) => {
+      if (!els.imageEl.src) return;
+      const rect = els.hitCanvas.getBoundingClientRect();
+      const p = { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+      startPoint = p; isDrawing = true;
+      // preview box during draw
+      const ctx = els.drawCanvas.getContext('2d');
+      ctx.save();
+    });
+    els.hitCanvas.addEventListener('pointermove', (ev) => {
+      if (!isDrawing || !startPoint) return;
+      const rect = els.hitCanvas.getBoundingClientRect();
+      const curr = { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+      // Redraw full to include preview
+      redraw();
+      const ctx = els.drawCanvas.getContext('2d');
+      const color = colorForLabel(els.labelSelect.value);
+      ctx.lineWidth = 2; ctx.strokeStyle = color; ctx.fillStyle = color + '33';
+      const x = Math.min(startPoint.x, curr.x);
+      const y = Math.min(startPoint.y, curr.y);
+      const w = Math.abs(curr.x - startPoint.x);
+      const h = Math.abs(curr.y - startPoint.y);
+      ctx.strokeRect(x, y, w, h);
+      ctx.fillRect(x, y, w, h);
+    });
+    els.hitCanvas.addEventListener('pointerup', (ev) => {
+      if (!isDrawing || !startPoint) return;
+      isDrawing = false;
+      const rect = els.hitCanvas.getBoundingClientRect();
+      const end = { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+      const absStart = displayToNatural(startPoint);
+      const absEnd = displayToNatural(end);
+      addBox(absStart, absEnd);
+      startPoint = null;
+    });
+
+    // Click selection: choose the topmost box containing point
+    els.hitCanvas.addEventListener('click', (ev) => {
+      if (isDrawing) return;
+      const rect = els.hitCanvas.getBoundingClientRect();
+      const pDisp = { x: ev.clientX - rect.left, y: ev.clientY - rect.top };
+      const pNat = displayToNatural(pDisp);
+      // find last box that contains point
+      for (let i = boxes.length - 1; i >= 0; i--) {
+        const b = boxes[i];
+        const x = b.rect.left * naturalWidth;
+        const y = b.rect.top * naturalHeight;
+        const w = b.rect.width * naturalWidth;
+        const h = b.rect.height * naturalHeight;
+        if (pNat.x >= x && pNat.x <= x+w && pNat.y >= y && pNat.y <= y+h) {
+          selectedId = b.id; redraw(); renderBoxesList(); status(`Selected ${b.label}`); return;
+        }
+      }
+    });
+
+    els.exportBtn.addEventListener('click', exportJson);
+    els.copyBtn.addEventListener('click', copyJson);
+    els.clearBtn.addEventListener('click', () => { boxes = []; selectedId = null; redraw(); renderBoxesList(); status('Cleared'); });
+    els.deleteSelectedBtn.addEventListener('click', () => { if (!selectedId) return; boxes = boxes.filter(b => b.id !== selectedId); selectedId = null; redraw(); renderBoxesList(); });
+
+  })();
+  </script>
+</body>
+</html>
+
+
