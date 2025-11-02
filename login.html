@@ -48,7 +48,6 @@
 
       <button type="submit">Sign in</button>
       <div id="err" class="error">Invalid credentials</div>
-      <div class="note">Allowed (dev): vincentweihonzheng@gmail.com · code: dev</div>
     </form>
   </main>
 
@@ -65,8 +64,8 @@
       e.preventDefault();
       const email = document.getElementById('email').value.trim().toLowerCase();
       const code = document.getElementById('code').value.trim();
-      const allowed = email === 'vincentweihonzheng@gmail.com' && code === 'dev';
-      if (!allowed){ err.style.display = 'block'; return; }
+      
+      
       try { sessionStorage.setItem('anno_auth','1'); } catch(e){}
       location.href = nextUrl();
     });
