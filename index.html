@@ -433,49 +433,6 @@
   </div>
 </footer>
 
-<!-- Live Chat Widget Placeholder -->
-<button class="chat-widget-btn" id="chatWidgetBtn" aria-label="Open live chat" title="Chat with us">
-  <i class="fas fa-comments"></i>
-</button>
-
-<style>
-  .chat-widget-btn {
-  }
-  .chat-widget-btn:hover {
-  }
-  @media (max-width: 768px) {
-    }
-  }
-</style>
-
-<script>
-  // Live Chat Placeholder - Only show if Crisp isn't configured
-  (function() {
-    // Wait for DOM and check if Crisp is configured
-    function initChatPlaceholder() {
-      var crispId = window.ENGSITE_CRISP_WEBSITE_ID || "";
-      var btn = document.getElementById('chatWidgetBtn');
-      
-      // Only show placeholder button if Crisp is NOT configured
-      if (btn && (!crispId || crispId.trim() === "")) {
-        btn.style.display = "grid"; // Show the placeholder
-      }
-      
-      // Add click handler for placeholder
-      if (btn) {
-        btn.addEventListener('click', function() {
-          alert('Live chat coming soon! For now, please use the contact form or email support@engsitetools.com');
-        });
-      }
-    }
-    
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initChatPlaceholder);
-    } else {
-      initChatPlaceholder();
-    }
-  })();
-</script>
 
 <!-- Accessibility Controls -->
 <button class="accessibility-btn" id="accessibilityBtn" aria-label="Accessibility options">

@@ -568,38 +568,6 @@ body {
   display: inline !important;
 }
 
-/* Chat Widget */
-.chat-widget-btn {
-  position: fixed;
-  bottom: 90px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #10b981;
-  color: white;
-  border: none;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
-  cursor: pointer;
-  z-index: 999;
-  display: grid; /* Visible by default - will be hidden if Crisp loads */
-  place-items: center;
-  font-size: 24px;
-  transition: all 0.3s;
-}
-
-.chat-widget-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
-}
-
-@media (max-width: 768px) {
-  .chat-widget-btn {
-    right: 12px;
-    bottom: 80px;
-  }
-}
-
 /* ============================================
    COOKIE CONSENT BANNER
    ============================================ */
