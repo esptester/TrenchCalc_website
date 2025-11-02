@@ -44,6 +44,14 @@
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    
+    // Set default consent state (will be updated by cookie consent script)
+    gtag('consent', 'default', {
+      'analytics_storage': 'denied',
+      'ad_storage': 'denied',
+      'wait_for_update': 500
+    });
+    
     gtag('js', new Date());
     gtag('config', 'G-128PKMDG7W');
   </script>
@@ -415,6 +423,7 @@
       <ul>
         <li><a href="trenchcalc/privacy.html">Privacy Policy</a></li>
         <li><a href="trenchcalc/terms.html">Terms of Use</a></li>
+        <li><a href="#" id="cookieSettings">Cookie Settings</a></li>
       </ul>
     </div>
   </div>
@@ -699,5 +708,61 @@ document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 <script src="js/main.js"></script>
 <script src="js/accessibility.js"></script>
+<script src="js/cookies.js"></script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookieConsentBanner" class="cookie-consent-banner" role="dialog" aria-label="Cookie consent" aria-live="polite">
+  <button id="cookieClose" class="cookie-close-btn" aria-label="Close cookie banner">&times;</button>
+  <div class="cookie-consent-content">
+    <div class="cookie-consent-text">
+      <h3>We use cookies</h3>
+      <p>
+        We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. 
+        By clicking "Accept All", you consent to our use of cookies. 
+        <a href="privacy.html">Learn more in our Privacy Policy</a>
+      </p>
+    </div>
+    <div class="cookie-consent-actions">
+      <button id="cookieAcceptAll" class="cookie-btn cookie-btn-primary">Accept All</button>
+      <button id="cookieRejectOptional" class="cookie-btn cookie-btn-secondary">Reject Optional</button>
+      <button id="cookieCustomize" class="cookie-btn cookie-btn-link">Customize</button>
+    </div>
+  </div>
+  
+  <!-- Cookie Preferences Panel -->
+  <div id="cookiePreferencesPanel" class="cookie-preferences-panel">
+    <div class="cookie-pref-item">
+      <div class="cookie-pref-label">
+        <strong>Necessary Cookies</strong>
+        <p>Required for the website to function. These cannot be disabled.</p>
+      </div>
+      <div class="cookie-pref-toggle active" style="cursor: not-allowed; opacity: 0.6;">
+        <input type="checkbox" checked disabled>
+      </div>
+    </div>
+    <div class="cookie-pref-item">
+      <div class="cookie-pref-label">
+        <strong>Analytics Cookies</strong>
+        <p>Help us understand how visitors interact with our website (Google Analytics).</p>
+      </div>
+      <div class="cookie-pref-toggle" id="cookiePrefAnalytics">
+        <input type="checkbox" id="cookiePrefAnalyticsInput">
+      </div>
+    </div>
+    <div class="cookie-pref-item">
+      <div class="cookie-pref-label">
+        <strong>Functional Cookies</strong>
+        <p>Enable enhanced functionality like language preferences (Google Translate).</p>
+      </div>
+      <div class="cookie-pref-toggle active" id="cookiePrefFunctional">
+        <input type="checkbox" checked id="cookiePrefFunctionalInput">
+      </div>
+    </div>
+    <div style="margin-top: 16px; text-align: right;">
+      <button id="cookieSaveCustom" class="cookie-btn cookie-btn-primary">Save Preferences</button>
+    </div>
+  </div>
+</div>
+
 </body>
 </html> 
