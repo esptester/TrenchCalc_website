@@ -14,17 +14,20 @@
   s.async = 1;
   (d.getElementsByTagName("head")[0] || d.body).appendChild(s);
 
-  // Hide any placeholder chat button if present
+  // Hide any placeholder chat button if present (it should already be hidden by CSS)
   function hidePlaceholder(){
     try {
       var btn = d.getElementById("chatWidgetBtn");
-      if (btn) btn.style.display = "none";
+      if (btn) {
+        btn.style.display = "none";
+        btn.style.visibility = "hidden";
+      }
     } catch (_) {}
   }
+  // Hide immediately if Crisp is configured
+  hidePlaceholder();
   if (d.readyState === "loading") {
     d.addEventListener("DOMContentLoaded", hidePlaceholder);
-  } else {
-    hidePlaceholder();
   }
 
   // Optional per-page visibility rules

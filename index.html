@@ -449,14 +449,32 @@
 </style>
 
 <script>
-  // Live Chat Placeholder - Replace with your actual chat widget
-  document.getElementById('chatWidgetBtn').addEventListener('click', function() {
-    alert('Live chat coming soon! For now, please use the contact form or email support@engsitetools.com');
-    // Replace with actual chat widget initialization:
-    // Example for Intercom: Intercom('show');
-    // Example for Crisp: $crisp.push(['do', 'chat:open']);
-    // Example for Tawk.to: Tawk_API.toggle();
-  });
+  // Live Chat Placeholder - Only show if Crisp isn't configured
+  (function() {
+    // Wait for DOM and check if Crisp is configured
+    function initChatPlaceholder() {
+      var crispId = window.ENGSITE_CRISP_WEBSITE_ID || "";
+      var btn = document.getElementById('chatWidgetBtn');
+      
+      // Only show placeholder button if Crisp is NOT configured
+      if (btn && (!crispId || crispId.trim() === "")) {
+        btn.style.display = "grid"; // Show the placeholder
+      }
+      
+      // Add click handler for placeholder
+      if (btn) {
+        btn.addEventListener('click', function() {
+          alert('Live chat coming soon! For now, please use the contact form or email support@engsitetools.com');
+        });
+      }
+    }
+    
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initChatPlaceholder);
+    } else {
+      initChatPlaceholder();
+    }
+  })();
 </script>
 
 <!-- Accessibility Controls -->
