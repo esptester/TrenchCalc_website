@@ -600,3 +600,232 @@ body {
   }
 }
 
+/* ============================================
+   COOKIE CONSENT BANNER
+   ============================================ */
+
+.cookie-consent-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+  z-index: 10000;
+  display: none;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.cookie-consent-banner.show {
+  display: block;
+  transform: translateY(0);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cookie-consent-banner {
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.cookie-consent-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cookie-consent-text {
+  flex: 1;
+  min-width: 250px;
+}
+
+.cookie-consent-text h3 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.cookie-consent-text p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.cookie-consent-text a {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.cookie-consent-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.cookie-btn {
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  white-space: nowrap;
+}
+
+.cookie-btn-primary {
+  background: var(--brand);
+  color: white;
+}
+
+.cookie-btn-primary:hover {
+  background: #3367d6;
+  transform: translateY(-1px);
+}
+
+.cookie-btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--brand);
+}
+
+.cookie-btn-secondary:hover {
+  background: var(--brand);
+  color: white;
+}
+
+.cookie-btn-link {
+  background: transparent;
+  color: var(--muted);
+  text-decoration: underline;
+  padding: 10px 12px;
+}
+
+.cookie-btn-link:hover {
+  color: var(--text);
+}
+
+.cookie-close-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px 8px;
+  line-height: 1;
+}
+
+.cookie-close-btn:hover {
+  color: var(--text);
+}
+
+.cookie-preferences-panel {
+  display: none;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cookie-preferences-panel {
+    border-top-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.cookie-pref-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .cookie-pref-item {
+    border-bottom-color: rgba(255, 255, 255, 0.05);
+  }
+}
+
+.cookie-pref-item:last-child {
+  border-bottom: none;
+}
+
+.cookie-pref-label {
+  flex: 1;
+}
+
+.cookie-pref-label strong {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text);
+  font-size: 14px;
+}
+
+.cookie-pref-label p {
+  margin: 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.cookie-pref-toggle {
+  width: 44px;
+  height: 24px;
+  background: #ccc;
+  border-radius: 12px;
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cookie-pref-toggle.active {
+  background: var(--brand);
+}
+
+.cookie-pref-toggle::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.cookie-pref-toggle.active::after {
+  transform: translateX(20px);
+}
+
+.cookie-pref-toggle input[type="checkbox"] {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .cookie-consent-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cookie-btn {
+    width: 100%;
+  }
+}
+
