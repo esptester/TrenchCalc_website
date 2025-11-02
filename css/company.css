@@ -619,8 +619,8 @@ body {
 }
 
 .cookie-consent-banner.show {
-  display: block;
-  transform: translateY(0);
+  display: block !important;
+  transform: translateY(0) !important;
 }
 
 @media (prefers-color-scheme: dark) {

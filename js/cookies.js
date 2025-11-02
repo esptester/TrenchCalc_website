@@ -52,12 +52,20 @@
   // Show cookie banner
   function showCookieBanner() {
     const banner = document.getElementById('cookieConsentBanner');
-    if (banner && !hasConsent()) {
+    if (banner) {
+      console.log('Cookie banner: Showing banner');
+      // Ensure banner is visible with initial transform
       banner.style.display = 'block';
+      banner.style.transform = 'translateY(100%)';
+      // Force reflow to apply the transform
+      void banner.offsetHeight;
       // Smooth slide up animation
       setTimeout(() => {
         banner.classList.add('show');
-      }, 100);
+        console.log('Cookie banner: Added show class');
+      }, 50);
+    } else {
+      console.error('Cookie banner: Banner element not found!');
     }
   }
 
@@ -151,14 +159,22 @@
 
   // Initialize cookie consent
   function initCookieConsent() {
+    console.log('Cookie consent: Initializing...');
     // Initialize toggle switches
     initToggleSwitches();
     
     // Check if consent has been given
-    if (!hasConsent()) {
-      // Show banner after a short delay
-      setTimeout(showCookieBanner, 1000);
+    const hasGivenConsent = hasConsent();
+    console.log('Cookie consent: Has consent?', hasGivenConsent);
+    
+    if (!hasGivenConsent) {
+      // Show banner after a short delay to ensure DOM is ready
+      console.log('Cookie consent: Will show banner in 1 second');
+      setTimeout(function() {
+        showCookieBanner();
+      }, 1000);
     } else {
+      console.log('Cookie consent: User has already given consent');
       // Load saved preferences
       const preferences = getConsentPreferences();
       if (preferences && preferences.analytics) {
