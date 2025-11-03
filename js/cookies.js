@@ -111,8 +111,10 @@
 
   // Custom preferences
   function saveCustomPreferences() {
-    const analytics = document.getElementById('cookiePrefAnalytics').checked;
-    const functional = document.getElementById('cookiePrefFunctional').checked;
+    const analyticsInput = document.getElementById('cookiePrefAnalyticsInput');
+    const functionalInput = document.getElementById('cookiePrefFunctionalInput');
+    const analytics = analyticsInput ? analyticsInput.checked : false;
+    const functional = functionalInput ? functionalInput.checked : false;
     
     const preferences = {
       necessary: true, // Always required
@@ -154,6 +156,41 @@
       gtag('consent', 'update', {
         'analytics_storage': 'denied'
       });
+    }
+  }
+
+  // Initialize toggle switches for cookie preferences
+  function initToggleSwitches() {
+    // Analytics toggle
+    const analyticsToggle = document.getElementById('cookiePrefAnalytics');
+    const analyticsInput = document.getElementById('cookiePrefAnalyticsInput');
+    if (analyticsToggle && analyticsInput) {
+      analyticsToggle.addEventListener('click', () => {
+        analyticsInput.checked = !analyticsInput.checked;
+        analyticsToggle.classList.toggle('active', analyticsInput.checked);
+      });
+      // Set initial state based on saved preferences
+      const preferences = getConsentPreferences();
+      if (preferences) {
+        analyticsInput.checked = preferences.analytics || false;
+        analyticsToggle.classList.toggle('active', analyticsInput.checked);
+      }
+    }
+
+    // Functional toggle
+    const functionalToggle = document.getElementById('cookiePrefFunctional');
+    const functionalInput = document.getElementById('cookiePrefFunctionalInput');
+    if (functionalToggle && functionalInput) {
+      functionalToggle.addEventListener('click', () => {
+        functionalInput.checked = !functionalInput.checked;
+        functionalToggle.classList.toggle('active', functionalInput.checked);
+      });
+      // Set initial state based on saved preferences
+      const preferences = getConsentPreferences();
+      if (preferences) {
+        functionalInput.checked = preferences.functional !== false; // Default to true
+        functionalToggle.classList.toggle('active', functionalInput.checked);
+      }
     }
   }
 
