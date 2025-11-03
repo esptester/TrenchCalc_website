@@ -63,13 +63,15 @@
       setTimeout(() => {
         banner.classList.add('show');
         console.log('Cookie banner: Added show class');
+        // Scroll to banner if it's not fully visible
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 50);
     } else {
       console.error('Cookie banner: Banner element not found!');
     }
   }
 
-  // Hide cookie banner
+  // Hide cookie banner (temporary - doesn't save consent, so banner will show again)
   function hideCookieBanner() {
     const banner = document.getElementById('cookieConsentBanner');
     if (banner) {
@@ -78,6 +80,8 @@
         banner.style.display = 'none';
       }, 300);
     }
+    // Note: This doesn't save consent, so the banner will appear again on next page load
+    // Users can access cookie settings via the "Cookie Settings" link in the footer
   }
 
   // Accept all cookies
@@ -279,12 +283,15 @@
     }
 
     if (cookieSettingsBtn) {
-      cookieSettingsBtn.addEventListener('click', () => {
+      cookieSettingsBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent default link behavior
         showCookieBanner();
         const panel = document.getElementById('cookiePreferencesPanel');
         if (panel) {
           panel.style.display = 'block';
         }
+        // Scroll to top smoothly to show the banner
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
   }
