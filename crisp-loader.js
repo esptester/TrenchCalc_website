@@ -12,6 +12,19 @@
   var s = d.createElement("script");
   s.src = "https://client.crisp.chat/l.js";
   s.async = 1;
+  s.onload = function() {
+    // Ensure Crisp chat is visible after loading (wait a bit for initialization)
+    setTimeout(function() {
+      // Check if cookies were already accepted
+      var cookieConsent = document.cookie.match(/cookie_consent=accepted/);
+      if (cookieConsent || !document.getElementById('cookieConsentBanner')) {
+        // Cookies accepted or no cookie banner - show chat
+        if (window.$crisp) {
+          window.$crisp.push(["do", "chat:show"]);
+        }
+      }
+    }, 500);
+  };
   (d.getElementsByTagName("head")[0] || d.body).appendChild(s);
 
   // Crisp will provide its own chat widget, no placeholder needed

@@ -404,7 +404,7 @@ footer {
   border: none;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   cursor: pointer;
-  z-index: 1000;
+  z-index: 10001; /* Higher than cookie banner (10000) */
   display: grid;
   place-items: center;
   font-size: 24px;
@@ -425,7 +425,7 @@ footer {
   box-shadow: 0 8px 32px rgba(0,0,0,0.2);
   padding: 20px;
   width: 280px;
-  z-index: 1000;
+  z-index: 10001; /* Higher than cookie banner (10000) */
   display: none;
 }
 
@@ -584,6 +584,8 @@ body {
   display: none;
   transform: translateY(100%);
   transition: transform 0.3s ease;
+  /* Ensure cookie banner doesn't overlap with accessibility button */
+  padding-right: 100px; /* Add padding to leave space for accessibility button */
 }
 
 .cookie-consent-banner.show {
@@ -594,6 +596,13 @@ body {
 @media (prefers-color-scheme: dark) {
   .cookie-consent-banner {
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.4);
+  }
+}
+
+@media (max-width: 768px) {
+  .cookie-consent-banner {
+    /* On mobile, reduce padding to fit smaller screens */
+    padding-right: 20px;
   }
 }
 
