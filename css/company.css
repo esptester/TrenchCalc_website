@@ -223,8 +223,19 @@ header {
 }
 
 .logo-section img {
-  height: 40px;
+  height: 50px;
   width: auto;
+  display: block;
+}
+
+.logo-section a {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.logo-section a:hover {
+  opacity: 0.8;
 }
 
 nav {
