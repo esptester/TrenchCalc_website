@@ -10,10 +10,8 @@
     // Crisp already loaded, just ensure it's visible
     if (window.$crisp) {
       setTimeout(function() {
-        var cookieConsent = document.cookie.match(/cookie_consent=accepted/);
-        if (cookieConsent || !document.getElementById('cookieConsentBanner')) {
-          window.$crisp.push(["do", "chat:show"]);
-        }
+        // Always show Crisp - it's a functional support feature
+        window.$crisp.push(["do", "chat:show"]);
       }, 100);
     }
     return;
@@ -31,14 +29,10 @@
   s.async = 1;
   s.onload = function() {
     // Ensure Crisp chat is visible after loading (wait a bit for initialization)
+    // Always show Crisp - it's a functional support feature, not blocked by cookie consent
     setTimeout(function() {
-      // Check if cookies were already accepted
-      var cookieConsent = document.cookie.match(/cookie_consent=accepted/);
-      if (cookieConsent || !document.getElementById('cookieConsentBanner')) {
-        // Cookies accepted or no cookie banner - show chat
-        if (window.$crisp) {
-          window.$crisp.push(["do", "chat:show"]);
-        }
+      if (window.$crisp) {
+        window.$crisp.push(["do", "chat:show"]);
       }
     }, 500);
   };
