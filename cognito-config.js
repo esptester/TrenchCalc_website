@@ -1,20 +1,26 @@
 // AWS Cognito Configuration for EngSiteTools Admin Login
-// Configure these values for your Cognito User Pool
+// 
+// ⚠️ IMPORTANT: This is a SEPARATE User Pool from your TrenchCalc app User Pool
+// This pool is specifically for developer/admin access to the annotation tool
+//
+// Setup Instructions: See COGNITO_ADMIN_SETUP.md
 
 window.ENGSITE_COGNITO_CONFIG = {
-  // Your Cognito User Pool ID (found in AWS Console > Cognito > User Pools)
+  // Admin User Pool ID (separate from TrenchCalc app User Pool)
+  // Found in: AWS Console > Cognito > User Pools > [Your Admin Pool] > General settings
+  // Format: "region_XXXXXXXXX"
   // Example: "ap-southeast-2_aLYok8BLT"
-  // TODO: Replace with your actual User Pool ID
-  userPoolId: "ap-southeast-2_aLYok8BLT",  // Update this with your User Pool ID
+  userPoolId: "ap-southeast-2_aLYok8BLT",  // TODO: Replace with your Admin User Pool ID
   
-  // Your Cognito App Client ID (found in AWS Console > Cognito > User Pools > App integration > App clients)
-  // IMPORTANT: This must be a client WITHOUT a client secret (for public client authentication)
-  // If your app client has a secret, create a new one without a secret for web use
-  clientId: "",  // TODO: Set your App Client ID
+  // Admin App Client ID (WebAdminClient - must NOT have a client secret)
+  // Found in: AWS Console > Cognito > User Pools > [Your Admin Pool] > App integration > App clients
+  // IMPORTANT: This must be a client WITHOUT a client secret (for browser-based authentication)
+  // If your app client has a secret, create a new one without a secret
+  clientId: "",  // TODO: Set your Admin App Client ID
   
-  // AWS Region where your Cognito User Pool is located
+  // AWS Region where your Admin User Pool is located
   // Example: "ap-southeast-2" (Sydney), "us-east-1" (N. Virginia)
-  region: "ap-southeast-2",  // Update if different
+  region: "ap-southeast-2",  // TODO: Update if different
 };
 
 /* 

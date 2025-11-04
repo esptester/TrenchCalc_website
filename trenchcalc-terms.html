@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms of Use — TrenchCalc by EngSiteTools</title>
+  <meta name="description" content="TrenchCalc Terms of Use. Legal terms and conditions for using TrenchCalc app.">
+  <meta name="theme-color" content="#0F172A">
+
+  <!-- Favicons -->
+  <link rel="icon" href="trenchcalc-logo-no-text.svg" type="image/svg+xml">
+  <link rel="icon" href="trenchcalc-logo-32.png" sizes="32x32" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --ink:#0f172a;
+      --muted:#5b6473;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --accent:#ef4444;
+      --surface:#f6f7fb;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(16,24,40,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --ink:#e6e8ee;
+        --muted:#9aa3b2;
+        --card:#121826;
+        --surface:#0d1320;
+        --brand:#3b82f6;
+        --accent:#f87171;
+        --shadow:0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--ink);
+      background: var(--surface);
+      line-height: 1.6;
+    }
+    a { color: var(--brand); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .brand { display: flex; gap: 12px; align-items: center; }
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #111;
+      display: grid;
+      place-items: center;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; }
+    .brand h1 { font-size: 20px; margin: 0; font-weight: 600; }
+    .back-link {
+      color: #cbd5e1;
+      font-size: 14px;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover {
+      color: #fff;
+      opacity: 0.8;
+      text-decoration: none;
+    }
+
+    /* Main Content */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+    .content-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+    }
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      line-height: 1.2;
+    }
+    .effective-date {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 32px;
+    }
+    h2 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+      color: var(--ink);
+    }
+    h2:first-of-type {
+      margin-top: 0;
+    }
+    p {
+      margin: 16px 0;
+      color: var(--ink);
+    }
+    ul {
+      margin: 16px 0;
+      padding-left: 24px;
+    }
+    li {
+      margin: 12px 0;
+      color: var(--ink);
+    }
+    .warning-box {
+      background: rgba(239, 68, 68, 0.08);
+      border-left: 4px solid var(--accent);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+    .warning-box p {
+      margin: 0;
+      color: var(--ink);
+    }
+    .warning-box strong {
+      color: var(--accent);
+    }
+    .highlight-box {
+      background: var(--surface);
+      border-left: 4px solid var(--brand);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+    .highlight-box p {
+      margin: 0;
+    }
+    .section-number {
+      color: var(--brand);
+      font-weight: 700;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-content p {
+      color: rgba(255,255,255,0.7);
+      margin: 0 0 16px;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .content-card {
+        padding: 24px;
+      }
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-content">
+    <div class="brand">
+      <div class="logo">
+        <img src="trenchcalc-logo.png" alt="TrenchCalc logo">
+      </div>
+      <h1>TrenchCalc Terms of Use</h1>
+    </div>
+    <a href="trenchcalc.html" class="back-link">← Back to TrenchCalc</a>
+  </div>
+</header>
+
+<main>
+  <div class="content-card">
+    <p class="effective-date">Effective Date: July 13, 2025</p>
+
+    <p>
+      These Terms of Use ("Terms") govern your access to and use of the TrenchCalc mobile application ("App"), developed by EngSiteTools.
+      By downloading, installing, or using the App, you agree to be bound by these Terms.
+    </p>
+
+    <div class="warning-box">
+      <p><strong>Important:</strong> TrenchCalc is an estimation tool only. You are solely responsible for verifying all calculations and ensuring compliance with local standards, regulations, and site-specific safety requirements.</p>
+    </div>
+
+    <h2><span class="section-number">1.</span> Purpose of the App</h2>
+    <p>
+      TrenchCalc is designed to assist civil engineers, construction professionals, and contractors in estimating:
+    </p>
+    <ul>
+      <li>Trench fill volumes</li>
+      <li>Cement and stabilisation requirements</li>
+      <li>Culvert spacing and configurations</li>
+      <li>Spoil management calculations</li>
+      <li>Construction planning estimates</li>
+    </ul>
+    <p>
+      The App is intended as a helpful estimation and planning tool to support your professional judgment.
+    </p>
+
+    <h2><span class="section-number">2.</span> No Professional Engineering Advice</h2>
+    <p>
+      <strong>TrenchCalc does not provide professional engineering, safety, or legal advice.</strong>
+    </p>
+    <ul>
+      <li>All calculations are estimates based on user-provided inputs</li>
+      <li>You are solely responsible for verifying all results</li>
+      <li>You must ensure compliance with local building codes, safety regulations, and engineering standards</li>
+      <li>Site-specific conditions may require adjustments to any estimates</li>
+      <li>Always consult with qualified professionals for critical decisions</li>
+    </ul>
+
+    <h2><span class="section-number">3.</span> Acceptable Use</h2>
+    <p>You agree to use TrenchCalc only for lawful purposes. You may not:</p>
+    <ul>
+      <li>Use the App in any way that violates local, state, or national laws</li>
+      <li>Attempt to reverse engineer, decompile, or extract source code</li>
+      <li>Distribute, resell, or sublicense the App or any of its features</li>
+      <li>Use the App to cause harm, damage, or liability to EngSiteTools or others</li>
+      <li>Bypass or circumvent any security features or subscription requirements</li>
+    </ul>
+
+    <h2><span class="section-number">4.</span> Subscriptions and Payments</h2>
+    <p>
+      Some features of TrenchCalc require a paid subscription (Basic or Premium). Key terms:
+    </p>
+    <ul>
+      <li><strong>Payment Processing:</strong> All billing is handled through Google Play. We use RevenueCat to manage subscription entitlements.</li>
+      <li><strong>Subscription Renewal:</strong> Subscriptions automatically renew unless canceled before the renewal date.</li>
+      <li><strong>Cancellation:</strong> You may cancel your subscription at any time through Google Play. You will retain access until the end of your current billing period.</li>
+      <li><strong>No Refunds:</strong> Payments are non-refundable except as required by law or Google Play policy.</li>
+      <li><strong>Price Changes:</strong> We may change subscription prices with advance notice. Changes apply to renewals after the notice period.</li>
+    </ul>
+
+    <h2><span class="section-number">5.</span> Account Management</h2>
+    <p>
+      You may create an account to access premium features and sync your subscription status. Account terms:
+    </p>
+    <ul>
+      <li><strong>Account Deletion:</strong> You may delete your account at any time from the Profile screen within the App.</li>
+      <li><strong>Data Removal:</strong> Deleting your account removes your authentication data from our systems. No project data is stored in the cloud.</li>
+      <li><strong>Account Security:</strong> You are responsible for maintaining the security of your account credentials.</li>
+      <li><strong>Account Suspension:</strong> We may suspend or terminate accounts that violate these Terms.</li>
+    </ul>
+
+    <h2><span class="section-number">6.</span> Intellectual Property</h2>
+    <p>
+      All content, code, designs, logos, trademarks, and other intellectual property within TrenchCalc are owned by EngSiteTools and are protected by copyright and trademark laws.
+    </p>
+    <ul>
+      <li>You may not reproduce, distribute, or create derivative works without written permission</li>
+      <li>The TrenchCalc name and logo are trademarks of EngSiteTools</li>
+      <li>Your subscription grants you a limited, non-exclusive, non-transferable license to use the App</li>
+    </ul>
+
+    <h2><span class="section-number">7.</span> Limitation of Liability</h2>
+    <div class="warning-box">
+      <p>
+        <strong>IMPORTANT:</strong> EngSiteTools and its developers shall not be liable for any loss, injury, damage, or expense (including legal fees) resulting from:
+      </p>
+    </div>
+    <ul>
+      <li>Inaccurate calculations or estimates provided by the App</li>
+      <li>Decisions made based on App outputs</li>
+      <li>Construction defects, safety incidents, or project failures</li>
+      <li>Technical errors, bugs, or app malfunctions</li>
+      <li>Data loss or corruption</li>
+      <li>Third-party service failures (e.g., AWS Cognito, RevenueCat, Google Play)</li>
+    </ul>
+    <p>
+      <strong>YOU USE TRENCHCALC AT YOUR OWN RISK.</strong> To the maximum extent permitted by law, EngSiteTools disclaims all warranties, express or implied, including warranties of merchantability and fitness for a particular purpose.
+    </p>
+
+    <h2><span class="section-number">8.</span> Disclaimer of Warranties</h2>
+    <p>
+      TrenchCalc is provided "AS IS" and "AS AVAILABLE" without warranties of any kind. We do not guarantee:
+    </p>
+    <ul>
+      <li>Accuracy or reliability of calculations</li>
+      <li>Uninterrupted or error-free operation</li>
+      <li>Compatibility with all devices or operating systems</li>
+      <li>That the App will meet your specific requirements</li>
+    </ul>
+
+    <h2><span class="section-number">9.</span> Indemnification</h2>
+    <p>
+      You agree to indemnify and hold harmless EngSiteTools, its developers, employees, and affiliates from any claims, damages, losses, or expenses arising from:
+    </p>
+    <ul>
+      <li>Your use of TrenchCalc</li>
+      <li>Your violation of these Terms</li>
+      <li>Your violation of any third-party rights</li>
+      <li>Construction projects or professional decisions based on App estimates</li>
+    </ul>
+
+    <h2><span class="section-number">10.</span> Changes to These Terms</h2>
+    <p>
+      We may update these Terms from time to time. Changes will be effective immediately upon posting within the App or on our website. We will update the effective date at the top of this page.
+    </p>
+    <p>
+      Your continued use of TrenchCalc after changes constitutes acceptance of the updated Terms.
+    </p>
+
+    <h2><span class="section-number">11.</span> Governing Law</h2>
+    <p>
+      These Terms are governed by and construed in accordance with the laws of your jurisdiction. Any disputes shall be resolved in the courts of competent jurisdiction.
+    </p>
+
+    <h2><span class="section-number">12.</span> Severability</h2>
+    <p>
+      If any provision of these Terms is found to be unenforceable, that provision shall be modified to the minimum extent necessary, and the remaining provisions shall remain in full effect.
+    </p>
+
+    <h2><span class="section-number">13.</span> Contact</h2>
+    <p>
+      If you have questions about these Terms of Use, please contact us at:
+    </p>
+    <p>
+      Email: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a>
+    </p>
+
+    <div class="highlight-box" style="margin-top: 40px;">
+      <p><strong>By using TrenchCalc, you acknowledge that you have read, understood, and agree to be bound by these Terms of Use.</strong></p>
+    </div>
+
+    <p style="margin-top: 40px; font-style: italic; color: var(--muted);">
+      Thank you for using TrenchCalc responsibly.
+    </p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="index.html">EngSiteTools Home</a>
+      <a href="trenchcalc.html">TrenchCalc</a>
+      <a href="trenchcalc-features.html">Pricing</a>
+      <a href="trenchcalc-privacy.html">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script src="crisp-config.js"></script>
+<script src="crisp-loader.js"></script>
+
+</body>
+</html>

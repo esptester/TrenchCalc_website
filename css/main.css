@@ -560,6 +560,19 @@ h2 {
   top: 0;
 }
 
+/* Screen Reader Only - Hide visually but keep accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* Enhanced Focus Indicators */
 a:focus,
 button:focus,
@@ -572,6 +585,32 @@ textarea:focus {
 
 html.high-contrast a:focus,
 html.high-contrast button:focus {
+  outline: 3px solid #00ff00;
+  outline-offset: 3px;
+}
+
+/* Enhanced keyboard navigation - ensure all interactive elements are focusable */
+button:not(:disabled),
+a[href],
+input:not([disabled]),
+select:not([disabled]),
+textarea:not([disabled]),
+[tabindex]:not([tabindex="-1"]) {
+  cursor: pointer;
+}
+
+/* Improved focus-visible for better keyboard navigation */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+html.high-contrast *:focus-visible {
   outline: 3px solid #00ff00;
   outline-offset: 3px;
 }

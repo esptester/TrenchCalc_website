@@ -1,0 +1,38 @@
+QUICK GUIDE: Add Admin User to Cognito
+======================================
+
+AWS Console Steps:
+------------------
+
+1. Go to AWS Console > Cognito > User Pools
+2. Click your admin pool (engsite-admin-pool)
+3. Click "Users" tab (left sidebar)
+4. Click "Create user" button (top right)
+
+User Details:
+-------------
+- Username: developer@engsitetools.com (their email)
+- Email: same email
+- Email verified: ✅ CHECK
+- Send invitation: ✅ CHECK (sends temp password via email)
+- Mark email verified: ✅ CHECK
+
+Click "Create user"
+
+User Receives Email:
+--------------------
+- Email with temporary password
+- Must log in and change password
+- Must set up MFA (Google Authenticator)
+
+Alternative (No Email):
+-----------------------
+- Uncheck "Send invitation"
+- Set temporary password manually
+- Share password securely (not email)
+- User logs in, changes password, sets up MFA
+
+Done! ✅
+
+Full guide: ADD_ADMIN_USER_GUIDE.md
+

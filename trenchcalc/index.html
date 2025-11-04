@@ -756,6 +756,8 @@
   </style>
 </head>
 <body>
+<!-- Skip to main content link for keyboard users -->
+<a href="#content" class="skip-link">Skip to main content</a>
 <header style="background:#0b0f1a; color:#fff; padding:12px 20px; font-size:14px;">
   <a href="../index.html" style="color:#fff; text-decoration:none;">← Back to EngSiteTools</a>
 </header>
@@ -1030,36 +1032,37 @@
     <!-- ROI Calculator -->
     <section class="roi-calculator fade-in" aria-label="ROI Calculator">
       <div class="roi-header">
-        <h2>Calculate Your Savings with TrenchCalc</h2>
-        <p>See how much time and money you could save by switching from spreadsheets</p>
+        <h2>See How Much Time You'll Save</h2>
+        <p>Calculate how much faster TrenchCalc is compared to manual methods</p>
       </div>
 
       <div class="roi-inputs">
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
 
           <div class="roi-input-group">
-            <label for="projectsPerMonth">Projects per Month</label>
+            <label for="calculationsPerMonth">Calculations per Month</label>
             <div class="roi-input-wrapper">
-              <input type="number" id="projectsPerMonth" class="roi-input" value="10" min="1" max="100">
-              <span class="roi-unit">projects</span>
+              <input type="number" id="calculationsPerMonth" class="roi-input" value="5" min="1" max="50">
+              <span class="roi-unit">calculations</span>
             </div>
           </div>
 
           <div class="roi-input-group">
-            <label for="timePerProject">Time per Calculation (old method)</label>
+            <label for="timePerCalculation">Time per Calculation (manual/spreadsheet)</label>
             <div class="roi-input-wrapper">
-              <input type="number" id="timePerProject" class="roi-input" value="45" min="5" max="300">
+              <input type="number" id="timePerCalculation" class="roi-input" value="30" min="5" max="120">
               <span class="roi-unit">minutes</span>
             </div>
           </div>
 
           <div class="roi-input-group">
-            <label for="hourlyRate">Your Hourly Rate</label>
-            <div class="roi-input-wrapper">
-              <span class="roi-unit">$</span>
-              <input type="number" id="hourlyRate" class="roi-input" value="75" min="20" max="300" step="5">
-              <span class="roi-unit">/ hour</span>
-            </div>
+            <label for="verifyQuotes">
+              <input type="checkbox" id="verifyQuotes" class="roi-checkbox" checked>
+              <span style="margin-left: 8px;">I use this to verify contractor quotes</span>
+            </label>
+            <p style="font-size: 13px; color: var(--muted); margin-top: 4px; margin-left: 24px;">
+              Helps ensure you're getting accurate estimates and avoid overpaying
+            </p>
           </div>
 
         </div>
@@ -1067,28 +1070,29 @@
 
       <div class="roi-results">
         <div class="roi-result-card">
-          <div class="roi-result-value" id="timeSaved">75</div>
+          <div class="roi-result-value" id="timeSaved">125</div>
+          <div class="roi-result-label">Minutes Saved / Month</div>
+        </div>
+
+        <div class="roi-result-card">
+          <div class="roi-result-value" id="timeSavedHours">2</div>
           <div class="roi-result-label">Hours Saved / Month</div>
         </div>
 
         <div class="roi-result-card">
-          <div class="roi-result-value" id="moneySaved">$5,625</div>
-          <div class="roi-result-label">Money Saved / Month</div>
+          <div class="roi-result-value" id="timeSavedYear">24</div>
+          <div class="roi-result-label">Hours Saved / Year</div>
         </div>
 
         <div class="roi-result-card">
-          <div class="roi-result-value" id="yearlyROI">$67,500</div>
-          <div class="roi-result-label">Annual Savings</div>
+          <div class="roi-result-value" id="calculationsPerYear">60</div>
+          <div class="roi-result-label">Calculations / Year</div>
         </div>
 
-        <div class="roi-result-card">
-          <div class="roi-result-value" id="paybackTime">< 1</div>
-          <div class="roi-result-label">Days to Pay Back</div>
-        </div>
       </div>
 
       <p class="roi-disclaimer">
-        * Calculations assume TrenchCalc reduces calculation time to 5 minutes per project. Actual savings may vary based on project complexity and user experience. Annual subscription cost factored into payback calculation.
+        * Calculations assume TrenchCalc reduces calculation time to 5 minutes per project. Actual time savings may vary based on project complexity and user experience.
       </p>
     </section>
 
@@ -1371,39 +1375,36 @@
 
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ROI Calculator
+  // ROI Calculator - Customer-focused (time savings only)
   function calculateROI() {
-    const projectsPerMonth = parseFloat(document.getElementById('projectsPerMonth').value) || 0;
-    const timePerProject = parseFloat(document.getElementById('timePerProject').value) || 0;
-    const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+    const calculationsPerMonth = parseFloat(document.getElementById('calculationsPerMonth').value) || 0;
+    const timePerCalculation = parseFloat(document.getElementById('timePerCalculation').value) || 0;
 
     // Assumptions
-    const trenchCalcTimePerProject = 5; // minutes
-    const annualSubscriptionCost = 500; // estimated annual cost (Premium tier)
+    const trenchCalcTimePerCalculation = 5; // minutes
 
-    // Calculate time saved per project
-    const timeSavedPerProject = timePerProject - trenchCalcTimePerProject;
+    // Calculate time saved per calculation
+    const timeSavedPerCalculation = timePerCalculation - trenchCalcTimePerCalculation;
 
-    // Calculate monthly savings
-    const hoursPerMonth = (timeSavedPerProject * projectsPerMonth) / 60;
-    const moneySavedPerMonth = hoursPerMonth * hourlyRate;
-    const annualSavings = (moneySavedPerMonth * 12) - annualSubscriptionCost;
+    // Calculate time savings (monthly)
+    const minutesSavedPerMonth = timeSavedPerCalculation * calculationsPerMonth;
+    const hoursSavedPerMonth = minutesSavedPerMonth / 60;
 
-    // Calculate payback time in days
-    const dailySavings = moneySavedPerMonth / 30;
-    const paybackDays = dailySavings > 0 ? Math.ceil(annualSubscriptionCost / dailySavings) : 999;
+    // Calculate annual savings
+    const hoursSavedPerYear = hoursSavedPerMonth * 12;
+    const calculationsPerYear = calculationsPerMonth * 12;
 
     // Update UI
-    document.getElementById('timeSaved').textContent = Math.round(hoursPerMonth);
-    document.getElementById('moneySaved').textContent = '$' + Math.round(moneySavedPerMonth).toLocaleString();
-    document.getElementById('yearlyROI').textContent = '$' + Math.round(annualSavings).toLocaleString();
-    document.getElementById('paybackTime').textContent = paybackDays < 1 ? '< 1' : paybackDays;
+    document.getElementById('timeSaved').textContent = Math.round(minutesSavedPerMonth);
+    document.getElementById('timeSavedHours').textContent = hoursSavedPerMonth.toFixed(1);
+    document.getElementById('timeSavedYear').textContent = Math.round(hoursSavedPerYear);
+    document.getElementById('calculationsPerYear').textContent = calculationsPerYear;
   }
 
   // Attach event listeners
-  document.getElementById('projectsPerMonth').addEventListener('input', calculateROI);
-  document.getElementById('timePerProject').addEventListener('input', calculateROI);
-  document.getElementById('hourlyRate').addEventListener('input', calculateROI);
+  document.getElementById('calculationsPerMonth').addEventListener('input', calculateROI);
+  document.getElementById('timePerCalculation').addEventListener('input', calculateROI);
+  document.getElementById('verifyQuotes').addEventListener('change', calculateROI);
 
   // Initial calculation
   calculateROI();

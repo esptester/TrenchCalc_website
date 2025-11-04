@@ -5,6 +5,23 @@
     return;
   }
 
+  // Prevent loading Crisp multiple times across page navigations
+  if (window.CRISP_LOADED || document.querySelector('script[src*="client.crisp.chat"]')) {
+    // Crisp already loaded, just ensure it's visible
+    if (window.$crisp) {
+      setTimeout(function() {
+        var cookieConsent = document.cookie.match(/cookie_consent=accepted/);
+        if (cookieConsent || !document.getElementById('cookieConsentBanner')) {
+          window.$crisp.push(["do", "chat:show"]);
+        }
+      }, 100);
+    }
+    return;
+  }
+
+  // Mark as loading to prevent duplicate loads
+  window.CRISP_LOADED = true;
+
   // Load Crisp
   window.$crisp = window.$crisp || [];
   window.CRISP_WEBSITE_ID = id;
@@ -26,8 +43,6 @@
     }, 500);
   };
   (d.getElementsByTagName("head")[0] || d.body).appendChild(s);
-
-  // Crisp will provide its own chat widget, no placeholder needed
 
   // Optional per-page visibility rules
   try {

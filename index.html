@@ -80,10 +80,11 @@
     <div class="logo-section">
       <img src="favicon-32x32.png" alt="EngSiteTools" />
     </div>
-    <nav>
+    <nav role="navigation" aria-label="Main navigation">
       <a href="#about">About</a>
       <a href="#products">Products</a>
       <a href="#news">News</a>
+      <a href="help.html">Help</a>
       <a href="#contact">Contact</a>
       <a href="trenchcalc/" class="nav-cta">Try TrenchCalc</a>
     </nav>
@@ -91,7 +92,7 @@
 </header>
 
 <!-- Hero Section -->
-<section class="hero">
+<section class="hero" aria-label="Hero section">
   <div class="hero-content">
     <h1>Practical Engineering Software</h1>
     <p>Affordable, intuitive tools that deliver the right information without spreadsheet complexity or enterprise bloat.</p>
@@ -104,20 +105,20 @@
 
 <main id="main">
   <!-- Mission -->
-  <div class="section fade-in" id="mission">
+  <section class="section fade-in" id="mission" role="region" aria-label="Our mission">
     <h2>Our Mission</h2>
     <p>
       Founded in 2025, EngSiteTools creates practical, affordable, and intuitive engineering software for professionals and small teams.
       We focus on delivering the right information in a clear, digestible format — without the overload of spreadsheets or unnecessary complexity.
     </p>
-  </div>
+  </section>
 
   <!-- Why EngSiteTools -->
-  <div class="section fade-in">
+  <section class="section fade-in" role="region" aria-label="Why EngSiteTools">
     <h2>Why EngSiteTools?</h2>
     <div class="benefits-grid">
       <div class="benefit-card fade-in-delay-1">
-        <div class="benefit-icon">
+        <div class="benefit-icon" aria-hidden="true">
           <i class="fas fa-mobile-alt"></i>
         </div>
         <h3>Built for the Field</h3>
@@ -125,7 +126,7 @@
       </div>
 
       <div class="benefit-card fade-in-delay-2">
-        <div class="benefit-icon">
+        <div class="benefit-icon" aria-hidden="true">
           <i class="fas fa-dollar-sign"></i>
         </div>
         <h3>Affordable Pricing</h3>
@@ -133,7 +134,7 @@
       </div>
 
       <div class="benefit-card fade-in-delay-3">
-        <div class="benefit-icon">
+        <div class="benefit-icon" aria-hidden="true">
           <i class="fas fa-tachometer-alt"></i>
         </div>
         <h3>Fast & Simple</h3>
@@ -141,17 +142,17 @@
       </div>
 
       <div class="benefit-card">
-        <div class="benefit-icon">
+        <div class="benefit-icon" aria-hidden="true">
           <i class="fas fa-check-circle"></i>
         </div>
         <h3>Professional Accuracy</h3>
         <p>Industry-grade calculations you can trust for estimates, planning, and project execution.</p>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- By the Numbers -->
-  <div class="section fade-in">
+  <section class="section fade-in" role="region" aria-label="Statistics">
     <h2>By the Numbers</h2>
     <div class="stats-grid">
       <div class="stat-item">
@@ -174,10 +175,10 @@
         <div class="stat-label">Support Available</div>
       </div>
     </div>
-  </div>
+  </section>
 
   <!-- Products -->
-<div class="section fade-in" id="products">
+<section class="section fade-in" id="products" role="region" aria-label="Our products">
   <h2>Our Products</h2>
   <div class="products">
 
@@ -190,7 +191,7 @@
 </div>
 
   </div>
-</div>
+</section>
 
 <!-- News -->
 <section class="news section fade-in" id="news" aria-label="EngSiteTools News">
@@ -217,8 +218,8 @@
       </a>
 
       <!-- Card 2 -->
-      <a class="news-card" href="news/news-culvert-spacing-checks.html">
-        <div class="news-img">
+      <a class="news-card" href="news/news-culvert-spacing-checks.html" aria-label="Read article: Culvert Spacing Checks: 3 Fast Sanity Tests">
+        <div class="news-img" aria-hidden="true">
           <img src="culvertspacing.png" alt="Culvert Spacing Checks: 3 Fast Sanity Tests">
         </div>
         <div class="news-body">
@@ -232,8 +233,8 @@
       </a>
 
       <!-- Card 3 -->
-      <a class="news-card" href="news/news-faster-planning-in-the-field.html">
-        <div class="news-img">
+      <a class="news-card" href="news/news-faster-planning-in-the-field.html" aria-label="Read article: Faster Planning in the Field">
+        <div class="news-img" aria-hidden="true">
           <img src="planning.png" alt="Faster Planning in the Field">
         </div>
         <div class="news-body">
@@ -247,8 +248,8 @@
       </a>
 
       <!-- Card 4 -->
-      <a class="news-card" href="news/news-performance-ui-polish.html">
-        <div class="news-img">
+      <a class="news-card" href="news/news-performance-ui-polish.html" aria-label="Read article: Performance & UI Polish">
+        <div class="news-img" aria-hidden="true">
           <img src="ui.png" alt="Performance & UI Polish">
         </div>
         <div class="news-body">
@@ -262,8 +263,8 @@
       </a>
 
       <!-- Card 5 -->
-      <a class="news-card" href="news/news-beta-invites.html">
-        <div class="news-img">
+      <a class="news-card" href="news/news-beta-invites.html" aria-label="Read article: Beta Invites">
+        <div class="news-img" aria-hidden="true">
           <img src="beta.png" alt="Beta Invites">
         </div>
         <div class="news-body">
@@ -288,7 +289,7 @@
 
 
   <!-- Newsletter Signup -->
-  <div class="section fade-in" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%); text-align: center; padding: 48px 32px;">
+  <section class="section fade-in" role="region" aria-label="Newsletter signup" style="background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%); text-align: center; padding: 48px 32px;">
     <h2 style="margin-bottom: 12px;">Stay Updated</h2>
     <p style="color: var(--muted); margin-bottom: 24px; max-width: 600px; margin-left: auto; margin-right: auto;">
       Get the latest updates on new features, engineering tips, and product releases delivered to your inbox.
@@ -300,15 +301,19 @@
       <input type="hidden" name="_template" value="box">
 
       <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <label for="newsletter-email" class="sr-only">Email address for newsletter</label>
         <input
           type="email"
+          id="newsletter-email"
           name="email"
           placeholder="Enter your email address"
           required
+          aria-label="Enter your email address for newsletter subscription"
           style="flex: 1; min-width: 250px; padding: 14px 20px; border: 2px solid #ddd; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; background: var(--card-bg); color: var(--text);"
         >
         <button
           type="submit"
+          aria-label="Subscribe to newsletter"
           style="padding: 14px 32px; background: var(--brand); color: white; border: none; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.3s; white-space: nowrap;"
           onmouseover="this.style.background='#3367d6'; this.style.transform='translateY(-2px)'"
           onmouseout="this.style.background='var(--brand)'; this.style.transform='translateY(0)'"
@@ -320,20 +325,20 @@
         No spam, unsubscribe anytime. See our <a href="privacy.html" style="color: var(--brand);">Privacy Policy</a>.
       </p>
     </form>
-  </div>
+  </section>
 
   <!-- About -->
-  <div class="section fade-in" id="about">
+  <section class="section fade-in" id="about" role="region" aria-label="About EngSiteTools">
     <h2>About EngSiteTools</h2>
     <p>
       EngSiteTools started after noticing a lack of accessible, affordable resources for small contractors.
       Many tools in the engineering and construction sector are overloaded with features or hidden behind complex spreadsheets.
       We build apps that solve real-world pricing and planning problems, delivering the information you need — and nothing you don't.
     </p>
-  </div>
+  </section>
 
   <!-- Contact -->
-  <div class="section fade-in" id="contact">
+  <section class="section fade-in" id="contact" role="region" aria-label="Contact us">
     <h2>Contact Us</h2>
     <p style="text-align: center; color: var(--muted); margin-bottom: 24px;">Have a question or feedback? Send us a message and we'll get back to you as soon as possible.</p>
 
@@ -344,20 +349,26 @@
       <input type="hidden" name="_template" value="box">
       <input type="hidden" name="_subject" value="New contact form submission from EngSiteTools">
 
+      <!-- Live region for form status updates -->
+      <div id="formStatus" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      
       <!-- Required Fields -->
       <div class="form-group">
         <label for="name">Name <span class="required">*</span></label>
-        <input type="text" id="name" name="name" required placeholder="Your full name">
+        <input type="text" id="name" name="name" required placeholder="Your full name" aria-required="true" aria-describedby="nameError">
+        <span id="nameError" class="sr-only" role="alert"></span>
       </div>
 
       <div class="form-group">
         <label for="email">Email <span class="required">*</span></label>
-        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+        <input type="email" id="email" name="email" required placeholder="your.email@example.com" aria-required="true" aria-describedby="emailError">
+        <span id="emailError" class="sr-only" role="alert"></span>
       </div>
 
       <div class="form-group">
         <label for="message">Message <span class="required">*</span></label>
-        <textarea id="message" name="message" required placeholder="Tell us how we can help..."></textarea>
+        <textarea id="message" name="message" required placeholder="Tell us how we can help..." aria-required="true" aria-describedby="messageError"></textarea>
+        <span id="messageError" class="sr-only" role="alert"></span>
       </div>
 
       <!-- Optional Fields -->
@@ -371,9 +382,9 @@
         <input type="text" id="company" name="company" placeholder="Your company name">
       </div>
 
-      <button type="submit" class="form-submit">Send Message</button>
+      <button type="submit" class="form-submit" aria-describedby="formStatus">Send Message</button>
 
-      <div id="formMessage" class="form-message"></div>
+      <div id="formMessage" class="form-message" role="alert" aria-live="polite"></div>
     </form>
 
     <div class="contact-info">
@@ -390,7 +401,7 @@
         <a href="https://www.tiktok.com/@engsitetools" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
       </div>
     </div>
-  </div>
+  </section>
 </main>
 
 <footer>
@@ -414,6 +425,7 @@
         <li><a href="#about">About Us</a></li>
         <li><a href="#mission">Our Mission</a></li>
         <li><a href="#news">News</a></li>
+        <li><a href="help.html">Help Center</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
