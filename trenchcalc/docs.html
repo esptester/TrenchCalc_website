@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TrenchCalc Documentation — Guides & Tutorials</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Complete guides and tutorials for TrenchCalc. Learn how to use trench calculations, cement stabilization, photogrammetry, and all features.">
+  <meta name="theme-color" content="#0F172A">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrenchCalc Documentation">
+  <meta property="og:description" content="Complete guides and tutorials for TrenchCalc. Learn how to use all features.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://engsitetools.com/trenchcalc/docs.html">
+  <meta property="og:image" content="https://engsitetools.com/trenchcalc-logo.png">
+
+  <!-- Favicons -->
+  <link rel="icon" href="../trenchcalc-logo-no-text.svg" type="image/svg+xml">
+  <link rel="icon" href="../favicon-32x32.png" sizes="32x32" type="image/png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --ink:#0f172a;
+      --muted:#5b6473;
+      --card:#ffffff;
+      --brand:#2563eb;
+      --accent:#10b981;
+      --surface:#f6f7fb;
+      --radius:14px;
+      --shadow:0 8px 24px rgba(16,24,40,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --ink:#e6e8ee;
+        --muted:#9aa3b2;
+        --card:#121826;
+        --surface:#0d1320;
+        --brand:#3b82f6;
+        --shadow:0 8px 24px rgba(0,0,0,.35);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0}
+    body{
+      font-family: 'Inter', -apple-system, BlinkSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color:var(--ink);
+      background:var(--surface);
+      line-height:1.6;
+    }
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Header */
+    header{
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color:#fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav{
+      max-width:1040px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
+      padding:16px 20px;flex-wrap: wrap;gap: 16px;
+    }
+    .brand{display:flex;gap:10px;align-items:center}
+    .logo{
+      width:44px;height:44px;border-radius:12px;overflow:hidden;background:#111;
+      display:grid;place-items:center;box-shadow:var(--shadow);
+    }
+    .logo img{width:100%;height:100%;object-fit:cover;display:block;}
+    .brand h1{font-size:18px;margin:0;font-weight:600}
+    .nav a.small{
+      color:#cbd5e1;margin-left:18px;font-weight:500;font-size:15px;transition: opacity 0.2s;
+    }
+    .nav a.small:hover{color:#fff;opacity:0.8;text-decoration:none}
+    .nav-cta {
+      background: var(--brand);padding: 8px 20px;border-radius: 6px;
+      color: white !important;font-weight: 600;margin-left: 12px;
+    }
+    .nav-cta:hover {background: #3367d6;opacity: 1 !important;text-decoration: none;}
+
+    /* Main Layout */
+    .docs-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+    }
+    @media (max-width: 968px) {
+      .docs-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .docs-sidebar {
+        position: static !important;
+        height: auto !important;
+      }
+    }
+
+    /* Sidebar */
+    .docs-sidebar {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 100px);
+      overflow-y: auto;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .docs-sidebar h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+    .docs-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .docs-nav li {
+      margin-bottom: 8px;
+    }
+    .docs-nav a {
+      display: block;
+      padding: 8px 12px;
+      color: var(--ink);
+      font-size: 14px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .docs-nav a:hover {
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--brand);
+    }
+    .docs-nav a.active {
+      background: var(--surface);
+      color: var(--brand);
+      font-weight: 500;
+    }
+
+    /* Search */
+    .docs-search {
+      margin-bottom: 24px;
+    }
+    .docs-search input {
+      width: 100%;
+      padding: 10px 16px;
+      border: 2px solid var(--surface);
+      border-radius: 8px;
+      font-size: 14px;
+      background: var(--surface);
+      color: var(--ink);
+      transition: border-color 0.2s;
+    }
+    .docs-search input:focus {
+      outline: none;
+      border-color: var(--brand);
+    }
+
+    /* Content */
+    .docs-content {
+      max-width: 800px;
+    }
+    .docs-header {
+      margin-bottom: 32px;
+    }
+    .docs-header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin: 0 0 12px;
+      line-height: 1.2;
+    }
+    .docs-header p {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Section */
+    .docs-section {
+      margin-bottom: 48px;
+      scroll-margin-top: 100px;
+    }
+    .docs-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 16px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--surface);
+    }
+    .docs-section h3 {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 32px 0 16px;
+    }
+    .docs-section h4 {
+      font-size: 18px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+    }
+    .docs-section p {
+      margin: 0 0 16px;
+      color: var(--ink);
+    }
+    .docs-section ul, .docs-section ol {
+      margin: 0 0 16px;
+      padding-left: 24px;
+    }
+    .docs-section li {
+      margin-bottom: 8px;
+    }
+
+    /* Cards */
+    .docs-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .docs-card h3 {
+      margin-top: 0;
+    }
+    .docs-card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+    .docs-card-link {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: block;
+      text-decoration: none;
+    }
+    .docs-card-link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(16,24,40,.15);
+      text-decoration: none;
+    }
+    .docs-card-link h4 {
+      margin: 0 0 8px;
+      color: var(--brand);
+    }
+    .docs-card-link p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Code blocks */
+    .docs-code {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 16px;
+      margin: 16px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 14px;
+      overflow-x: auto;
+      border-left: 3px solid var(--brand);
+    }
+
+    /* Tips & Warnings */
+    .docs-tip {
+      background: rgba(16, 185, 129, 0.1);
+      border-left: 3px solid var(--accent);
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .docs-tip strong {
+      color: var(--accent);
+    }
+    .docs-warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid #f59e0b;
+      border-radius: 6px;
+      padding: 16px;
+      margin: 16px 0;
+    }
+    .docs-warning strong {
+      color: #f59e0b;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 40px 20px;
+      margin-top: 80px;
+    }
+    .footer-content {
+      max-width: 1040px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .footer-content p {
+      color: rgba(255,255,255,0.7);
+      margin: 0;
+    }
+    .footer-links {
+      margin-top: 16px;
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<header style="background:#0b0f1a; color:#fff; padding:12px 20px; font-size:14px;">
+  <a href="index.html" style="color:#fff; text-decoration:none;">← Back to TrenchCalc</a>
+</header>
+
+<header role="banner">
+  <div class="nav" aria-label="Primary">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">
+        <img src="../trenchcalc-logo.png" alt="TrenchCalc logo">
+      </div>
+      <div>
+        <div style="font-size:11px;color:#3b82f6;font-weight:600;margin-bottom:2px;">engsitetools</div>
+        <h1 style="margin:0;font-size:18px;">TrenchCalc™</h1>
+        <div style="font-size:12px;margin-top:2px;color:#cbd5e1;">Documentation</div>
+      </div>
+    </div>
+
+    <nav>
+      <a class="small" href="index.html">Overview</a>
+      <a class="small" href="features.html">Pricing</a>
+      <a class="small" href="docs.html">Docs</a>
+      <a class="nav-cta" href="https://play.google.com/store/apps/details?id=com.vinnie.trenchcalc" target="_blank" rel="noopener">Download</a>
+    </nav>
+  </div>
+</header>
+
+<div class="docs-container">
+  <!-- Sidebar -->
+  <aside class="docs-sidebar">
+    <div class="docs-search">
+      <input type="search" placeholder="Search documentation..." id="docsSearch">
+    </div>
+    
+    <h3>Getting Started</h3>
+    <ul class="docs-nav">
+      <li><a href="#getting-started">Quick Start</a></li>
+      <li><a href="#installation">Installation</a></li>
+      <li><a href="#first-calculations">Your First Calculations</a></li>
+    </ul>
+
+    <h3>Core Features</h3>
+    <ul class="docs-nav">
+      <li><a href="#trench-calculations">Trench Calculations</a></li>
+      <li><a href="#cement-stabilization">Cement Stabilization</a></li>
+      <li><a href="#culvert-planning">Culvert Planning</a></li>
+      <li><a href="#project-management">Project Management</a></li>
+    </ul>
+
+    <h3>Advanced Features</h3>
+    <ul class="docs-nav">
+      <li><a href="#photogrammetry">Photogrammetry</a></li>
+      <li><a href="#photo-documentation">Photo Documentation</a></li>
+      <li><a href="#ai-features">AI Features</a></li>
+      <li><a href="#team-collaboration">Team Collaboration</a></li>
+    </ul>
+
+    <h3>Guides</h3>
+    <ul class="docs-nav">
+      <li><a href="#best-practices">Best Practices</a></li>
+      <li><a href="#troubleshooting">Troubleshooting</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="docs-content">
+    <div class="docs-header">
+      <h1>TrenchCalc Documentation</h1>
+      <p>Complete guides and tutorials to help you get the most out of TrenchCalc</p>
+    </div>
+
+    <!-- Getting Started -->
+    <section id="getting-started" class="docs-section">
+      <h2>Getting Started</h2>
+      
+      <div class="docs-card">
+        <h3>Quick Start Guide</h3>
+        <p>Welcome to TrenchCalc! This guide will help you get started with your first trench calculations in minutes.</p>
+        
+        <h4>Step 1: Install the App</h4>
+        <p>Download TrenchCalc from the Google Play Store and install it on your Android device.</p>
+        
+        <h4>Step 2: Create Your First Project</h4>
+        <ol>
+          <li>Open TrenchCalc</li>
+          <li>Tap the "+" button to create a new project</li>
+          <li>Enter a project name (e.g., "Main Street Trench")</li>
+        </ol>
+        
+        <h4>Step 3: Enter Trench Dimensions</h4>
+        <p>Enter your trench dimensions:</p>
+        <ul>
+          <li><strong>Length:</strong> Total length of the trench</li>
+          <li><strong>Depth:</strong> Depth from ground surface</li>
+          <li><strong>Base Width:</strong> Width at the bottom</li>
+          <li><strong>Top Width:</strong> Width at the surface (for trapezoidal trenches)</li>
+        </ul>
+        
+        <div class="docs-tip">
+          <strong>💡 Tip:</strong> You can switch between metric and imperial units using the settings menu.
+        </div>
+      </div>
+    </section>
+
+    <section id="installation" class="docs-section">
+      <h2>Installation</h2>
+      
+      <h3>System Requirements</h3>
+      <ul>
+        <li>Android 8.0 (API level 26) or higher</li>
+        <li>Minimum 2GB RAM</li>
+        <li>Storage space: 100MB minimum</li>
+        <li>Internet connection required for cloud sync and premium features</li>
+      </ul>
+
+      <h3>Installing from Google Play</h3>
+      <ol>
+        <li>Open Google Play Store on your device</li>
+        <li>Search for "TrenchCalc"</li>
+        <li>Tap "Install"</li>
+        <li>Wait for installation to complete</li>
+        <li>Open the app and sign in or create an account</li>
+      </ol>
+
+      <div class="docs-warning">
+        <strong>⚠️ Note:</strong> Some features require an active subscription. You can start with the Free plan and upgrade when needed.
+      </div>
+    </section>
+
+    <section id="first-calculations" class="docs-section">
+      <h2>Your First Calculations</h2>
+      
+      <h3>Basic Trench Volume</h3>
+      <p>To calculate a simple rectangular trench volume:</p>
+      <ol>
+        <li>Open the app and create a new project</li>
+        <li>Go to the "Dimensions" tab</li>
+        <li>Enter:
+          <ul>
+            <li>Length: 100 meters</li>
+            <li>Depth: 2 meters</li>
+            <li>Base Width: 1.5 meters</li>
+          </ul>
+        </li>
+        <li>Tap "Calculate"</li>
+        <li>View your results in the "Results" tab</li>
+      </ol>
+
+      <h3>Understanding Results</h3>
+      <p>The results screen shows:</p>
+      <ul>
+        <li><strong>Volume:</strong> Total trench volume in cubic meters or cubic yards</li>
+        <li><strong>Area:</strong> Cross-sectional area</li>
+        <li><strong>Perimeter:</strong> Trench perimeter measurements</li>
+        <li><strong>Material Required:</strong> Based on selected fill type</li>
+      </ul>
+    </section>
+
+    <!-- Core Features -->
+    <section id="trench-calculations" class="docs-section">
+      <h2>Trench Calculations</h2>
+      
+      <h3>Basic Dimensions</h3>
+      <p>TrenchCalc supports multiple trench configurations:</p>
+      
+      <div class="docs-card-grid">
+        <div class="docs-card-link">
+          <h4>Rectangular Trench</h4>
+          <p>Simple rectangular cross-section with uniform width</p>
+        </div>
+        <div class="docs-card-link">
+          <h4>Trapezoidal Trench</h4>
+          <p>Tapered sides with different base and top widths</p>
+        </div>
+        <div class="docs-card-link">
+          <h4>Stepped Trench</h4>
+          <p>Multiple levels with different widths at each step</p>
+        </div>
+        <div class="docs-card-link">
+          <h4>Benched Trench</h4>
+          <p>Horizontal benches for stability in deep excavations</p>
+        </div>
+      </div>
+
+      <h3>Multi-Zone Calculations</h3>
+      <p>TrenchCalc allows you to define multiple zones within a single trench:</p>
+      <ul>
+        <li><strong>Foundation Zone:</strong> Base layer with specific material</li>
+        <li><strong>Bed Zone:</strong> Main trench bed</li>
+        <li><strong>Haunch Zone:</strong> Side support areas</li>
+        <li><strong>Side Fill Zone:</strong> Backfill material</li>
+        <li><strong>Overlay Zone:</strong> Surface layer</li>
+      </ul>
+
+      <div class="docs-tip">
+        <strong>💡 Pro Tip:</strong> Use multi-zone calculations for complex projects with different materials in each zone. This gives you accurate volume and cost breakdowns.
+      </div>
+    </section>
+
+    <section id="cement-stabilization" class="docs-section">
+      <h2>Cement Stabilization</h2>
+      
+      <h3>Overview</h3>
+      <p>Cement stabilization is used to improve soil strength and durability. TrenchCalc helps you calculate the required cement content and predict strength gains.</p>
+
+      <h3>Calculating Cement Requirements</h3>
+      <ol>
+        <li>Navigate to the "Cement" tab</li>
+        <li>Select your soil type (clay, sand, gravel, etc.)</li>
+        <li>Enter target UCS (Unconfined Compressive Strength)</li>
+        <li>Specify cement content percentage</li>
+        <li>View calculated cement requirements</li>
+      </ol>
+
+      <h3>UCS Predictions</h3>
+      <p>TrenchCalc predicts UCS based on:</p>
+      <ul>
+        <li>Soil type and properties</li>
+        <li>Cement content percentage</li>
+        <li>Curing time (7-day and 28-day predictions)</li>
+        <li>Material-specific coefficients (ASTM standards)</li>
+      </ul>
+
+      <div class="docs-code">
+        Example: 5% cement content in clay soil
+        → 7-day UCS: ~0.5 MPa
+        → 28-day UCS: ~1.2 MPa
+      </div>
+
+      <h3>Mix Design</h3>
+      <p>The app calculates:</p>
+      <ul>
+        <li>Dry soil weight required</li>
+        <li>Cement weight needed</li>
+        <li>Water content for optimal compaction</li>
+        <li>Total stabilized mix volume</li>
+      </ul>
+    </section>
+
+    <section id="culvert-planning" class="docs-section">
+      <h2>Culvert Planning</h2>
+      
+      <h3>Adding Culverts</h3>
+      <p>Culvert planning helps you position pipes correctly within your trench:</p>
+      <ol>
+        <li>Go to the "Culverts" tab</li>
+        <li>Tap "Add Culvert"</li>
+        <li>Enter culvert diameter</li>
+        <li>Set bedding depth (distance from trench bottom)</li>
+        <li>Set cover depth (distance to surface)</li>
+        <li>Specify spacing between multiple culverts</li>
+      </ol>
+
+      <h3>Spacing Calculations</h3>
+      <p>TrenchCalc automatically calculates:</p>
+      <ul>
+        <li>Minimum spacing between culverts</li>
+        <li>Bedding material requirements</li>
+        <li>Cover depth compliance</li>
+        <li>Volume adjustments (subtracts culvert volume from trench)</li>
+      </ul>
+
+      <div class="docs-warning">
+        <strong>⚠️ Important:</strong> Ensure bedding depth is uniform and cover depth meets local regulations (typically 300-600mm minimum).
+      </div>
+    </section>
+
+    <section id="project-management" class="docs-section">
+      <h2>Project Management</h2>
+      
+      <h3>Saving Projects</h3>
+      <p>Save unlimited projects with complete configurations:</p>
+      <ol>
+        <li>After entering your trench data, tap the menu (three dots)</li>
+        <li>Select "Save Project"</li>
+        <li>Enter a project name</li>
+        <li>Add optional notes or tags</li>
+        <li>Tap "Save"</li>
+      </ol>
+
+      <h3>Loading Projects</h3>
+      <p>Retrieve saved projects anytime:</p>
+      <ul>
+        <li>Go to the main project list</li>
+        <li>Tap on any saved project</li>
+        <li>All dimensions, materials, and settings are restored</li>
+      </ul>
+
+      <h3>Exporting Results</h3>
+      <p>Export your calculations for documentation:</p>
+      <ul>
+        <li><strong>PDF Export:</strong> Professional reports with all calculations and breakdowns</li>
+        <li><strong>CSV Export:</strong> Spreadsheet-compatible data for further analysis</li>
+        <li><strong>Share:</strong> Direct sharing via email or messaging apps</li>
+      </ul>
+    </section>
+
+    <!-- Advanced Features -->
+    <section id="photogrammetry" class="docs-section">
+      <h2>Photogrammetry</h2>
+      
+      <h3>What is Photogrammetry?</h3>
+      <p>Photogrammetry converts multiple photos into accurate 3D models. TrenchCalc uses this to create precise volume calculations from photos taken on-site.</p>
+
+      <h3>Creating a Photogrammetry Scan</h3>
+      <ol>
+        <li>Go to the "Site Survey" tab</li>
+        <li>Tap "New Scan"</li>
+        <li>Take 15-30 photos following the guidelines:
+          <ul>
+            <li>Overlap photos by 60-80%</li>
+            <li>Move around the trench in a circular pattern</li>
+            <li>Keep phone level and steady</li>
+            <li>Ensure good lighting</li>
+          </ul>
+        </li>
+        <li>Upload photos (processing happens in the cloud)</li>
+        <li>Wait for processing (typically 5-10 minutes)</li>
+        <li>View your 3D model and volume calculations</li>
+      </ol>
+
+      <div class="docs-tip">
+        <strong>💡 Best Results:</strong> Take photos during good lighting conditions (avoid harsh shadows). Overlap photos significantly for better accuracy.
+      </div>
+
+      <h3>Photogrammetry Accuracy</h3>
+      <p>TrenchCalc photogrammetry typically achieves:</p>
+      <ul>
+        <li>±1-3cm accuracy for volume measurements</li>
+        <li>DSM/DTM generation for terrain analysis</li>
+        <li>Point cloud visualization in 3D</li>
+      </ul>
+    </section>
+
+    <section id="photo-documentation" class="docs-section">
+      <h2>Photo Documentation</h2>
+      
+      <h3>Organizing Photos</h3>
+      <p>Keep your project photos organized with tags and GPS data:</p>
+      <ol>
+        <li>Go to the "Photos" tab</li>
+        <li>Tap the camera icon to take a photo</li>
+        <li>Add tags from the pre-built list (28+ options)</li>
+        <li>Add custom notes if needed</li>
+        <li>Photos are automatically tagged with GPS location</li>
+      </ol>
+
+      <h3>Photo Tags</h3>
+      <p>Pre-built tags include:</p>
+      <ul>
+        <li>Excavation, Backfill, Compaction</li>
+        <li>Culvert Installation, Bedding, Pipe</li>
+        <li>Quality Control, Safety, Issues</li>
+        <li>And many more...</li>
+      </ul>
+
+      <h3>AI Photo Enhancement</h3>
+      <p>Premium plans include AI features:</p>
+      <ul>
+        <li><strong>Deblur:</strong> Remove motion blur from photos</li>
+        <li><strong>Sharpen:</strong> Improve photo clarity</li>
+        <li><strong>Brighten:</strong> Adjust exposure for better visibility</li>
+        <li><strong>Face Blur:</strong> Automatically blur faces for privacy</li>
+      </ul>
+    </section>
+
+    <section id="ai-features" class="docs-section">
+      <h2>AI Features</h2>
+      
+      <h3>AI Diary Polish</h3>
+      <p>Automatically improve your site diary entries:</p>
+      <ul>
+        <li>Grammar and spelling corrections</li>
+        <li>Professional formatting</li>
+        <li>Consistent terminology</li>
+        <li>Clear, concise descriptions</li>
+      </ul>
+
+      <h3>People Removal</h3>
+      <p>Remove people from photos for privacy and compliance:</p>
+      <ol>
+        <li>Select a photo in the Photos tab</li>
+        <li>Tap "Remove People"</li>
+        <li>AI identifies and removes people</li>
+        <li>Save the edited photo</li>
+      </ol>
+
+      <div class="docs-warning">
+        <strong>⚠️ Note:</strong> AI features have monthly limits based on your subscription plan. Check your usage in Settings.
+      </div>
+    </section>
+
+    <section id="team-collaboration" class="docs-section">
+      <h2>Team Collaboration</h2>
+      
+      <h3>Voice Punchlist</h3>
+      <p>Create punch lists using voice notes:</p>
+      <ol>
+        <li>Go to the "Voice Punchlist" tab</li>
+        <li>Tap the microphone icon</li>
+        <li>Speak your note (e.g., "Fix culvert spacing at station 100")</li>
+        <li>Voice is converted to text automatically</li>
+        <li>Assign to team members if needed</li>
+      </ol>
+
+      <h3>Team Sharing</h3>
+      <p>Share projects with your team:</p>
+      <ul>
+        <li>Invite team members via email</li>
+        <li>Set role-based permissions</li>
+        <li>Real-time sync across devices</li>
+        <li>Collaborative comments on projects</li>
+      </ul>
+    </section>
+
+    <!-- Guides -->
+    <section id="best-practices" class="docs-section">
+      <h2>Best Practices</h2>
+      
+      <h3>Accurate Measurements</h3>
+      <ul>
+        <li>Always measure dimensions on-site when possible</li>
+        <li>Use consistent units throughout a project</li>
+        <li>Double-check critical dimensions</li>
+        <li>Account for actual field conditions (not just design drawings)</li>
+      </ul>
+
+      <h3>Material Selection</h3>
+      <ul>
+        <li>Choose materials that match your actual supply</li>
+        <li>Update density values if using custom materials</li>
+        <li>Consider compaction factors for accurate volume conversion</li>
+        <li>Account for waste and over-excavation (typically 10-15%)</li>
+      </ul>
+
+      <h3>Project Organization</h3>
+      <ul>
+        <li>Use descriptive project names</li>
+        <li>Add notes for important decisions or changes</li>
+        <li>Save frequently during complex calculations</li>
+        <li>Export final results for documentation</li>
+      </ul>
+    </section>
+
+    <section id="troubleshooting" class="docs-section">
+      <h2>Troubleshooting</h2>
+      
+      <h3>Common Issues</h3>
+      
+      <h4>App won't open or crashes</h4>
+      <ul>
+        <li>Force close the app and restart it</li>
+        <li>Clear app cache: Settings → Apps → TrenchCalc → Storage → Clear Cache</li>
+        <li>Ensure you have the latest version from Play Store</li>
+        <li>Restart your device</li>
+        <li>Check available storage space</li>
+      </ul>
+
+      <h4>Calculations seem incorrect</h4>
+      <ul>
+        <li>Double-check all input values</li>
+        <li>Verify units are consistent (meters vs feet)</li>
+        <li>Check material density values</li>
+        <li>Review compaction factors</li>
+        <li>Export project and review all inputs</li>
+      </ul>
+
+      <h4>Cloud sync not working</h4>
+      <ul>
+        <li>Check internet connection</li>
+        <li>Verify you're signed in</li>
+        <li>Try signing out and back in</li>
+        <li>Check app permissions for network access</li>
+      </ul>
+
+      <h4>Photos not uploading</h4>
+      <ul>
+        <li>Check internet connection</li>
+        <li>Verify photo file size (try smaller photos)</li>
+        <li>Check available storage</li>
+        <li>Ensure app has photo permissions</li>
+      </ul>
+    </section>
+
+    <section id="faq" class="docs-section">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="docs-card">
+        <h3>How accurate are the calculations?</h3>
+        <p>TrenchCalc uses industry-standard formulas (ASTM, ACI) for all calculations. Volume calculations are mathematically precise based on your inputs. For photogrammetry, accuracy is typically ±1-3cm.</p>
+      </div>
+
+      <div class="docs-card">
+        <h3>Can I use TrenchCalc offline?</h3>
+        <p>Yes! Core calculations work completely offline. Cloud sync, photogrammetry, and AI features require internet connection.</p>
+      </div>
+
+      <div class="docs-card">
+        <h3>What units are supported?</h3>
+        <p>TrenchCalc supports both metric (meters, kilograms) and imperial (feet, pounds) units. You can switch between them in settings.</p>
+      </div>
+
+      <div class="docs-card">
+        <h3>How do I cancel my subscription?</h3>
+        <p>Subscriptions are managed through Google Play Store. Go to Play Store → Subscriptions → TrenchCalc → Cancel. You'll keep access until the end of your billing period.</p>
+      </div>
+
+      <div class="docs-card">
+        <h3>Can I export my data?</h3>
+        <p>Yes! You can export projects as PDF reports or CSV files. PDFs include all calculations and breakdowns. CSV files contain raw data for spreadsheet analysis.</p>
+      </div>
+
+      <div class="docs-card">
+        <h3>What's the difference between Free, Basic, Premium, and MAX plans?</h3>
+        <p>See the <a href="features.html">Pricing page</a> for a complete comparison. Free includes basic calculations. Premium adds AI features, photogrammetry, and advanced planning. MAX includes everything with higher limits.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 EngSiteTools. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="../index.html">EngSiteTools Home</a>
+      <a href="index.html">TrenchCalc Overview</a>
+      <a href="features.html">Pricing</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Use</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Search functionality
+document.getElementById('docsSearch').addEventListener('input', function(e) {
+  const searchTerm = e.target.value.toLowerCase();
+  const sections = document.querySelectorAll('.docs-section');
+  
+  sections.forEach(section => {
+    const text = section.textContent.toLowerCase();
+    if (text.includes(searchTerm) || searchTerm === '') {
+      section.style.display = 'block';
+    } else {
+      section.style.display = 'none';
+    }
+  });
+});
+
+// Active navigation highlighting
+const navLinks = document.querySelectorAll('.docs-nav a');
+const sections = document.querySelectorAll('.docs-section');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (window.scrollY >= sectionTop - 150) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === `#${current}`) {
+      link.classList.add('active');
+    }
+  });
+});
+
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
+
