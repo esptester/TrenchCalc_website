@@ -379,6 +379,7 @@
     <h3>Core Features</h3>
     <ul class="docs-nav">
       <li><a href="#trench-calculations">Trench Calculations</a></li>
+      <li><a href="#tab-features">Complete Tab Features</a></li>
       <li><a href="#cement-stabilization">Cement Stabilization</a></li>
       <li><a href="#culvert-planning">Culvert Planning</a></li>
       <li><a href="#project-management">Project Management</a></li>
@@ -532,6 +533,326 @@
 
       <div class="docs-tip">
         <strong>💡 Pro Tip:</strong> Use multi-zone calculations for complex projects with different materials in each zone. This gives you accurate volume and cost breakdowns.
+      </div>
+    </section>
+
+    <section id="tab-features" class="docs-section">
+      <h2>Complete Tab Features Guide</h2>
+      
+      <p>TrenchCalc organizes features into 14 tabs across two sections: <strong>"Setup Trench"</strong> and <strong>"Plan & Manage"</strong>. Tabs are organized by subscription tier, with some features requiring Basic, Premium, or MAX plans.</p>
+
+      <h3>Tab Organization</h3>
+      <div class="docs-card-grid">
+        <div class="docs-card">
+          <h4>Setup Trench Section</h4>
+          <p>Basic, Fill, Cement, Wall, Culverts, Geofabric, Shoring</p>
+        </div>
+        <div class="docs-card">
+          <h4>Plan & Manage Section</h4>
+          <p>Spoil, Testing, Planner, Diary, Survey, Photos, Punchlist</p>
+        </div>
+      </div>
+
+      <!-- Free Tier Tabs -->
+      <h3 style="margin-top: 40px; color: var(--accent);">Free Tier Tabs</h3>
+
+      <div class="docs-card">
+        <h4>1. Basic Tab - "Change Trench Size"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Set trench depth, length, and base width</li>
+          <li>Supports both metric (m) and imperial (ft) units</li>
+          <li>Real-time diagram visualization</li>
+          <li>Input validation and safety checks</li>
+          <li>Wizard mode for guided setup</li>
+        </ul>
+        <p>This is your starting point. Enter the fundamental dimensions of your trench to begin calculations.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>2. Fill Tab - "Change Fill Type"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Select fill material (preset or custom)</li>
+          <li>Configure material density (kg/m³ or lb/ft³)</li>
+          <li>Set compaction factor</li>
+          <li>Enable zone-based fill configuration</li>
+          <li>Configure bedding depth and overlay depth</li>
+          <li>Supports multiple fill zones: bed, haunch, side, overlay, gap, general</li>
+          <li>Real-time volume calculations</li>
+        </ul>
+        <p>Define what material will fill your trench. You can assign different materials to different zones for complex projects.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>3. Wall Tab - "Add Benching / Battering"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Three wall types: Vertical, Benched, Battered</li>
+          <li>Configure bench step height (for benched walls)</li>
+          <li>Set batter slope ratio H:V (for battered walls)</li>
+          <li>Temporary ramp configuration</li>
+          <li>Ramp volume calculations</li>
+          <li>Visual diagram showing wall configuration</li>
+        </ul>
+        <p>Choose how your trench walls are configured. Vertical walls are simplest, while benched or battered walls provide stability for deeper excavations.</p>
+      </div>
+
+      <!-- Basic Tier Tabs -->
+      <h3 style="margin-top: 40px; color: var(--brand);">Basic Tier Tabs</h3>
+
+      <div class="docs-card">
+        <h4>4. Cement Tab - "+ Add Cement"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Cement percentage slider (0-20%)</li>
+          <li>Per-zone cement application (if zones enabled)</li>
+          <li>UCS (Unconfined Compressive Strength) calculation</li>
+          <li>Water/cement ratio configuration</li>
+          <li>Flowable fill calculations</li>
+          <li>Weather advisory integration</li>
+          <li>Cement mass and volume displays</li>
+          <li>Custom soil type selection for UCS</li>
+        </ul>
+        <div class="docs-tip">
+          <strong>💡 Tip:</strong> UCS predictions help you understand the strength gain at 7-day and 28-day intervals based on cement content and soil type.
+        </div>
+      </div>
+
+      <div class="docs-card">
+        <h4>5. Culverts Tab - "+ Add Culverts"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Circular or box culvert shapes</li>
+          <li>Configure culvert count</li>
+          <li>Set diameter (circular) or width/height (box)</li>
+          <li>Configure spacing between culverts</li>
+          <li>Set distance to walls</li>
+          <li>Fit validation (warns if culverts don't fit trench)</li>
+          <li>Visual diagram with culvert placement</li>
+          <li>Supports multiple culverts with spacing calculations</li>
+        </ul>
+        <div class="docs-warning">
+          <strong>⚠️ Important:</strong> The app will warn you if culverts don't fit your trench dimensions. This validation also appears in Testing, Spoil, and Planner tabs.
+        </div>
+      </div>
+
+      <!-- Premium Tier Tabs -->
+      <h3 style="margin-top: 40px; color: #f59e0b;">Premium Tier Tabs</h3>
+
+      <div class="docs-card">
+        <h4>6. Spoil Tab - "Manage Spoil"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Calculate spoil volume from excavation</li>
+          <li>Configure spoil pile dimensions (angle, height, base width, toe distance)</li>
+          <li>Split spoil evenly on both sides option</li>
+          <li>Display metrics:
+            <ul>
+              <li>Volume per side</li>
+              <li>Base width</li>
+              <li>Height</li>
+              <li>Centre from trench</li>
+              <li>Total spoil volume</li>
+            </ul>
+          </li>
+          <li>Visual diagram showing spoil pile placement</li>
+          <li>Help tooltips for each metric</li>
+        </ul>
+        <p>Plan where excavated material will be stored. The app calculates spoil pile dimensions based on your trench volume.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>7. Testing Tab - "Soil Testing"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Configure compaction testing requirements</li>
+          <li>PSD (Particle Size Distribution) testing setup</li>
+          <li>Test volume calculations</li>
+          <li>Integration with planner for test scheduling</li>
+          <li>Foundation test configuration</li>
+          <li>Test frequency settings (per lift, per zone)</li>
+          <li>Warning if culverts don't fit (affects test accuracy)</li>
+        </ul>
+        <p>Plan your quality control testing schedule. The app calculates how many tests you need based on volume and zone configuration.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>8. Planner Tab - "Construction Planner"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Project timeline estimation</li>
+          <li>Cost estimation and breakdown</li>
+          <li>Material cost tracking</li>
+          <li>Productivity calculations</li>
+          <li>Culvert installation rate configuration</li>
+          <li>Mobilization/demobilization costs</li>
+          <li>Overhead and contingency calculations</li>
+          <li>Profit margin settings</li>
+          <li>Project save/load functionality</li>
+          <li>Multiple project management</li>
+          <li>Cost template system</li>
+          <li>Duration breakdown (by activity)</li>
+          <li>Cost comparison between projects</li>
+          <li>Export capabilities (CSV, share)</li>
+        </ul>
+        <p>Your complete project management tool. Estimate costs, timelines, and manage multiple projects with professional reporting.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>9. Diary Tab - "Site Diary (Beta)"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>AI-powered diary entry generation</li>
+          <li>Voice input transcription</li>
+          <li>Project-based organization</li>
+          <li>Location and date tracking</li>
+          <li>Multiple writing styles (paragraph, bullet points)</li>
+          <li>Integration with voice transcription service</li>
+          <li>Date-based diary organization</li>
+        </ul>
+        <div class="docs-tip">
+          <strong>💡 Tip:</strong> Use voice input to quickly create diary entries on-site. The AI helps polish your entries for professional documentation.
+        </div>
+      </div>
+
+      <div class="docs-card">
+        <h4>10. Geofabric Tab - "Geofabric Lining"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Calculate geofabric surface area requirements</li>
+          <li>Roll size configuration (preset or custom)</li>
+          <li>Overlap configuration between rolls</li>
+          <li>Wastage percentage settings</li>
+          <li>Include/exclude base and walls options</li>
+          <li>Calculate number of rolls required</li>
+          <li>Total linear meters calculation</li>
+          <li>Cost estimation (price per roll)</li>
+          <li>Installation method recommendations (spanning vs per-side)</li>
+          <li>Supports all wall types (vertical, battered, benched)</li>
+          <li>Visual warnings for coverage issues</li>
+        </ul>
+        <p>Calculate exactly how much geofabric you need, accounting for overlaps and wastage.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>11. Shoring Tab - "Trench Shoring"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Soil type classification (Type A, B, C)</li>
+          <li>Protective system selection (shoring, shielding, sloping)</li>
+          <li>Region selection (OSHA, Western Australia)</li>
+          <li>Shoring member type (aluminum, timber, steel)</li>
+          <li>Depth-based shoring requirements</li>
+          <li>Shoring specifications calculator</li>
+          <li>Safety checklist system</li>
+          <li>Multi-user inspection tracking</li>
+          <li>Team member collaboration</li>
+          <li>Shore ID tracking</li>
+          <li>Inspection history</li>
+          <li>Compliance verification</li>
+        </ul>
+        <p>Plan and track shoring installations with regulatory compliance. Supports OSHA and Western Australia standards.</p>
+      </div>
+
+      <div class="docs-card">
+        <h4>12. Survey Tab - "Site Survey"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>LiDAR scanning for volume measurement</li>
+          <li>Photogrammetry processing (photo-based 3D)</li>
+          <li>AR camera integration for scanning</li>
+          <li>Point cloud processing</li>
+          <li>Volume calculation for stock piles and spoil piles</li>
+          <li>Scan quality metrics</li>
+          <li>On-device processing</li>
+          <li>Cloud processing for photogrammetry</li>
+          <li>Measurement history</li>
+          <li>Comparison between LiDAR and photogrammetry results</li>
+          <li>GPS tagging for measurements</li>
+          <li>ML consent for data contribution</li>
+        </ul>
+        <div class="docs-tip">
+          <strong>💡 Tip:</strong> Photogrammetry requires 15-30 photos with 60-80% overlap. LiDAR works in real-time using your device's AR capabilities.
+        </div>
+      </div>
+
+      <div class="docs-card">
+        <h4>13. Photos Tab - "Photo Documentation"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Camera capture with GPS tagging</li>
+          <li>Gallery import (single or multiple)</li>
+          <li>Photo organization by projects</li>
+          <li>Tagging system (28 pre-built tags + custom tags)</li>
+          <li>AI photo enhancement:
+            <ul>
+              <li>Deblur</li>
+              <li>Brighten</li>
+              <li>Sharpen</li>
+              <li>Face blur</li>
+              <li>People removal</li>
+            </ul>
+          </li>
+          <li>Before/after comparison</li>
+          <li>S3 cloud storage</li>
+          <li>Thumbnail generation</li>
+          <li>Filtering and search</li>
+          <li>Photo detail viewer</li>
+          <li>Annotation capabilities</li>
+          <li>Batch operations</li>
+          <li>OSHA-compliant reporting</li>
+          <li>Project-based organization</li>
+        </ul>
+        <p>Organize and enhance your project photos with AI-powered tools. Perfect for documentation and compliance reporting.</p>
+      </div>
+
+      <!-- MAX Tier Tabs -->
+      <h3 style="margin-top: 40px; color: #f59e0b;">MAX Tier Tabs</h3>
+
+      <div class="docs-card">
+        <h4>14. Punchlist Tab - "Voice Punchlist"</h4>
+        <p><strong>Features:</strong></p>
+        <ul>
+          <li>Voice-first issue reporting</li>
+          <li>Photo capture (required for each item)</li>
+          <li>Voice annotation with transcription</li>
+          <li>Priority levels (Low, Medium, High, Critical)</li>
+          <li>Status workflow (Open → In Progress → Completed → Verified)</li>
+          <li>Team assignment and collaboration</li>
+          <li>Due date tracking</li>
+          <li>Tag system for categorization</li>
+          <li>Comments and discussion threads</li>
+          <li>GPS location tagging</li>
+          <li>Overdue detection</li>
+          <li>Filter and sort options</li>
+          <li>Real-time team updates</li>
+          <li>Project-based organization</li>
+        </ul>
+        <p>Report and track issues on-site using voice commands. Each punchlist item requires a photo for documentation.</p>
+      </div>
+
+      <h3>Tab Locking System</h3>
+      <div class="docs-card">
+        <p>Tabs are locked based on your subscription tier:</p>
+        <ul>
+          <li><strong>Free tabs:</strong> Always accessible (Basic, Fill, Wall)</li>
+          <li><strong>Basic tier:</strong> Adds Cement and Culverts tabs</li>
+          <li><strong>Premium tier:</strong> Unlocks all tabs except Punchlist</li>
+          <li><strong>MAX tier:</strong> Full access to all 14 tabs</li>
+        </ul>
+        <p>Locked tabs show a lock icon and require login or upgrade to access.</p>
+      </div>
+
+      <h3>Special Features Across Tabs</h3>
+      <div class="docs-card">
+        <ul>
+          <li><strong>Culvert Fit Validation:</strong> Testing, Spoil, and Planner tabs warn if culverts don't fit trench dimensions</li>
+          <li><strong>Zone-Based Configuration:</strong> Fill, Cement, and Culverts tabs support zone-based setup when zones are enabled</li>
+          <li><strong>Real-time Calculations:</strong> All tabs update calculations immediately on input changes</li>
+          <li><strong>Visual Diagrams:</strong> Most tabs include real-time visual representations</li>
+          <li><strong>Unit Conversion:</strong> All tabs support metric and imperial units</li>
+        </ul>
       </div>
     </section>
 
