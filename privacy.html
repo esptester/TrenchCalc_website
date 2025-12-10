@@ -31,9 +31,9 @@
   <h2>Data Collection</h2>
   <p>We collect the following types of data:</p>
   <ul>
-    <li><strong>Authentication:</strong> When you sign in, we use AWS Cognito to securely manage your login using your email address.</li>
-    <li><strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device. With your explicit consent, anonymized scan data may be uploaded for ML model training.</li>
-    <li><strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers unless you opt in to contribute anonymized data for ML training.</li>
+    <li><strong>Authentication:</strong> When you sign in, we use Firebase Authentication (Google) to securely manage your login. You can create an account using your email address, Apple Sign In, or Google Sign In.</li>
+    <li><strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device.</li>
+    <li><strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers.</li>
     <li><strong>Location:</strong> If you enable weather advisories, the app may access your device's location to provide relevant site information. Location data is not stored or shared.</li>
     <li><strong>Purchases:</strong> Subscription purchase information is processed through Apple App Store and Google Play. We do not have access to your payment details.</li>
     <li><strong>Usage Data:</strong> We may collect anonymous interaction data (such as app launches, crash reports, and performance metrics) to improve stability and features.</li>
@@ -41,11 +41,11 @@
 
   <h2 id="third-party-ai-services">Third-Party AI Services</h2>
   <p>
-    <strong>Important:</strong> If you use the Site Diary or AI features, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
+    <strong>Important:</strong> If you use the Site Diary feature, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
   </p>
   
   <h3>What Data is Sent to Third-Party AI Services</h3>
-  <p>When you use Site Diary or voice transcription features, the following data is transmitted to third-party AI service providers:</p>
+  <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
   <ul>
     <li><strong>Voice Transcripts:</strong> Your voice recordings are first transcribed by a third-party speech-to-text service, then the transcriptions are sent to a third-party AI service for polishing</li>
     <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
@@ -69,7 +69,7 @@
     <li><strong>Opt-Out of Training:</strong> You can opt out of AI service providers using your prompts for model training by contacting us, and we will configure our system to exclude your prompts from training</li>
     <li><strong>No Prompts Stored:</strong> We do not store your prompts or transcripts on our servers after processing</li>
     <li><strong>Secure Transmission:</strong> All data sent to third-party AI services is encrypted in transit using HTTPS/TLS</li>
-    <li><strong>You Can Stop Using AI Features:</strong> You can disable AI features at any time and your data will no longer be sent to third-party AI services</li>
+    <li><strong>You Can Stop Using Site Diary:</strong> You can stop using the Site Diary feature at any time and your data will no longer be sent to third-party AI services</li>
   </ul>
   
   <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; margin: 24px 0; border-radius: 4px;">
@@ -100,7 +100,7 @@
   
   <h3>AI and Processing Services</h3>
   <ul>
-    <li><strong>Third-Party AI Service Providers</strong> – to process Site Diary voice transcriptions and text prompts for AI-generated reports. 
+    <li><strong>Third-Party AI Service Providers</strong> – to process Site Diary voice transcriptions and text prompts for diary polishing and formatting. 
       <ul>
         <li>Your prompts and transcripts are sent to third-party AI service providers for processing</li>
         <li>AI service providers may retain your data for up to 30 days for abuse monitoring</li>
@@ -128,64 +128,12 @@
   <ul>
     <li><strong>RevenueCat</strong> – to manage in-app subscriptions.</li>
     <li><strong>Apple App Store / Google Play</strong> – to handle purchases and billing securely.</li>
-    <li><strong>AWS Cognito</strong> – for secure user authentication and account management.</li>
+    <li><strong>Firebase Authentication (Google)</strong> – for secure user authentication and account management.</li>
   </ul>
-
-  <h2>Machine Learning Training Data</h2>
-  <p>
-    TrenchCalc includes an optional feature that allows you to contribute your LiDAR scans to help improve our AI models. 
-    This is completely optional and requires your explicit consent. You can opt-in or opt-out at any time in the app settings.
-  </p>
-  
-  <h3>What Data is Collected (ML Training)</h3>
-  <ul>
-    <li><strong>LiDAR Point Clouds:</strong> 3D point cloud data from your scans (fully anonymized before upload)</li>
-    <li><strong>Quality Metrics:</strong> Scan quality, density, coverage, and noise levels</li>
-    <li><strong>Geometric Features:</strong> Shape descriptors, bounding boxes, and volume measurements</li>
-    <li><strong>Anonymized User ID:</strong> Your user ID is hashed using HMAC-SHA256 (cannot be traced back to you)</li>
-  </ul>
-  
-  <h3>How ML Data is Protected</h3>
-  <ul>
-    <li><strong>Full Anonymization:</strong> All personally identifiable information is removed before upload</li>
-    <li><strong>User ID Hashing:</strong> Your user ID is hashed using HMAC-SHA256 with a server-side secret</li>
-    <li><strong>Metadata Sanitization:</strong> All PII fields (location, GPS, project names, client names, etc.) are automatically removed</li>
-    <li><strong>Differential Privacy:</strong> Optional noise injection available for additional privacy protection</li>
-    <li><strong>Quality Filtering:</strong> Only high-quality scans (quality > 0.5) are uploaded for training</li>
-  </ul>
-  
-  <h3>How ML Data is Used</h3>
-  <p>
-    Your anonymized scans are used solely for training machine learning models to improve object detection accuracy 
-    (such as detecting pipes, shoring, and other objects in trenches). The data is:
-  </p>
-  <ul>
-    <li>Never sold or shared with third parties</li>
-    <li>Never used for marketing or advertising</li>
-    <li>Only used for ML training purposes</li>
-    <li>Stored securely on AWS S3 with encryption</li>
-  </ul>
-  
-  <h3>Your Rights Regarding ML Data</h3>
-  <ul>
-    <li><strong>Opt-In/Opt-Out:</strong> You can grant or revoke consent at any time in the app settings</li>
-    <li><strong>Data Deletion:</strong> If you revoke consent, all your previously uploaded ML training data will be deleted within 30 days</li>
-    <li><strong>Data Portability:</strong> You can export your consent and contribution data</li>
-    <li><strong>Transparency:</strong> You can see your contribution statistics and rewards in the app</li>
-    <li><strong>No Penalties:</strong> You can opt-out without any penalty or loss of app functionality</li>
-  </ul>
-  
-  <h3>Consent Management</h3>
-  <p>
-    When you first use features that could contribute to ML training, you will be presented with a clear consent screen 
-    explaining what data is collected, how it's used, and your rights. You must explicitly opt-in to contribute. 
-    Consent is versioned, so if our terms change, you'll be asked to re-consent.
-  </p>
 
   <h2>Data Retention</h2>
   <ul>
     <li><strong>Account Data:</strong> Retained until account deletion</li>
-    <li><strong>ML Training Data:</strong> Retained until consent is revoked, then deleted within 30 days</li>
     <li><strong>Usage Data:</strong> Retained for 24 months for analytics purposes</li>
     <li><strong>Cookies:</strong> Retention periods vary by cookie type (see cookie settings)</li>
   </ul>
@@ -196,9 +144,8 @@
   </p>
   <ul>
     <li><strong>Encryption:</strong> All data in transit uses HTTPS/TLS encryption</li>
-    <li><strong>Authentication:</strong> AWS Cognito with industry-standard security (SOC 2, ISO 27001 compliance)</li>
+    <li><strong>Authentication:</strong> Firebase Authentication (Google) with industry-standard security practices</li>
     <li><strong>Access Controls:</strong> Role-based access control for all data</li>
-    <li><strong>Anonymization:</strong> ML data is fully anonymized before storage</li>
     <li><strong>Secure Storage:</strong> All data stored on AWS with encryption at rest</li>
   </ul>
 
@@ -210,7 +157,6 @@
     <li><strong>Erasure:</strong> Request deletion of your personal information (right to be forgotten)</li>
     <li><strong>Portability:</strong> Export your data in a machine-readable format</li>
     <li><strong>Object:</strong> Object to processing of your personal information</li>
-    <li><strong>Withdraw Consent:</strong> Withdraw consent for ML training data at any time</li>
   </ul>
   <p>
     You may choose to disable location access at any time in your device settings. 
@@ -228,7 +174,7 @@
     <li><strong>Non-Discrimination:</strong> We will not discriminate against you for exercising your privacy rights</li>
   </ul>
   <p>
-    To exercise your CCPA rights, contact us at: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a>
+    To exercise your CCPA rights, contact us at: <a href="mailto:support@engsitetools.com">support@engsitetools.com</a>
   </p>
 
   <h2>Data Processors</h2>
@@ -236,7 +182,7 @@
     We use the following third-party services that process your data under data processing agreements (DPAs):
   </p>
   <ul>
-    <li><strong>AWS Cognito:</strong> User authentication (DPA: AWS Data Processing Addendum)</li>
+    <li><strong>Firebase Authentication (Google):</strong> User authentication (DPA: Google Cloud Data Processing Agreement)</li>
     <li><strong>RevenueCat:</strong> Subscription management (DPA: RevenueCat Data Processing Agreement)</li>
     <li><strong>Third-Party AI Service Providers:</strong> AI text processing for Site Diary features (DPA: Data Processing Agreement with provider)
       <ul>
@@ -247,14 +193,6 @@
     </li>
     <li><strong>Google Speech-to-Text:</strong> Voice transcription services (DPA: Google Cloud Data Processing Agreement)</li>
     <li><strong>Google Analytics:</strong> Website analytics (DPA: Google Analytics Data Processing Terms)</li>
-    <li><strong>AWS S3:</strong> ML training data storage (DPA: AWS Data Processing Addendum)</li>
-    <li><strong>AWS SageMaker:</strong> Machine learning model training and processing (DPA: AWS Data Processing Addendum)
-      <ul>
-        <li>Processes anonymized LiDAR scan data for ML model training</li>
-        <li>Used for object detection and analysis improvements</li>
-        <li>Data is fully anonymized before processing</li>
-      </ul>
-    </li>
   </ul>
 
   <h2>International Data Transfers</h2>
@@ -264,7 +202,7 @@
   </p>
   <ul>
     <li>Standard Contractual Clauses (SCCs) for EU data transfers</li>
-    <li>AWS data processing agreements for cloud services</li>
+    <li>Google Cloud data processing agreements for cloud services</li>
     <li>Compliance with applicable data protection laws</li>
   </ul>
 
@@ -286,8 +224,8 @@
 
   <h2>Contact</h2>
   <p>If you have any questions about this privacy policy or to exercise your privacy rights, you can reach us at:</p>
-  <p><strong>Email:</strong> <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
-  <p><strong>Privacy Contact:</strong> <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a></p>
+  <p><strong>Email:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a></p>
+  <p><strong>Privacy Contact:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a></p>
 
   <p>© 2025 EngSite Tools</p>
 

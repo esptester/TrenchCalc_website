@@ -215,19 +215,49 @@
     </p>
 
     <div class="highlight-box">
-      <p><strong>TL;DR:</strong> We only collect your email for login and subscription management. We don't store your calculation data, track your location, or show ads.</p>
+      <p><strong>TL;DR:</strong> We only collect your email (or Apple/Google account info if you use Sign In with Apple or Google) for login and subscription management. We use location services only for soil testing locations and weather information. We don't store your calculation data, show ads, or use your data for AI training.</p>
     </div>
 
-    <h2>Information We Collect</h2>
+    <h2>Table of Contents</h2>
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li><a href="#information-we-collect">1. Information We Collect</a></li>
+      <li><a href="#how-we-collect">2. How We Collect Information</a></li>
+      <li><a href="#purpose">3. Purpose for Collection, Use, and Disclosure</a></li>
+      <li><a href="#third-party-ai-services">4. Third-Party AI Services</a></li>
+      <li><a href="#third-party-services">5. Third-Party Services</a></li>
+      <li><a href="#what-we-do-not-collect">6. What We Do Not Collect</a></li>
+      <li><a href="#no-marketing">7. No Marketing Communications</a></li>
+      <li><a href="#no-advertising">8. No Advertising</a></li>
+      <li><a href="#do-not-track">9. Do Not Track</a></li>
+      <li><a href="#consequences">10. Consequences of Not Providing Information</a></li>
+      <li><a href="#data-retention">11. Data Retention</a></li>
+      <li><a href="#your-rights">12. Your Rights</a></li>
+      <li><a href="#australian-privacy-rights">13. Australian Privacy Rights</a></li>
+      <li><a href="#us-state-rights">14. Residents of Certain U.S. States</a></li>
+      <li><a href="#european-residents">15. European Residents</a></li>
+      <li><a href="#data-security">16. Data Security</a></li>
+      <li><a href="#data-processors">17. Data Processors</a></li>
+      <li><a href="#international-transfers">18. International Data Transfers</a></li>
+      <li><a href="#children-privacy">19. Children's Privacy</a></li>
+      <li><a href="#data-breach">20. Data Breach Notification</a></li>
+      <li><a href="#changes">21. Changes to This Policy</a></li>
+      <li><a href="#privacy-complaints">22. Privacy Complaints</a></li>
+      <li><a href="#contact">23. Contact Us</a></li>
+    </ul>
+
+    <h2 id="information-we-collect">Information We Collect</h2>
     <ul>
       <li>
-        <strong>Authentication:</strong> When you sign in, we use AWS Cognito to securely manage your login using your email address.
+        <strong>Authentication:</strong> When you sign in, we use Firebase Authentication (Google) to securely manage your login. You can create an account using your email address, Apple Sign In, or Google Sign In. We collect your email address (for email login) or account information from Apple/Google (for social login) to authenticate your account.
       </li>
       <li>
-        <strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device. With your explicit consent, anonymized scan data may be uploaded for ML model training.
+        <strong>Location Information:</strong> If you enable location services, we use your device's location to provide soil testing location data, weather information, and other location-based features. Location data is used only for these purposes and is not stored or shared with third parties except as necessary to provide these services.
       </li>
       <li>
-        <strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers unless you opt in to contribute anonymized data for ML training.
+        <strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device.
+      </li>
+      <li>
+        <strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers.
       </li>
       <li>
         <strong>Purchases:</strong> We use RevenueCat to manage your subscription status. We do not receive your payment details directly.
@@ -237,15 +267,45 @@
       </li>
     </ul>
 
+    <h2 id="how-we-collect">How We Collect Information</h2>
+    <p>
+      We collect personal information in the following ways:
+    </p>
+    <ul>
+      <li><strong>Directly from you:</strong> When you create an account (using email, Apple Sign In, or Google Sign In), sign in, use app features, or contact us for support</li>
+      <li><strong>Through app usage:</strong> When you use TrenchCalc features, such as Site Diary voice transcription or subscription management</li>
+      <li><strong>From third-party services:</strong> We receive subscription status information from RevenueCat, authentication data from Firebase Authentication (Google), and account information from Apple or Google when you use Sign In with Apple or Sign In with Google</li>
+      <li><strong>Automatically:</strong> Anonymous usage data and crash reports may be collected to improve app stability and performance</li>
+    </ul>
+    <p>
+      Where reasonable and practicable, we collect personal information directly from you. We will notify you if we collect information from third parties not disclosed in this privacy policy.
+    </p>
+
+    <h2 id="purpose">Purpose for Collection, Use, and Disclosure</h2>
+    <p>
+      We collect, hold, and use your personal information for the following purposes:
+    </p>
+    <ul>
+      <li><strong>To provide services:</strong> To deliver TrenchCalc functionality, including authentication, subscription management, and app features</li>
+      <li><strong>To process transactions:</strong> To manage your subscription status and payment processing through third-party services</li>
+      <li><strong>To improve our services:</strong> To analyze usage patterns, fix bugs, and enhance app performance and features</li>
+      <li><strong>To communicate with you:</strong> To respond to your inquiries, provide customer support, and send important service-related notifications</li>
+      <li><strong>To comply with legal obligations:</strong> To meet our legal and regulatory requirements, including data protection laws</li>
+      <li><strong>To protect our services:</strong> To detect and prevent fraud, abuse, and security threats</li>
+    </ul>
+    <p>
+      We may disclose your information to third-party service providers (as listed in the "Third-Party Services" section) solely for the purposes stated above and under appropriate data processing agreements.
+    </p>
+
     <h2 id="third-party-ai-services">Third-Party AI Services</h2>
     <p>
-      <strong>Important:</strong> If you use the Site Diary or AI features, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
+      <strong>Important:</strong> If you use the Site Diary feature, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
     </p>
     
     <h3>What Data is Sent to Third-Party AI Services</h3>
-    <p>When you use Site Diary or voice transcription features, the following data is transmitted to third-party AI service providers:</p>
+    <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
     <ul>
-      <li><strong>Voice Transcripts:</strong> Your voice recordings are first transcribed by a third-party speech-to-text service, then the transcriptions are sent to a third-party AI service for polishing</li>
+      <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed and then sent to OpenAI for processing and polishing</li>
       <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
       <li><strong>User Prompts:</strong> Any text you enter for AI processing, including diary entries and voice transcriptions</li>
       <li><strong>System Prompts:</strong> Instructions for how the AI service should format the output (e.g., "convert to formal construction site diary report")</li>
@@ -257,126 +317,98 @@
     </p>
     <ul>
       <li><strong>Data Processing:</strong> AI services use your prompts to generate AI responses (diary polishing, text enhancement)</li>
-      <li><strong>Data Retention:</strong> AI service providers may retain your prompts for a limited period (typically up to 30 days) for abuse monitoring and service improvement, unless you opt out</li>
-      <li><strong>Model Training:</strong> By default, AI service providers may use your prompts to train their models. You can opt out of training data usage by contacting us</li>
+      <li><strong>Data Retention:</strong> AI service providers may retain your prompts for a limited period (typically up to 30 days) for abuse monitoring and service improvement</li>
+      <li><strong>No Model Training:</strong> <strong>We do not use your data for AI model training.</strong> TrenchCalc does not allow AI service providers to use your prompts or transcripts for training their models. Your data is used only for processing your requests.</li>
       <li><strong>Data Sharing:</strong> AI service providers do not share your prompts with third parties, but they may be reviewed by their staff for safety and quality purposes</li>
     </ul>
     
     <h3>Your Options Regarding Third-Party AI Services</h3>
     <ul>
-      <li><strong>Opt-Out of Training:</strong> You can opt out of AI service providers using your prompts for model training by contacting us, and we will configure our system to exclude your prompts from training</li>
+      <li><strong>No Training Data Usage:</strong> Your data is never used for AI model training. We have configured our system to ensure your prompts are excluded from training data</li>
       <li><strong>No Prompts Stored:</strong> We do not store your prompts or transcripts on our servers after processing</li>
       <li><strong>Secure Transmission:</strong> All data sent to third-party AI services is encrypted in transit using HTTPS/TLS</li>
-      <li><strong>You Can Stop Using AI Features:</strong> You can disable AI features at any time and your data will no longer be sent to third-party AI services</li>
+      <li><strong>You Can Stop Using Site Diary:</strong> You can stop using the Site Diary feature at any time and your data will no longer be sent to third-party AI services</li>
     </ul>
     
     <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; margin: 24px 0; border-radius: 4px;">
       <p style="margin: 0;"><strong>⚠️ Important:</strong> If you include sensitive information (client names, project details, financial data, etc.) in your Site Diary entries or voice transcriptions, this information will be sent to third-party AI service providers. We recommend avoiding including highly sensitive information in AI-processed content.</p>
     </div>
 
-    <h2>Third-Party Services</h2>
+    <h2 id="third-party-services">Third-Party Services</h2>
     <p>TrenchCalc uses the following trusted third-party services:</p>
     
     <h3>AI and Processing Services</h3>
     <ul>
-      <li><strong>Third-Party AI Service Providers</strong> – to process Site Diary voice transcriptions and text prompts for AI-generated reports. 
+      <li><strong>OpenAI</strong> – to process Site Diary voice transcriptions and text prompts for diary polishing and formatting
         <ul>
-          <li>Your prompts and transcripts are sent to third-party AI service providers for processing</li>
-          <li>AI service providers may retain your data for up to 30 days for abuse monitoring</li>
-          <li>AI service providers may use your prompts for model training unless you opt out</li>
+          <li>Your prompts and transcripts are sent to OpenAI for processing</li>
+          <li>OpenAI may retain your data for up to 30 days for abuse monitoring</li>
+          <li><strong>Your data is not used for AI model training</strong></li>
+          <li>Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a></li>
           <li>See <a href="#third-party-ai-services">Third-Party AI Services section</a> above for detailed information</li>
-        </ul>
-      </li>
-      <li><strong>Google Speech-to-Text</strong> – to convert voice recordings to text before sending to AI service providers
-        <ul>
-          <li>Your voice recordings are sent to Google for transcription</li>
-          <li>Google processes and returns transcriptions; recordings are not stored by Google</li>
-          <li>Privacy Policy: <a href="https://cloud.google.com/speech-to-text/docs/data-logging" target="_blank" rel="noopener noreferrer">Google Cloud Speech-to-Text Privacy</a></li>
         </ul>
       </li>
     </ul>
     
     <h3>Authentication and Payment Services</h3>
     <ul>
-      <li><strong>AWS Cognito</strong> – For secure user authentication</li>
+      <li><strong>Firebase Authentication (Google)</strong> – For secure user authentication</li>
       <li><strong>RevenueCat</strong> – For managing in-app subscriptions</li>
     </ul>
     <p>
       These services have their own privacy policies and handle your data according to industry-standard security practices.
     </p>
 
-    <h2>What We Do Not Collect</h2>
+    <h2 id="what-we-do-not-collect">What We Do Not Collect</h2>
     <ul>
       <li>We do not store any trench calculation data in the cloud.</li>
-      <li>We do not access your device location, contacts, or files.</li>
+      <li>We do not access your device contacts or files.</li>
       <li>We do not show ads or track you across other apps.</li>
       <li>We do not sell or share your personal information with third parties.</li>
+      <li>We do not use your data for AI model training.</li>
     </ul>
 
-    <h2>Data Retention</h2>
+    <h2 id="no-marketing">No Marketing Communications</h2>
+    <p>
+      TrenchCalc does not send marketing emails, promotional messages, newsletters, or any other marketing communications. 
+      We only send essential service-related notifications (such as account verification or important policy updates) when necessary.
+    </p>
+
+    <h2 id="no-advertising">No Advertising</h2>
+    <p>
+      TrenchCalc does not display advertisements, use targeted advertising, or sell your personal information to advertisers. 
+      We do not use your data for advertising purposes, and we do not share your information with advertising networks or marketing companies.
+    </p>
+
+    <h2 id="do-not-track">Do Not Track</h2>
+    <p>
+      Your browser settings may allow you to transmit a "Do Not Track" signal when you visit various websites. Like many websites, our website is not designed to respond to "Do Not Track" signals received from browsers. To learn more about "Do Not Track" signals, you can visit <a href="https://www.allaboutdnt.com/" target="_blank" rel="noopener noreferrer">www.allaboutdnt.com</a>.
+    </p>
+
+    <h2 id="consequences">Consequences of Not Providing Information</h2>
+    <p>
+      Providing personal information is generally optional, but certain features require specific data to function:
+    </p>
+    <ul>
+      <li><strong>Account creation:</strong> An email address (for email login) or Apple/Google account (for social login) is required to create an account and access premium features</li>
+      <li><strong>Subscription management:</strong> Subscription status information is required to provide access to premium features</li>
+      <li><strong>Site Diary features:</strong> Voice or text input is required to use Site Diary AI polishing features</li>
+    </ul>
+    <p>
+      If you choose not to provide requested information, we may not be able to provide you with certain features or services. 
+      You can use the free tier of TrenchCalc without creating an account, but account creation is required for premium features.
+    </p>
+
+    <h2 id="data-retention">Data Retention</h2>
     <p>
       You may delete your account at any time from the profile screen. This removes all login data from our authentication system. Anonymous feedback, if submitted, is not linked to your user ID and cannot be deleted.
     </p>
-
-    <h2>Machine Learning Training Data</h2>
-    <p>
-      TrenchCalc includes an optional feature that allows you to contribute your LiDAR scans to help improve our AI models. 
-      This is completely optional and requires your explicit consent. You can opt-in or opt-out at any time in the app settings.
-    </p>
-    
-    <h3>What Data is Collected (ML Training)</h3>
-    <ul>
-      <li><strong>LiDAR Point Clouds:</strong> 3D point cloud data from your scans (fully anonymized before upload)</li>
-      <li><strong>Quality Metrics:</strong> Scan quality, density, coverage, and noise levels</li>
-      <li><strong>Geometric Features:</strong> Shape descriptors, bounding boxes, and volume measurements</li>
-      <li><strong>Anonymized User ID:</strong> Your user ID is hashed using HMAC-SHA256 (cannot be traced back to you)</li>
-    </ul>
-    
-    <h3>How ML Data is Protected</h3>
-    <ul>
-      <li><strong>Full Anonymization:</strong> All personally identifiable information is removed before upload</li>
-      <li><strong>User ID Hashing:</strong> Your user ID is hashed using HMAC-SHA256 with a server-side secret</li>
-      <li><strong>Metadata Sanitization:</strong> All PII fields (location, GPS, project names, client names, etc.) are automatically removed</li>
-      <li><strong>Differential Privacy:</strong> Optional noise injection available for additional privacy protection</li>
-      <li><strong>Quality Filtering:</strong> Only high-quality scans (quality > 0.5) are uploaded for training</li>
-    </ul>
-    
-    <h3>How ML Data is Used</h3>
-    <p>
-      Your anonymized scans are used solely for training machine learning models to improve object detection accuracy 
-      (such as detecting pipes, shoring, and other objects in trenches). The data is:
-    </p>
-    <ul>
-      <li>Never sold or shared with third parties</li>
-      <li>Never used for marketing or advertising</li>
-      <li>Only used for ML training purposes</li>
-      <li>Stored securely on AWS S3 with encryption</li>
-    </ul>
-    
-    <h3>Your Rights Regarding ML Data</h3>
-    <ul>
-      <li><strong>Opt-In/Opt-Out:</strong> You can grant or revoke consent at any time in the app settings</li>
-      <li><strong>Data Deletion:</strong> If you revoke consent, all your previously uploaded ML training data will be deleted within 30 days</li>
-      <li><strong>Data Portability:</strong> You can export your consent and contribution data</li>
-      <li><strong>Transparency:</strong> You can see your contribution statistics and rewards in the app</li>
-      <li><strong>No Penalties:</strong> You can opt-out without any penalty or loss of app functionality</li>
-    </ul>
-    
-    <h3>Consent Management</h3>
-    <p>
-      When you first use features that could contribute to ML training, you will be presented with a clear consent screen 
-      explaining what data is collected, how it's used, and your rights. You must explicitly opt-in to contribute. 
-      Consent is versioned, so if our terms change, you'll be asked to re-consent.
-    </p>
-
-    <h2>Data Retention</h2>
     <ul>
       <li><strong>Account Data:</strong> Retained until account deletion</li>
-      <li><strong>ML Training Data:</strong> Retained until consent is revoked, then deleted within 30 days</li>
       <li><strong>Usage Data:</strong> Retained for 24 months for analytics purposes</li>
     </ul>
 
-    <h2>Your Rights</h2>
+    <h2 id="your-rights">Your Rights</h2>
     <p>Under GDPR and other privacy laws, you have the right to:</p>
     <ul>
       <li><strong>Access:</strong> Request a copy of your personal information</li>
@@ -384,79 +416,118 @@
       <li><strong>Erasure:</strong> Delete your account and associated data at any time (right to be forgotten)</li>
       <li><strong>Portability:</strong> Export your data in a machine-readable format</li>
       <li><strong>Object:</strong> Object to processing of your personal information</li>
-      <li><strong>Withdraw Consent:</strong> Withdraw consent for ML training data at any time</li>
       <li><strong>Opt Out:</strong> Opt out of optional data collection</li>
     </ul>
 
-    <h2>California Privacy Rights (CCPA)</h2>
+    <h3>How to Exercise Your Access and Correction Rights</h3>
     <p>
-      If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):
+      To request access to or correction of your personal information:
     </p>
     <ul>
-      <li><strong>Right to Know:</strong> You can request information about the personal information we collect, use, and disclose</li>
-      <li><strong>Right to Delete:</strong> You can request deletion of your personal information</li>
-      <li><strong>Right to Opt-Out:</strong> You can opt-out of the sale of your personal information (we do not sell personal information)</li>
-      <li><strong>Non-Discrimination:</strong> We will not discriminate against you for exercising your privacy rights</li>
+      <li><strong>Contact us:</strong> Send an email to <a href="mailto:support@engsitetools.com">support@engsitetools.com</a> with your request</li>
+      <li><strong>Proof of identity:</strong> We may require proof of identity to ensure personal information is provided only to the correct person and to protect the privacy of others</li>
+      <li><strong>Fees:</strong> No fees are charged for access or correction requests</li>
+      <li><strong>Response:</strong> We will respond to your request in accordance with applicable privacy laws</li>
+      <li><strong>Appeals:</strong> If we deny your access or correction request, we will provide written reasons. You may lodge a complaint about this decision (see "Privacy Complaints" section below)</li>
+    </ul>
+
+    <h2 id="australian-privacy-rights">Australian Privacy Rights</h2>
+    <p>
+      TrenchCalc is an Australian application and we comply with the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs). If you are located in Australia, you have the following rights:
+    </p>
+    <ul>
+      <li><strong>Access:</strong> You have the right to request access to the personal information we hold about you</li>
+      <li><strong>Correction:</strong> You have the right to request correction of any inaccurate, incomplete, or out-of-date personal information</li>
+      <li><strong>Complaints:</strong> You have the right to make a complaint about how we handle your personal information. If you are not satisfied with our response, you can contact the Office of the Australian Information Commissioner (OAIC) at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a></li>
+      <li><strong>Anonymity:</strong> Where lawful and practicable, you have the right to interact with us anonymously or using a pseudonym</li>
     </ul>
     <p>
-      To exercise your CCPA rights, contact us at: <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a>
+      To exercise your Australian privacy rights, contact us at: <a href="mailto:support@engsitetools.com">support@engsitetools.com</a>
     </p>
 
-    <h2>Data Security</h2>
+    <h2 id="us-state-rights">Residents of Certain U.S. States</h2>
+    <p>
+      If you are a U.S. resident, depending on the state you live in, you may have some or all of the rights listed below in relation to information that we have collected about you. However, these rights are not absolute, and in certain cases, we may decline your request as permitted by law, including in the event you reside in a state that does not currently grant you these rights.
+    </p>
+    <ul>
+      <li><strong>Right to Access:</strong> You may have a right to request that we confirm whether we process information about you and give you access to that information in a portable and, to the extent technically feasible, readily usable format that allows you to transmit the information to another business without impediment.</li>
+      <li><strong>Right to Delete:</strong> You may have a right to request that we delete information we maintain about you.</li>
+      <li><strong>Right to Correct:</strong> You may have a right to request that we correct inaccurate information we maintain about you.</li>
+      <li><strong>Right to Opt-out of Targeted Advertising, Profiling, or Selling:</strong> You may have a right to opt-out of the processing of your information for the purposes of targeted advertising, the profiling of your information in furtherance of decisions that produce legal or similarly significant effects, and/or the sale of your information (as all such terms and concepts are defined under applicable law). We do not engage in targeted advertising, profiling, or selling of personal information.</li>
+    </ul>
+    <p>
+      You may exercise any of these rights by contacting us using the information provided in the "Contact Us" section below. We will not discriminate against you for exercising any of these rights. We may need to collect information from you to verify your identity, such as your email address, government issued ID or date of birth, before providing a substantive response to the request. Depending on your location, you may designate, in writing or through a power of attorney document, an authorized agent to make requests on your behalf to exercise your rights. Before accepting such a request from an agent, we will require that the agent provide proof you have authorized them to act on your behalf, and we may need you to verify your identity directly with us.
+    </p>
+    <p>
+      In addition, you may have the right to appeal our decision regarding a request related to these rights by contacting us using the information provided below. When you submit a request or launch an appeal, we will limit our collection of your information to only what is necessary to securely fulfil your request or process your appeal. We will not require you or your authorized agent to pay a fee for the verification of your request or appeal.
+    </p>
+
+    <h2 id="european-residents">European Residents</h2>
+    <h3>Data Transfers</h3>
+    <p>
+      We are based in Australia. If you are using the Services from outside Australia, please be aware that the information we collect from you may be transferred to, stored and processed in Australia or other countries outside your country of residence (including the United States, where some of our third-party service providers are located). We ensure appropriate safeguards are in place through Standard Contractual Clauses (SCCs) for EU data transfers and compliance with applicable data protection laws, including the Australian Privacy Act 1988.
+    </p>
+    <h3>Data Subject Rights</h3>
+    <p>
+      If you are located in the EEA or the UK, you have certain rights in relation to your personal data. Please note that a number of these rights only apply in certain circumstances, and all of these rights may be limited by law. To exercise any of these rights, you can contact us at the email address provided in the "Contact Us" section below:
+    </p>
+    <ul>
+      <li><strong>Access:</strong> You have the right to access the personal data we hold about you, and to obtain information about how we use it, and who we share it with.</li>
+      <li><strong>Portability:</strong> You have the right to receive a copy of the personal data we hold about you and to request that we transfer it to a third party, in certain circumstances and with certain exceptions.</li>
+      <li><strong>Correction:</strong> You have the right to correct any of your personal data we hold that is inaccurate.</li>
+      <li><strong>Erasure:</strong> In certain circumstances, you have the right to delete the personal data we hold about you.</li>
+      <li><strong>Restriction of processing to storage only:</strong> You have the right to require us to stop processing the personal data we hold about you, other than for storage purposes, in certain circumstances.</li>
+      <li><strong>Objection:</strong> You have the right to object to our processing of your personal data in certain circumstances.</li>
+      <li><strong>Objection to marketing:</strong> You can object to marketing at any time by opting-out using the unsubscribe / opt-out function displayed in our communications to you. Please note that we do not send marketing communications, but if you opt-out of receiving any emails from us, we may still send you administrative messages that are required to provide you with the Services.</li>
+      <li><strong>Withdrawal of consent:</strong> Where we rely on consent to process your personal data, you have the right to withdraw this consent at any time by contacting us at the email address provided below.</li>
+      <li><strong>Complaints:</strong> You have the right to complain to your local data protection authority about how we process your personal data. Of course, we hope you will contact us first so we can resolve any issues.</li>
+    </ul>
+
+    <h2 id="data-security">Data Security</h2>
     <p>
       We implement industry-standard security measures to protect your data:
     </p>
     <ul>
       <li><strong>Encryption:</strong> All communications with our servers are encrypted using HTTPS/TLS</li>
-      <li><strong>Authentication:</strong> AWS Cognito with industry-standard security (SOC 2, ISO 27001 compliance)</li>
+      <li><strong>Authentication:</strong> Firebase Authentication (Google) with industry-standard security practices</li>
       <li><strong>Access Controls:</strong> Role-based access control for all data</li>
-      <li><strong>Anonymization:</strong> ML data is fully anonymized before storage</li>
       <li><strong>Secure Storage:</strong> All data stored on AWS with encryption at rest</li>
     </ul>
 
-    <h2>Data Processors</h2>
+    <h2 id="data-processors">Data Processors</h2>
     <p>
       We use the following third-party services that process your data under data processing agreements (DPAs):
     </p>
     <ul>
-      <li><strong>AWS Cognito:</strong> User authentication (DPA: AWS Data Processing Addendum)</li>
+      <li><strong>Firebase Authentication (Google):</strong> User authentication (DPA: Google Cloud Data Processing Agreement)</li>
       <li><strong>RevenueCat:</strong> Subscription management (DPA: RevenueCat Data Processing Agreement)</li>
-      <li><strong>Third-Party AI Service Providers:</strong> AI text processing for Site Diary features (DPA: Data Processing Agreement with provider)
+      <li><strong>OpenAI:</strong> AI text processing for Site Diary features (DPA: Data Processing Agreement with OpenAI)
         <ul>
           <li>Processes voice transcriptions and text prompts</li>
           <li>May retain data for up to 30 days for abuse monitoring</li>
-          <li>May use prompts for model training unless you opt out</li>
-        </ul>
-      </li>
-      <li><strong>Google Speech-to-Text:</strong> Voice transcription services (DPA: Google Cloud Data Processing Agreement)</li>
-      <li><strong>AWS S3:</strong> ML training data storage (DPA: AWS Data Processing Addendum)</li>
-      <li><strong>AWS SageMaker:</strong> Machine learning model training and processing (DPA: AWS Data Processing Addendum)
-        <ul>
-          <li>Processes anonymized LiDAR scan data for ML model training</li>
-          <li>Used for object detection and analysis improvements</li>
-          <li>Data is fully anonymized before processing</li>
+          <li><strong>Does not use your data for model training</strong></li>
         </ul>
       </li>
     </ul>
 
-    <h2>International Data Transfers</h2>
+    <h2 id="international-transfers">International Data Transfers</h2>
     <p>
-      Your data may be transferred to and processed in countries outside your country of residence (primarily the United States). 
+      As an Australian-based service with international users, your data may be transferred to and processed in countries outside your country of residence, including Australia (where we are based) and the United States (where some of our third-party service providers are located). 
       We ensure appropriate safeguards are in place through:
     </p>
     <ul>
       <li>Standard Contractual Clauses (SCCs) for EU data transfers</li>
       <li>AWS data processing agreements for cloud services</li>
-      <li>Compliance with applicable data protection laws</li>
+      <li>Compliance with applicable data protection laws, including the Australian Privacy Act 1988</li>
     </ul>
 
-    <h2>Children's Privacy</h2>
+    <h2 id="children-privacy">Children's Privacy</h2>
     <p>
       TrenchCalc is not intended for children under 13 years of age. We do not knowingly collect personal information 
       from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.
     </p>
 
-    <h2>Data Breach Notification</h2>
+    <h2 id="data-breach">Data Breach Notification</h2>
     <p>
       In the event of a data breach that affects your personal information, we will:
     </p>
@@ -466,20 +537,38 @@
       <li>Provide details about the breach and mitigation steps</li>
     </ul>
 
-    <h2>Changes to This Policy</h2>
+    <h2 id="changes">Changes to This Policy</h2>
     <p>
       We may update this privacy policy from time to time. We will notify you of any significant changes through the app or via email. Continued use of TrenchCalc after changes constitutes acceptance of the updated policy.
     </p>
 
-    <h2>Contact Us</h2>
+    <h2 id="privacy-complaints">Privacy Complaints</h2>
+    <p>
+      If you have concerns about how we handle your personal information or believe we may have breached privacy laws, you can lodge a complaint with us:
+    </p>
+    <ul>
+      <li><strong>Email:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a></li>
+      <li><strong>Subject:</strong> Please include "Privacy Complaint" in your email subject line</li>
+    </ul>
+    <p>
+      We will investigate your complaint and respond to you. If you are not satisfied with our response, you have the right to escalate your complaint to the relevant data protection authority in your jurisdiction:
+    </p>
+    <ul>
+      <li><strong>Australia:</strong> Office of the Australian Information Commissioner (OAIC) - <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">www.oaic.gov.au</a></li>
+      <li><strong>United Kingdom:</strong> Information Commissioner's Office (ICO) - <a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a></li>
+      <li><strong>European Union:</strong> Your local data protection authority (DPA)</li>
+      <li><strong>United States:</strong> Federal Trade Commission (FTC) - <a href="https://www.ftc.gov" target="_blank" rel="noopener noreferrer">www.ftc.gov</a></li>
+    </ul>
+
+    <h2 id="contact">Contact Us</h2>
     <p>
       If you have any questions or concerns about this privacy policy or to exercise your privacy rights, please contact us at:
     </p>
     <p>
-      <strong>Email:</strong> <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a>
+      <strong>Email:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a>
     </p>
     <p>
-      <strong>Privacy Contact:</strong> <a href="mailto:engsitetools@gmail.com">engsitetools@gmail.com</a>
+      <strong>Privacy Contact:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a>
     </p>
 
     <p style="margin-top: 40px; font-style: italic; color: var(--muted);">
@@ -499,9 +588,6 @@
     </div>
   </div>
 </footer>
-
-<script src="../crisp-config.js"></script>
-<script src="../crisp-loader.js"></script>
 
 </body>
 </html>
