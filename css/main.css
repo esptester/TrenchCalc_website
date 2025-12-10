@@ -99,7 +99,7 @@ a:hover {
 }
 
 a:visited {
-  color: #6b46c1; /* Purple for visited links */
+  color: #4a5568; /* Dark gray-blue instead of purple to avoid clash with purple banners */
 }
 
 a:focus {
@@ -119,7 +119,7 @@ a:focus {
   }
   
   a:visited {
-    color: #c084fc; /* Lighter purple for visited */
+    color: #9ca3af; /* Light gray for dark mode instead of purple */
   }
 }
 
@@ -133,7 +133,7 @@ html.theme-dark a:hover {
 }
 
 html.theme-dark a:visited {
-  color: #c084fc !important;
+  color: #9ca3af !important; /* Light gray for dark mode */
 }
 
 /* Links in light theme */
@@ -146,7 +146,7 @@ html.theme-light a:hover {
 }
 
 html.theme-light a:visited {
-  color: #6b46c1 !important;
+  color: #4a5568 !important; /* Dark gray-blue for light mode */
 }
 
 /* Links on colored backgrounds - ensure visibility */
@@ -305,6 +305,10 @@ h2 {
   border-radius: 8px;
 }
 
+.btn:visited {
+  color: white !important;
+}
+
 .btn-primary {
   background: white;
   color: #667eea;
@@ -319,6 +323,10 @@ h2 {
 .btn-primary:active {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-primary:visited {
+  color: #667eea !important;
 }
 
 .btn-secondary {
@@ -337,6 +345,10 @@ h2 {
 .btn-secondary:active {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.btn-secondary:visited {
+  color: white !important;
 }
 
 /* Products Grid */
@@ -403,6 +415,10 @@ h2 {
 .product-card a:active {
   transform: translateY(0) scale(0.98);
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.product-card a:visited {
+  color: #fff !important;
 }
 
 /* Grids */
