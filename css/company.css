@@ -646,8 +646,40 @@ body {
 }
 
 .cookie-consent-text a {
-  color: var(--brand);
+  color: #1a73e8; /* Darker blue for better contrast on light background */
   text-decoration: underline;
+}
+
+.cookie-consent-text a:hover {
+  color: #1557b0; /* Even darker on hover */
+}
+
+/* Dark mode cookie banner links */
+@media (prefers-color-scheme: dark) {
+  .cookie-consent-text a {
+    color: #8ab4f8; /* Lighter blue for dark mode */
+  }
+  
+  .cookie-consent-text a:hover {
+    color: #aecbfa; /* Even lighter on hover */
+  }
+}
+
+/* Theme-aware cookie banner links */
+html.theme-dark .cookie-consent-text a {
+  color: #8ab4f8 !important;
+}
+
+html.theme-dark .cookie-consent-text a:hover {
+  color: #aecbfa !important;
+}
+
+html.theme-light .cookie-consent-text a {
+  color: #1a73e8 !important;
+}
+
+html.theme-light .cookie-consent-text a:hover {
+  color: #1557b0 !important;
 }
 
 .cookie-consent-actions {

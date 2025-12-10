@@ -305,7 +305,7 @@
     <h3>What Data is Sent to Third-Party AI Services</h3>
     <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
     <ul>
-      <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed and then sent to OpenAI for processing and polishing</li>
+      <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed using OpenAI Whisper, then the transcriptions are sent to OpenAI for processing and polishing</li>
       <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
       <li><strong>User Prompts:</strong> Any text you enter for AI processing, including diary entries and voice transcriptions</li>
       <li><strong>System Prompts:</strong> Instructions for how the AI service should format the output (e.g., "convert to formal construction site diary report")</li>
@@ -339,8 +339,9 @@
     
     <h3>AI and Processing Services</h3>
     <ul>
-      <li><strong>OpenAI</strong> – to process Site Diary voice transcriptions and text prompts for diary polishing and formatting
+      <li><strong>OpenAI</strong> – for voice transcription (Whisper API) and processing Site Diary text prompts for diary polishing and formatting
         <ul>
+          <li>Your voice recordings are transcribed using OpenAI Whisper API</li>
           <li>Your prompts and transcripts are sent to OpenAI for processing</li>
           <li>OpenAI may retain your data for up to 30 days for abuse monitoring</li>
           <li><strong>Your data is not used for AI model training</strong></li>
@@ -501,9 +502,10 @@
     <ul>
       <li><strong>Firebase Authentication (Google):</strong> User authentication (DPA: Google Cloud Data Processing Agreement)</li>
       <li><strong>RevenueCat:</strong> Subscription management (DPA: RevenueCat Data Processing Agreement)</li>
-      <li><strong>OpenAI:</strong> AI text processing for Site Diary features (DPA: Data Processing Agreement with OpenAI)
+      <li><strong>OpenAI:</strong> Voice transcription (Whisper API) and AI text processing for Site Diary features (DPA: Data Processing Agreement with OpenAI)
         <ul>
-          <li>Processes voice transcriptions and text prompts</li>
+          <li>Whisper API processes voice recordings for transcription</li>
+          <li>OpenAI processes voice transcriptions and text prompts for diary polishing</li>
           <li>May retain data for up to 30 days for abuse monitoring</li>
           <li><strong>Does not use your data for model training</strong></li>
         </ul>

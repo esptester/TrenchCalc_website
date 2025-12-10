@@ -3,30 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Privacy Policy - TrenchCalc</title>
+  <title>Privacy Policy - EngSiteTools</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       max-width: 800px;
-      margin: 40px auto;
-      padding: 20px;
+      margin: 0 auto;
+      padding: 0;
       line-height: 1.6;
     }
     h1 {
       text-align: center;
     }
+    /* Better link contrast */
+    a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #1557b0;
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #6b46c1;
+    }
+    @media (prefers-color-scheme: dark) {
+      a {
+        color: #8ab4f8;
+      }
+      a:hover {
+        color: #aecbfa;
+      }
+      a:visited {
+        color: #c084fc;
+      }
+    }
+    /* Header styles */
+    header {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-section img {
+      height: 50px;
+      width: auto;
+      display: block;
+    }
+    .logo-section a {
+      display: block;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .logo-section a:hover {
+      opacity: 0.8;
+    }
+    nav {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    nav a:hover {
+      opacity: 0.8;
+      text-decoration: none;
+    }
+    .nav-cta {
+      background: #4285f4;
+      padding: 8px 20px;
+      border-radius: 6px;
+      color: white !important;
+    }
+    .nav-cta:hover {
+      background: #3367d6;
+      opacity: 1 !important;
+    }
+    main {
+      padding: 40px 20px;
+    }
+    @media (max-width: 768px) {
+      .header-content {
+        justify-content: center;
+      }
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+      }
+    }
   </style>
   <!-- Skip link styles -->
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/company.css">
 </head>
 <body>
 <!-- Skip to main content link for keyboard users -->
 <a href="#main" class="skip-link">Skip to main content</a>
+
+<header>
+  <div class="header-content">
+    <div class="logo-section">
+      <a href="/" aria-label="EngSiteTools Home">
+        <img src="engsitetools-primary-2025-11-04.png" alt="EngSiteTools" />
+      </a>
+    </div>
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="/#about">About</a>
+      <a href="/#products">Products</a>
+      <a href="/#news">News</a>
+      <a href="/#contact">Contact</a>
+      <a href="trenchcalc/" class="nav-cta">Try TrenchCalc</a>
+    </nav>
+  </div>
+</header>
+
 <main id="main">
-  <h1>Privacy Policy</h1>
+  <h1>EngSiteTools Privacy Policy</h1>
   <p><strong>Effective Date:</strong> April 2025</p>
 
-  <p><strong>TrenchCalc</strong> values your privacy. This policy explains what data we collect, how it is used, and your rights as a user.</p>
+  <p><strong>EngSiteTools</strong> values your privacy. This policy explains what data we collect, how it is used, and your rights as a user. This policy applies to EngSiteTools and its products, including TrenchCalc.</p>
 
   <h2>Data Collection</h2>
   <p>We collect the following types of data:</p>
@@ -47,7 +166,7 @@
   <h3>What Data is Sent to Third-Party AI Services</h3>
   <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
   <ul>
-    <li><strong>Voice Transcripts:</strong> Your voice recordings are first transcribed by a third-party speech-to-text service, then the transcriptions are sent to a third-party AI service for polishing</li>
+    <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed using OpenAI Whisper, then the transcriptions are sent to a third-party AI service for polishing</li>
     <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
     <li><strong>User Prompts:</strong> Any text you enter for AI processing, including diary entries and voice transcriptions</li>
     <li><strong>System Prompts:</strong> Instructions for how the AI service should format the output (e.g., "convert to formal construction site diary report")</li>
@@ -96,23 +215,18 @@
   <p>Note: If you close the cookie banner without making a selection, it will appear again on your next visit. Your preferences are saved once you make a choice.</p>
 
   <h2>Third-Party Services</h2>
-  <p>We use third-party services to support TrenchCalc and our website:</p>
+  <p>We use third-party services to support EngSiteTools, TrenchCalc, and our website:</p>
   
   <h3>AI and Processing Services</h3>
   <ul>
-    <li><strong>Third-Party AI Service Providers</strong> – to process Site Diary voice transcriptions and text prompts for diary polishing and formatting. 
+    <li><strong>OpenAI</strong> – for voice transcription (Whisper API) and processing Site Diary text prompts for diary polishing and formatting
       <ul>
-        <li>Your prompts and transcripts are sent to third-party AI service providers for processing</li>
-        <li>AI service providers may retain your data for up to 30 days for abuse monitoring</li>
+        <li>Your voice recordings are transcribed using OpenAI Whisper API</li>
+        <li>Your prompts and transcripts are sent to OpenAI for processing</li>
+        <li>OpenAI may retain your data for up to 30 days for abuse monitoring</li>
         <li>AI service providers may use your prompts for model training unless you opt out</li>
+        <li>Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a></li>
         <li>See <a href="#third-party-ai-services">Third-Party AI Services section</a> above for detailed information</li>
-      </ul>
-    </li>
-    <li><strong>Google Speech-to-Text</strong> – to convert voice recordings to text before sending to AI service providers
-      <ul>
-        <li>Your voice recordings are sent to Google for transcription</li>
-        <li>Google processes and returns transcriptions; recordings are not stored by Google</li>
-        <li>Privacy Policy: <a href="https://cloud.google.com/speech-to-text/docs/data-logging" target="_blank" rel="noopener noreferrer">Google Cloud Speech-to-Text Privacy</a></li>
       </ul>
     </li>
   </ul>
@@ -121,7 +235,6 @@
   <ul>
     <li><strong>Google Analytics</strong> – to analyze website traffic and user behavior (uses cookies). You can opt out using our cookie consent banner.</li>
     <li><strong>Google Translate</strong> – to provide language translation services (uses cookies).</li>
-    <li><strong>Crisp Chat</strong> – to provide customer support chat functionality on our website. When you use the chat feature, Crisp may collect information such as your IP address, browser type, and messages you send. This data is used solely for providing customer support. You can find Crisp's privacy policy at <a href="https://crisp.chat/en/privacy/" target="_blank" rel="noopener noreferrer">crisp.chat/en/privacy</a>.</li>
   </ul>
   
   <h3>Authentication and Payment Services</h3>
@@ -191,7 +304,7 @@
         <li>May use prompts for model training unless you opt out</li>
       </ul>
     </li>
-    <li><strong>Google Speech-to-Text:</strong> Voice transcription services (DPA: Google Cloud Data Processing Agreement)</li>
+    <li><strong>OpenAI Whisper:</strong> Voice transcription services (DPA: OpenAI Data Processing Agreement)</li>
     <li><strong>Google Analytics:</strong> Website analytics (DPA: Google Analytics Data Processing Terms)</li>
   </ul>
 
@@ -227,7 +340,7 @@
   <p><strong>Email:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a></p>
   <p><strong>Privacy Contact:</strong> <a href="mailto:support@engsitetools.com">support@engsitetools.com</a></p>
 
-  <p>© 2025 EngSite Tools</p>
+  <p>© 2025 EngSiteTools. All rights reserved.</p>
 
 <!-- Accessibility Controls -->
 <button class="accessibility-btn" id="accessibilityBtn" aria-label="Accessibility options">
