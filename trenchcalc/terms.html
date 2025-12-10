@@ -20,7 +20,7 @@
     :root{
       --bg:#0b0f1a;
       --ink:#0f172a;
-      --muted:#5b6473;
+      --muted:#4a5568;
       --card:#ffffff;
       --brand:#2563eb;
       --accent:#ef4444;
@@ -31,7 +31,7 @@
     @media (prefers-color-scheme: dark){
       :root{
         --ink:#e6e8ee;
-        --muted:#9aa3b2;
+        --muted:#cbd5e1;
         --card:#121826;
         --surface:#0d1320;
         --brand:#3b82f6;
@@ -270,48 +270,6 @@
       </p>
     </div>
 
-    <h2><span class="section-number">2A.</span> AI/ML Features and Accuracy Limitations</h2>
-    <p>
-      <strong>AI Transparency Notice:</strong> TrenchCalc uses artificial intelligence and machine learning models for certain features including:
-    </p>
-    <ul>
-      <li>LiDAR scan object detection and analysis</li>
-      <li>Site diary text enhancement</li>
-      <li>Volume calculations and estimations</li>
-    </ul>
-    
-    <h3>Accuracy Limitations</h3>
-    <ul>
-      <li><strong>AI calculations are estimates only</strong> and may contain errors or inaccuracies</li>
-      <li>AI models are trained on data that may not reflect all site conditions or edge cases</li>
-      <li>Results should always be verified by qualified engineers before use</li>
-      <li>AI accuracy depends on input data quality (scan quality, photo quality, etc.)</li>
-      <li>Environmental conditions, lighting, and scan artifacts may affect AI accuracy</li>
-    </ul>
-    
-    <h3>How AI Makes Decisions</h3>
-    <ul>
-      <li>AI models use statistical patterns learned from training data</li>
-      <li>Object detection uses computer vision algorithms to identify features in LiDAR scans and photos</li>
-      <li>Volume calculations use geometric algorithms combined with user inputs</li>
-      <li>AI does not "understand" engineering principles but applies learned patterns</li>
-      <li>Decisions are probabilistic and may not always be correct</li>
-    </ul>
-    
-    <div class="warning-box">
-      <p>
-        <strong>VERIFICATION REQUIRED:</strong> All AI-generated results must be independently verified by qualified engineers before use in construction projects. Do not rely solely on AI outputs for safety-critical decisions.
-      </p>
-    </div>
-    
-    <h3>Liability for AI-Generated Calculations</h3>
-    <ul>
-      <li>EngSiteTools is not liable for errors, inaccuracies, or failures in AI-generated calculations</li>
-      <li>You assume all risk and liability for decisions made based on AI outputs</li>
-      <li>AI features are provided "as-is" without warranties of accuracy or reliability</li>
-      <li>You agree to verify all AI outputs and not rely solely on automated results</li>
-    </ul>
-
     <h2><span class="section-number">3.</span> Acceptable Use</h2>
     <p>You agree to use TrenchCalc only for lawful purposes. You may not:</p>
     <ul>
@@ -331,22 +289,13 @@
     
     <h3>Subscription Tiers</h3>
     <ul>
-      <li><strong>Free Tier:</strong> Basic calculations with limited AI features</li>
-      <li><strong>Basic Tier (~$4.99/month):</strong> Enhanced features with daily AI usage limits</li>
-      <li><strong>Premium Tier (~$6.99/month):</strong> Full feature access with highest AI usage limits and advanced planning tools</li>
+      <li><strong>Free Tier:</strong> Basic calculations</li>
+      <li><strong>Basic Tier (~$4.99/month):</strong> Enhanced features</li>
+      <li><strong>Premium Tier (~$6.99/month):</strong> Full feature access with advanced planning tools</li>
     </ul>
     <p>
       <strong>Note:</strong> Pricing may vary by region, platform (iOS vs Android), or promotional offers. Actual pricing is displayed at the time of purchase in your app store.
     </p>
-    
-    <h3>API Usage Limits</h3>
-    <ul>
-      <li>Each subscription tier has specific API usage limits for AI features (e.g., AI diary polishing)</li>
-      <li>Usage limits reset on a daily or monthly basis depending on the feature</li>
-      <li>Exceeding usage limits may result in temporary feature restrictions until the next reset period</li>
-      <li>We reserve the right to modify usage limits with reasonable notice</li>
-      <li>Usage limits are designed to prevent abuse and ensure fair access to shared resources</li>
-    </ul>
     
     <h3>Payment Terms</h3>
     <ul>
@@ -364,7 +313,7 @@
       <li><strong>No Uptime Guarantee:</strong> TrenchCalc is provided "as available" without guaranteed uptime or service level agreements</li>
       <li><strong>Scheduled Maintenance:</strong> We may perform scheduled maintenance with reasonable notice when possible</li>
       <li><strong>Service Interruptions:</strong> We are not liable for service interruptions, downtime, or feature unavailability</li>
-      <li><strong>Third-Party Services:</strong> Availability depends on third-party services (AWS, Google Cloud, etc.) which we do not control</li>
+      <li><strong>Third-Party Services:</strong> Availability depends on third-party services (Google Cloud, etc.) which we do not control</li>
     </ul>
 
     <h2><span class="section-number">5.</span> Account Management</h2>
@@ -382,7 +331,7 @@
     
     <h3>Intellectual Property Rights to Uploaded Data</h3>
     <ul>
-      <li><strong>Your Data Ownership:</strong> You retain all intellectual property rights to LiDAR scans, photos, and project data you upload</li>
+      <li><strong>Your Data Ownership:</strong> You retain all intellectual property rights to photos and project data you upload</li>
       <li><strong>No Data Storage:</strong> We do not store your project calculations or unprocessed scan data in the cloud</li>
     </ul>
 
@@ -406,14 +355,12 @@
       </p>
     </div>
     <ul>
-      <li>Inaccurate calculations or estimates provided by the App or AI features</li>
-      <li>Decisions made based on App outputs or AI-generated results</li>
+      <li>Inaccurate calculations or estimates provided by the App</li>
+      <li>Decisions made based on App outputs</li>
       <li>Construction defects, safety incidents, or project failures</li>
       <li>Technical errors, bugs, or app malfunctions</li>
       <li>Data loss or corruption</li>
-      <li>Third-party service failures (e.g., Firebase Authentication (Google), RevenueCat, Google Play, Apple App Store, third-party AI services)</li>
-      <li>AI model errors, inaccuracies, or failures</li>
-      <li>LiDAR scan processing errors or misinterpretations</li>
+      <li>Third-party service failures (e.g., Firebase Authentication (Google), RevenueCat, Google Play, Apple App Store)</li>
       <li>Service downtime or unavailability</li>
     </ul>
     <p>
@@ -509,10 +456,10 @@
       <li>Export control and trade regulations where applicable</li>
     </ul>
     <p>
-      <strong>California Users (CCPA):</strong> California residents have specific privacy rights under the California Consumer Privacy Act. See our Privacy Policy for details.
+      <strong>California Users (CCPA):</strong> California residents have specific privacy rights under the California Consumer Privacy Act. We strive to honor these rights to the extent applicable to our operations and as required by law. See our Privacy Policy for details.
     </p>
     <p>
-      <strong>EU Users (GDPR):</strong> Users in the European Union have specific data protection rights under the General Data Protection Regulation. See our Privacy Policy for details.
+      <strong>EU Users (GDPR):</strong> Users in the European Union have specific data protection rights under the General Data Protection Regulation. We strive to honor these rights to the extent applicable to our operations and as required by law. See our Privacy Policy for details.
     </p>
 
     <h2><span class="section-number">12.</span> Marketing Claims and Accuracy Disclaimers</h2>

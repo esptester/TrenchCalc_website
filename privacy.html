@@ -151,49 +151,11 @@
   <p>We collect the following types of data:</p>
   <ul>
     <li><strong>Authentication:</strong> When you sign in, we use Firebase Authentication (Google) to securely manage your login. You can create an account using your email address, Apple Sign In, or Google Sign In.</li>
-    <li><strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device.</li>
     <li><strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers.</li>
     <li><strong>Location:</strong> If you enable weather advisories, the app may access your device's location to provide relevant site information. Location data is not stored or shared.</li>
     <li><strong>Purchases:</strong> Subscription purchase information is processed through Apple App Store and Google Play. We do not have access to your payment details.</li>
     <li><strong>Usage Data:</strong> We may collect anonymous interaction data (such as app launches, crash reports, and performance metrics) to improve stability and features.</li>
   </ul>
-
-  <h2 id="third-party-ai-services">Third-Party AI Services</h2>
-  <p>
-    <strong>Important:</strong> If you use the Site Diary feature, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
-  </p>
-  
-  <h3>What Data is Sent to Third-Party AI Services</h3>
-  <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
-  <ul>
-    <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed using OpenAI Whisper, then the transcriptions are sent to a third-party AI service for polishing</li>
-    <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
-    <li><strong>User Prompts:</strong> Any text you enter for AI processing, including diary entries and voice transcriptions</li>
-    <li><strong>System Prompts:</strong> Instructions for how the AI service should format the output (e.g., "convert to formal construction site diary report")</li>
-  </ul>
-  
-  <h3>How Third-Party AI Services Use Your Data</h3>
-  <p>
-    Third-party AI service providers process your data according to their own privacy policies and terms of service. Key points:
-  </p>
-  <ul>
-    <li><strong>Data Processing:</strong> AI services use your prompts to generate AI responses (diary polishing, text enhancement)</li>
-    <li><strong>Data Retention:</strong> AI service providers may retain your prompts for a limited period (typically up to 30 days) for abuse monitoring and service improvement, unless you opt out</li>
-    <li><strong>Model Training:</strong> By default, AI service providers may use your prompts to train their models. You can opt out of training data usage by contacting us</li>
-    <li><strong>Data Sharing:</strong> AI service providers do not share your prompts with third parties, but they may be reviewed by their staff for safety and quality purposes</li>
-  </ul>
-  
-  <h3>Your Options Regarding Third-Party AI Services</h3>
-  <ul>
-    <li><strong>Opt-Out of Training:</strong> You can opt out of AI service providers using your prompts for model training by contacting us, and we will configure our system to exclude your prompts from training</li>
-    <li><strong>No Prompts Stored:</strong> We do not store your prompts or transcripts on our servers after processing</li>
-    <li><strong>Secure Transmission:</strong> All data sent to third-party AI services is encrypted in transit using HTTPS/TLS</li>
-    <li><strong>You Can Stop Using Site Diary:</strong> You can stop using the Site Diary feature at any time and your data will no longer be sent to third-party AI services</li>
-  </ul>
-  
-  <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; margin: 24px 0; border-radius: 4px; color: #856404;">
-    <p style="margin: 0; color: #856404;"><strong>⚠️ Important:</strong> If you include sensitive information (client names, project details, financial data, etc.) in your Site Diary entries or voice transcriptions, this information will be sent to third-party AI service providers. We recommend avoiding including highly sensitive information in AI-processed content.</p>
-  </div>
 
   <h2>Cookies and Tracking Technologies</h2>
   <p>Our website uses cookies and similar tracking technologies to enhance your browsing experience and analyze website traffic.</p>
@@ -216,20 +178,6 @@
 
   <h2>Third-Party Services</h2>
   <p>We use third-party services to support EngSiteTools, TrenchCalc, and our website:</p>
-  
-  <h3>AI and Processing Services</h3>
-  <ul>
-    <li><strong>OpenAI</strong> – for voice transcription (Whisper API) and processing Site Diary text prompts for diary polishing and formatting
-      <ul>
-        <li>Your voice recordings are transcribed using OpenAI Whisper API</li>
-        <li>Your prompts and transcripts are sent to OpenAI for processing</li>
-        <li>OpenAI may retain your data for up to 30 days for abuse monitoring</li>
-        <li>AI service providers may use your prompts for model training unless you opt out</li>
-        <li>Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a></li>
-        <li>See <a href="#third-party-ai-services">Third-Party AI Services section</a> above for detailed information</li>
-      </ul>
-    </li>
-  </ul>
   
   <h3>Analytics and Website Services</h3>
   <ul>
@@ -259,7 +207,7 @@
     <li><strong>Encryption:</strong> All data in transit uses HTTPS/TLS encryption</li>
     <li><strong>Authentication:</strong> Firebase Authentication (Google) with industry-standard security practices</li>
     <li><strong>Access Controls:</strong> Role-based access control for all data</li>
-    <li><strong>Secure Storage:</strong> All data stored on AWS with encryption at rest</li>
+    <li><strong>Secure Storage:</strong> All data stored with encryption at rest</li>
   </ul>
 
   <h2>Your Rights</h2>

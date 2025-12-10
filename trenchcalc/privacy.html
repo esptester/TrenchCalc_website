@@ -20,7 +20,7 @@
     :root{
       --bg:#0b0f1a;
       --ink:#0f172a;
-      --muted:#5b6473;
+      --muted:#4a5568;
       --card:#ffffff;
       --brand:#2563eb;
       --surface:#f6f7fb;
@@ -30,7 +30,7 @@
     @media (prefers-color-scheme: dark){
       :root{
         --ink:#e6e8ee;
-        --muted:#9aa3b2;
+        --muted:#cbd5e1;
         --card:#121826;
         --surface:#0d1320;
         --brand:#3b82f6;
@@ -223,10 +223,9 @@
       <li><a href="#information-we-collect">1. Information We Collect</a></li>
       <li><a href="#how-we-collect">2. How We Collect Information</a></li>
       <li><a href="#purpose">3. Purpose for Collection, Use, and Disclosure</a></li>
-      <li><a href="#third-party-ai-services">4. Third-Party AI Services</a></li>
-      <li><a href="#third-party-services">5. Third-Party Services</a></li>
-      <li><a href="#what-we-do-not-collect">6. What We Do Not Collect</a></li>
-      <li><a href="#no-marketing">7. No Marketing Communications</a></li>
+      <li><a href="#third-party-services">4. Third-Party Services</a></li>
+      <li><a href="#what-we-do-not-collect">5. What We Do Not Collect</a></li>
+      <li><a href="#no-marketing">6. No Marketing Communications</a></li>
       <li><a href="#no-advertising">8. No Advertising</a></li>
       <li><a href="#do-not-track">9. Do Not Track</a></li>
       <li><a href="#consequences">10. Consequences of Not Providing Information</a></li>
@@ -254,7 +253,6 @@
         <strong>Location Information:</strong> If you enable location services, we use your device's location to provide soil testing location data, weather information, and other location-based features. Location data is used only for these purposes and is not stored or shared with third parties except as necessary to provide these services.
       </li>
       <li>
-        <strong>LiDAR Scans:</strong> If you use LiDAR scanning features, scan data is processed locally on your device.
       </li>
       <li>
         <strong>Project Information:</strong> Project details, calculations, and site data are stored locally on your device. This data is not uploaded to our servers.
@@ -297,59 +295,8 @@
       We may disclose your information to third-party service providers (as listed in the "Third-Party Services" section) solely for the purposes stated above and under appropriate data processing agreements.
     </p>
 
-    <h2 id="third-party-ai-services">Third-Party AI Services</h2>
-    <p>
-      <strong>Important:</strong> If you use the Site Diary feature, your voice transcriptions and text prompts are sent to third-party AI service providers for processing.
-    </p>
-    
-    <h3>What Data is Sent to Third-Party AI Services</h3>
-    <p>When you use the Site Diary feature, the following data is transmitted to third-party AI service providers:</p>
-    <ul>
-      <li><strong>Voice Transcripts:</strong> Your voice recordings are transcribed using OpenAI Whisper, then the transcriptions are sent to OpenAI for processing and polishing</li>
-      <li><strong>Project Information:</strong> Project name, date, and location (if provided)</li>
-      <li><strong>User Prompts:</strong> Any text you enter for AI processing, including diary entries and voice transcriptions</li>
-      <li><strong>System Prompts:</strong> Instructions for how the AI service should format the output (e.g., "convert to formal construction site diary report")</li>
-    </ul>
-    
-    <h3>How Third-Party AI Services Use Your Data</h3>
-    <p>
-      Third-party AI service providers process your data according to their own privacy policies and terms of service. Key points:
-    </p>
-    <ul>
-      <li><strong>Data Processing:</strong> AI services use your prompts to generate AI responses (diary polishing, text enhancement)</li>
-      <li><strong>Data Retention:</strong> AI service providers may retain your prompts for a limited period (typically up to 30 days) for abuse monitoring and service improvement</li>
-      <li><strong>No Model Training:</strong> <strong>We do not use your data for AI model training.</strong> TrenchCalc does not allow AI service providers to use your prompts or transcripts for training their models. Your data is used only for processing your requests.</li>
-      <li><strong>Data Sharing:</strong> AI service providers do not share your prompts with third parties, but they may be reviewed by their staff for safety and quality purposes</li>
-    </ul>
-    
-    <h3>Your Options Regarding Third-Party AI Services</h3>
-    <ul>
-      <li><strong>No Training Data Usage:</strong> Your data is never used for AI model training. We have configured our system to ensure your prompts are excluded from training data</li>
-      <li><strong>No Prompts Stored:</strong> We do not store your prompts or transcripts on our servers after processing</li>
-      <li><strong>Secure Transmission:</strong> All data sent to third-party AI services is encrypted in transit using HTTPS/TLS</li>
-      <li><strong>You Can Stop Using Site Diary:</strong> You can stop using the Site Diary feature at any time and your data will no longer be sent to third-party AI services</li>
-    </ul>
-    
-    <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 16px; margin: 24px 0; border-radius: 4px; color: #856404;">
-      <p style="margin: 0; color: #856404;"><strong>⚠️ Important:</strong> If you include sensitive information (client names, project details, financial data, etc.) in your Site Diary entries or voice transcriptions, this information will be sent to third-party AI service providers. We recommend avoiding including highly sensitive information in AI-processed content.</p>
-    </div>
-
     <h2 id="third-party-services">Third-Party Services</h2>
     <p>TrenchCalc uses the following trusted third-party services:</p>
-    
-    <h3>AI and Processing Services</h3>
-    <ul>
-      <li><strong>OpenAI</strong> – for voice transcription (Whisper API) and processing Site Diary text prompts for diary polishing and formatting
-        <ul>
-          <li>Your voice recordings are transcribed using OpenAI Whisper API</li>
-          <li>Your prompts and transcripts are sent to OpenAI for processing</li>
-          <li>OpenAI may retain your data for up to 30 days for abuse monitoring</li>
-          <li><strong>Your data is not used for AI model training</strong></li>
-          <li>Privacy Policy: <a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener noreferrer">OpenAI Privacy Policy</a></li>
-          <li>See <a href="#third-party-ai-services">Third-Party AI Services section</a> above for detailed information</li>
-        </ul>
-      </li>
-    </ul>
     
     <h3>Authentication and Payment Services</h3>
     <ul>
@@ -366,7 +313,6 @@
       <li>We do not access your device contacts or files.</li>
       <li>We do not show ads or track you across other apps.</li>
       <li>We do not sell or share your personal information with third parties.</li>
-      <li>We do not use your data for AI model training.</li>
     </ul>
 
     <h2 id="no-marketing">No Marketing Communications</h2>
@@ -393,7 +339,6 @@
     <ul>
       <li><strong>Account creation:</strong> An email address (for email login) or Apple/Google account (for social login) is required to create an account and access premium features</li>
       <li><strong>Subscription management:</strong> Subscription status information is required to provide access to premium features</li>
-      <li><strong>Site Diary features:</strong> Voice or text input is required to use Site Diary AI polishing features</li>
     </ul>
     <p>
       If you choose not to provide requested information, we may not be able to provide you with certain features or services. 
@@ -434,7 +379,7 @@
 
     <h2 id="australian-privacy-rights">Australian Privacy Rights</h2>
     <p>
-      TrenchCalc is an Australian application and we comply with the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs). If you are located in Australia, you have the following rights:
+      TrenchCalc is an Australian application and we strive to comply with the Australian Privacy Act 1988 (Cth) and the Australian Privacy Principles (APPs) to the extent applicable to our operations. If you are located in Australia, you have the following rights:
     </p>
     <ul>
       <li><strong>Access:</strong> You have the right to request access to the personal information we hold about you</li>
@@ -466,7 +411,7 @@
     <h2 id="european-residents">European Residents</h2>
     <h3>Data Transfers</h3>
     <p>
-      We are based in Australia. If you are using the Services from outside Australia, please be aware that the information we collect from you may be transferred to, stored and processed in Australia or other countries outside your country of residence (including the United States, where some of our third-party service providers are located). We ensure appropriate safeguards are in place through Standard Contractual Clauses (SCCs) for EU data transfers and compliance with applicable data protection laws, including the Australian Privacy Act 1988.
+      We are based in Australia. If you are using the Services from outside Australia, please be aware that the information we collect from you may be transferred to, stored and processed in Australia or other countries outside your country of residence (including the United States, where some of our third-party service providers are located). We aim to implement appropriate safeguards, including Standard Contractual Clauses (SCCs) for EU data transfers where applicable, and strive to comply with applicable data protection laws, including the Australian Privacy Act 1988.
     </p>
     <h3>Data Subject Rights</h3>
     <p>
@@ -492,7 +437,7 @@
       <li><strong>Encryption:</strong> All communications with our servers are encrypted using HTTPS/TLS</li>
       <li><strong>Authentication:</strong> Firebase Authentication (Google) with industry-standard security practices</li>
       <li><strong>Access Controls:</strong> Role-based access control for all data</li>
-      <li><strong>Secure Storage:</strong> All data stored on AWS with encryption at rest</li>
+      <li><strong>Secure Storage:</strong> All data stored with encryption at rest</li>
     </ul>
 
     <h2 id="data-processors">Data Processors</h2>
@@ -502,24 +447,15 @@
     <ul>
       <li><strong>Firebase Authentication (Google):</strong> User authentication (DPA: Google Cloud Data Processing Agreement)</li>
       <li><strong>RevenueCat:</strong> Subscription management (DPA: RevenueCat Data Processing Agreement)</li>
-      <li><strong>OpenAI:</strong> Voice transcription (Whisper API) and AI text processing for Site Diary features (DPA: Data Processing Agreement with OpenAI)
-        <ul>
-          <li>Whisper API processes voice recordings for transcription</li>
-          <li>OpenAI processes voice transcriptions and text prompts for diary polishing</li>
-          <li>May retain data for up to 30 days for abuse monitoring</li>
-          <li><strong>Does not use your data for model training</strong></li>
-        </ul>
-      </li>
     </ul>
 
     <h2 id="international-transfers">International Data Transfers</h2>
     <p>
       As an Australian-based service with international users, your data may be transferred to and processed in countries outside your country of residence, including Australia (where we are based) and the United States (where some of our third-party service providers are located). 
-      We ensure appropriate safeguards are in place through:
+      We aim to implement appropriate safeguards through:
     </p>
     <ul>
       <li>Standard Contractual Clauses (SCCs) for EU data transfers</li>
-      <li>AWS data processing agreements for cloud services</li>
       <li>Compliance with applicable data protection laws, including the Australian Privacy Act 1988</li>
     </ul>
 
@@ -534,7 +470,7 @@
       In the event of a data breach that affects your personal information, we will:
     </p>
     <ul>
-      <li>Notify affected users within 72 hours (GDPR requirement)</li>
+      <li>Notify affected users as soon as reasonably practicable (typically within 72 hours where required by applicable law)</li>
       <li>Notify relevant data protection authorities where required</li>
       <li>Provide details about the breach and mitigation steps</li>
     </ul>
