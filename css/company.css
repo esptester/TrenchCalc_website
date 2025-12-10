@@ -262,11 +262,21 @@ nav a:hover {
   padding: 8px 20px;
   border-radius: 6px;
   color: white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+  text-decoration: none;
 }
 
 .nav-cta:hover {
   background: #3367d6;
   opacity: 1 !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.nav-cta:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 /* Hero Section */
@@ -703,22 +713,37 @@ html.theme-light .cookie-consent-text a:hover {
 .cookie-btn-primary {
   background: var(--brand);
   color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .cookie-btn-primary:hover {
   background: #3367d6;
-  transform: translateY(-1px);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.3);
+}
+
+.cookie-btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .cookie-btn-secondary {
   background: transparent;
   color: var(--text);
   border: 2px solid var(--brand);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .cookie-btn-secondary:hover {
   background: var(--brand);
   color: white;
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 12px rgba(66, 133, 244, 0.2);
+}
+
+.cookie-btn-secondary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 .cookie-btn-link {
