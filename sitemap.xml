@@ -43,21 +43,28 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://engsitetools.com/trenchcalc-privacy.html</loc>
+    <loc>https://engsitetools.com/engsitetools-privacy.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://engsitetools.com/trenchcalc-terms.html</loc>
+    <loc>https://engsitetools.com/trenchcalc/privacy.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://engsitetools.com/privacy.html</loc>
+    <loc>https://engsitetools.com/engsitetools-terms.html</loc>
+    <lastmod>2025-01-16</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://engsitetools.com/trenchcalc/terms.html</loc>
     <lastmod>2025-01-16</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
