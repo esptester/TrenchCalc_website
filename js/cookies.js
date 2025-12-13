@@ -96,10 +96,6 @@
     saveConsentPreferences(preferences);
     hideCookieBanner();
     enableAnalytics();
-    // Ensure Crisp chat is visible after accepting cookies
-    if (window.$crisp) {
-      window.$crisp.push(['do', 'chat:show']);
-    }
     location.reload(); // Reload to ensure Google Analytics initializes
   }
 
@@ -115,10 +111,6 @@
     saveConsentPreferences(preferences);
     hideCookieBanner();
     disableAnalytics();
-    // Crisp chat should still work with necessary cookies
-    if (window.$crisp) {
-      window.$crisp.push(['do', 'chat:show']);
-    }
   }
 
   // Custom preferences
@@ -138,11 +130,6 @@
     
     saveConsentPreferences(preferences);
     hideCookieBanner();
-    
-    // Ensure Crisp chat is visible after saving preferences
-    if (window.$crisp) {
-      window.$crisp.push(['do', 'chat:show']);
-    }
     
     if (analytics) {
       enableAnalytics();
@@ -235,17 +222,6 @@
         enableAnalytics();
       } else {
         disableAnalytics();
-      }
-      // Ensure Crisp chat is visible if cookies were already accepted
-      if (window.$crisp) {
-        window.$crisp.push(['do', 'chat:show']);
-      } else {
-        // If Crisp isn't loaded yet, wait a bit and try again
-        setTimeout(function() {
-          if (window.$crisp) {
-            window.$crisp.push(['do', 'chat:show']);
-          }
-        }, 1000);
       }
     }
 
